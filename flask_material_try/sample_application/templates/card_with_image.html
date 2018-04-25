@@ -1,0 +1,28 @@
+{% macro card_with_image(title, image, content, actions = []) %}
+<h2 class="header"> {{ title }} </h2>
+  <div class="card horizontal">
+      <div class="card-image">
+	  {% if 'http' in image or 'https' in  image %}
+        <img src={{ image }}>
+	  {% else %}
+	  <img src="{{ url_for('static', filename= image) }}">
+	  {% endif %}
+	  
+      </div>
+   <div class="card-stacked">
+        <div class="card-content">
+         {{ content|safe }}
+        </div>
+  
+  {% if actions %}
+  <div class="card-action">
+  {% if actions %}
+    {% for each in actions %}
+      <a href="{{ each[0] }}">{{ each[1]|safe }}</a>
+    {% endfor %}
+  {% endif %}
+  </div>
+  {% endif %}
+</div>
+</div>
+{% endmacro %}

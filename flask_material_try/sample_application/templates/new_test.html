@@ -1,0 +1,219 @@
+{% extends "material/base.html" %}
+{% import "material/utils.html" as util %}
+{% import "material/wtf.html" as wtf %}
+{% import "card_with_image.html" as cwi %}
+
+
+
+{% include 'header.html' %}
+
+
+
+
+
+
+
+
+{% block body %}
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+{%- endblock scripts %}
+
+<nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo center low-text">Logo</a>
+      <ul class="left hide-on-med-and-down">
+        <li><a  href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li class="active"><a href="collapsible.html" >JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal').modal();
+	$('.slider').slider({
+        full_width: true,
+        interval: 2000, // 轮播间隔 
+        transition: 1000, // 效果转换时长
+        height: 600, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+  });
+  
+  $("modal_test").click(function(){ 
+    $(".modal").modal('open'); 
+	
+}); 
+
+  </script>
+	
+	{% block content %}
+	
+	<div class="slider">
+    <ul class="slides">
+        <li>
+        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
+        <div class="caption center-align">
+            <h3>这是一个巨大的标签行</h3>
+            <h5 class="light grey-text text-lighten-3">这是我们的小口号。</h5>
+        </div>
+        </li>
+        <li>
+        <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
+        <div class="caption left-align">
+            <h3>左对齐标题</h3>
+            <h5 class="light grey-text text-lighten-3">这是我们的小口号。</h5>
+        </div>
+        </li>
+        <li>
+        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+        <div class="caption right-align">
+            <h3>右对齐标题</h3>
+            <h5 class="light grey-text text-lighten-3">这是我们的小口号。</h5>
+        </div>
+        </li>
+        <li>
+        <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
+        <div class="caption center-align">
+            <h3>这是一个巨大的标签行</h3>
+            <h5 class="light grey-text text-lighten-3">这是我们的小口号。</h5>
+        </div>
+        </li>
+    </ul>
+</div>
+
+
+	
+	
+  <div class="section">
+	{{ container() }}
+        {{ row() }}
+                {{ col(['s12', 'm6','l12']) }}
+                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
+				{{ enddiv() }}
+				
+				{{ col(['s12', 'm6','l12']) }}
+                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
+                {{ enddiv() }}
+				
+				  <div class="col s12 m6 l12">
+						<h2 class="header">Horizontal Card</h2>
+							<div class="card horizontal">
+								<div class="card-image">
+							<img src="{{ url_for('static', filename='images/coffee.jpg') }}">
+								</div>
+							<div class="card-stacked">
+							<div class="card-content">
+							<p>I am a very simple card. I am good at containing small bits of information.</p>
+							</div>
+								<div class="card-action">
+								  <a href="#">This is a link</a>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						  
+				{{ col(['s12', 'm6','l12']) }}
+                	{{ cwi.card_with_image(
+					'test_card_with_image',
+					'images/coffee.jpg', 
+					"<p>I am a very simple card. I am good at containing small bits of information.</p>",
+					[['http://google.com/LINK.html', 'Link Title']]
+					) }}
+				
+				{{ enddiv() }}
+				
+
+				
+				
+	
+				
+			    {{ col(['s12', 'm6','l12']) }}
+                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
+				{{ enddiv() }}
+				
+				{{ col(['s12', 'm6','l12']) }}
+                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
+                {{ enddiv() }}
+				
+			    {{ col(['s12', 'm6','l12']) }}
+                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
+				{{ enddiv() }}
+				
+				{{ col(['s12', 'm6','l12']) }}
+                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
+                {{ enddiv() }}
+			
+			    {{ col(['s12', 'm6','l12']) }}
+                	{{ cwi.card_with_image(
+					'test_card_with_image',
+					'images/coffee.jpg', 
+					"<p>I am a very simple card. I am good at containing small bits of information.</p>",
+					[['http://google.com/LINK.html', 'Link Title']]
+					) }}
+				
+				{{ enddiv() }}
+				
+				{{ col(['s12', 'm6','l12']) }}
+                	{{ cwi.card_with_image(
+					'test_card_with_image',
+					"http://lorempixel.com/100/190/nature/6", 
+					"<p>I am a very simple card. I am good at containing small bits of information.</p>",
+					[['http://google.com/LINK.html', 'Link Title']]
+					) }}
+				{{ enddiv() }}
+
+
+				
+	
+	
+				
+        {{ enddiv() }}
+		
+		{{ row() }}
+		{{ col(['s12', 'm6','l12']) }}
+		 <!-- Modal Trigger -->
+  <div class ="modal_test center-align" >
+  <div class="center-align">
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1"  >Modal</a>
+  </div>
+  
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content amber">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer yellow darken-4">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+  </div>
+  {{ enddiv() }}
+  {{ enddiv() }}
+  
+  
+
+
+{{ enddiv() }}
+
+
+
+
+
+  
+
+
+{% endblock %}
+
+{% include 'footer.html' %}
+{% endblock %}
+
+
+
