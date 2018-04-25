@@ -1,6 +1,4 @@
 from flask_material import Material
-from flask_appconfig import AppConfig
-from . import form
 from . import  views
 from flask import Flask
 from .views import bp
