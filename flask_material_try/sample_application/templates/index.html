@@ -12,16 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 {%- endblock scripts %}
 
-<nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center low-text">LRENZ</a>
-      <ul class="left hide-on-med-and-down">
-        <li><a  href="#">Sass</a></li>
-        <li><a href="#">Components</a></li>
-        <li class="#"><a href="collapsible.html" >JavaScript</a></li>
-      </ul>
-    </div>
-  </nav>
+{% include 'nav.html' %}
 
   <script type="text/javascript">
   $(document).ready(function(){
@@ -82,7 +73,11 @@
                 	{{ cwi.card_with_image(
 					'Evething About The Site',
 					'images/coffee.jpg',
-					"<p>There are Some things you need to Know before you visit the site</p>",
+					" <h3>Four</h3><p>A “favicon” is an icon used by browsers for tabs and bookmarks. This helps to distinguish your website and to give it a unique brand.
+
+A common question is how to add a favicon to a Flask application. First, of course, you need an icon. It should be 16 × 16 pixels and in the ICO file format. This is not a requirement but a de-facto standard supported by all relevant browsers. Put the icon in your static directory as favicon.ico.
+
+Now, to get browsers to find your icon, the correct way is to add a link tag in your HTML. So, for example:</p>",
 					[['http://google.com', 'ReadME']]
 					) }}
 				{{ enddiv() }}
