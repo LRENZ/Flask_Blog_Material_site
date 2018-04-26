@@ -101,23 +101,7 @@
 				{{ col(['s12', 'm6','l12']) }}
                 	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
                 {{ enddiv() }}
-				
-				  <div class="col s12 m6 l12">
-						<h2 class="header flow-text">Horizontal Card</h2>
-							<div class="card horizontal">
-								<div class="card-image">
-							<img src="{{ url_for('static', filename='images/coffee.jpg') }}">
-								</div>
-							<div class="card-stacked">
-							<div class="card-content">
-							<p>I am a very simple card. I am good at containing small bits of information.</p>
-							</div>
-								<div class="card-action">
-								  <a href="#">This is a link</a>
-								</div>
-							  </div>
-							</div>
-						  </div>
+
 						  
 				{{ col(['s12', 'm6','l12']) }}
                 	{{ cwi.card_with_image(

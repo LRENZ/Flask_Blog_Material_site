@@ -1,78 +1,96 @@
 {% extends "material/base.html" %}
-{% import "material/utils.html" as util %}
-{% import "material/wtf.html" as wtf %}
+{% import "card_with_image.html" as cwi %}
 
-{% block title %}Hello, world!{% endblock %}
-
-{% block styles %}
-{{super()}}
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en" rel="stylesheet">  
-{% endblock %}
-
-{% block script %}
-{{super()}}
-   <script src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js">
-      </script>
-	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-{% endblock %}
-
-
-{% block meta %}
-{{super()}}
-    <meta charset="UTF-8">  
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">  
-    <meta name="viewport" content="width=device-width, initial-scale=1">  
-  
-    <!-- Add to homescreen for Chrome on Android -->  
-    <meta name="mobile-web-app-capable" content="yes">  
-  
-    <!-- Add to homescreen for Safari on iOS -->  
-    <meta name="apple-mobile-web-app-capable" content="yes">  
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">  
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite"> 
-{% endblock %}
-
+{% include 'header.html' %}
 
 {% block body %}
 
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">  
-        <header class="mdl-layout__header">  
-            <div class="mdl-layout__header-row">  
-                <span class="mdl-layout-title">MDL 样例</span>  
-            </div>  
-        </header>  
-        <div class="mdl-layout__drawer">  
-            <span class="mdl-layout-title">MDL 教程</span>  
-            <nav class="mdl-navigation">  
-                <a class="mdl-navigation__link">概述</a>  
-                <a class="mdl-navigation__link">布局</a>  
-            </nav>  
-        </div>  
-    </div> 
-	{% block content %}
-{{ container() }}
-        {{ row() }}
-                {{ col(['s12', 'm6']) }}
-                	{{ util.card('Hello world!', wtf.quick_form(form) )}}
-					
-                {{ enddiv() }}
-                {{ col(['s12', 'm6'])}}
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+{%- endblock scripts %}
 
- 
-                {{ util.card('Isn\'t Flask great?', '<p>I really do enjoy it!</p>				 <i class="material-icons" style="font-size: 30pt; color: darkgoldenrod">add</i> 
-				 <button class="mdl-button mdl-js-button mdl-js-ripple-effect">确定</button>  ', [['https://github.com/HellerCommaA', 'My Github']])}}
-            	{{ enddiv() }}
+<nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo center low-text">LRENZ</a>
+      <ul class="left hide-on-med-and-down">
+        <li><a  href="#">Sass</a></li>
+        <li><a href="#">Components</a></li>
+        <li class="#"><a href="collapsible.html" >JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+	$('.slider').slider({
+        full_width: true,
+        interval: 3000, // 轮播间隔
+        transition: 2000, // 效果转换时长
+        height: 900, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+  });
+
+
+  </script>
+
+	{% block content %}
+
+	<div class="slider">
+    <ul class="slides">
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/blade-runner.jpg') }} "> <!-- random image -->
+        <div class="caption center-align">
+            <h3>First Page </h3>
+            <h5 class="light grey-text text-lighten-3">Blade - Runner</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/home.jpg') }} "> <!-- random image -->
+        <div class="caption left-align">
+            <h3>Second Switch</h3>
+            <h5 class="light grey-text text-lighten-3">The End Of the Fucking World</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/Batman.jpg') }} "> <!-- random image -->
+        <div class="caption right-align">
+            <h3>Three</h3>
+            <h5 class="light grey-text text-lighten-3">Template</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/blade-runner-2049.jpg' ) }} "> <!-- random image -->
+        <div class="caption center-align">
+            <h3>Four</h3>
+            <h5 class="light grey-text text-lighten-3">Also Test</h5>
+        </div>
+        </li>
+    </ul>
+</div>
+
+
+
+
+  <div class="section">
+	{{ container() }}
+        {{ row() }}
+				{{ col(['s12', 'm6','l12']) }}
+                	{{ cwi.card_with_image(
+					'Evething About The Site',
+					'images/coffee.jpg',
+					"<p>There are Some things you need to Know before you visit the site</p>",
+					[['http://google.com', 'ReadME']]
+					) }}
+				{{ enddiv() }}
         {{ enddiv() }}
+
 {{ enddiv() }}
 
+{% endblock content %}
 
-{% endblock %}
-
-{% endblock %}
-
-		 
+{% include 'footer.html' %}
+{% endblock body %}
