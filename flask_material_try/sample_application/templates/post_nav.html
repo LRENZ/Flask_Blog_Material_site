@@ -1,10 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "material/base.html" %}
+{% import "material/utils.html" as util %}
+{% import "material/wtf.html" as wtf %}
+{% import "material/pagination.html" as pag %}
+{% import "card_with_image.html" as cwi %}
+{% import "card_to_render_post.html" as ctrp %}
+
+
+
+{% include 'header.html' %}
+
+
+
+
+
+
+
+
+{% block body %}
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal').modal();
+	$('.slider').slider({
+        full_width: true,
+        interval: 2000, // 轮播间隔 
+        transition: 1000, // 效果转换时长
+        height: 600, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+  });
+  
+  $("modal_test").click(function(){ 
+    $(".modal").modal('open'); 
+	
+}); 
+
+  </script>
+	
+	{% block content %}
+	
+	<div class="slider">
+    <ul class="slides">
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/blade-runner.jpg') }} "> <!-- random image -->
+        <div class="caption center-align">
+            <h3>First Page </h3>
+            <h5 class="light grey-text text-lighten-3">Blade - Runner</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/home.jpg') }} "> <!-- random image -->
+        <div class="caption left-align">
+            <h3>Second Switch</h3>
+            <h5 class="light grey-text text-lighten-3">The End Of the Fucking World</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/Batman.jpg') }} "> <!-- random image -->
+        <div class="caption right-align">
+            <h3>Three</h3>
+            <h5 class="light grey-text text-lighten-3">Template</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/blade-runner-2049.jpg' ) }} "> <!-- random image -->
+        <div class="caption center-align">
+            <h3>Four</h3>
+            <h5 class="light grey-text text-lighten-3">Also Test</h5>
+        </div>
+        </li>
+    </ul>
+</div>
+
+
+
+	
+	
+  <div class="section">
+	{{ container() }}
+        {{ row() }}
+                {% if post %}
+                     {% for p in post.items %}
+                                {{ col(['s12', 'm6','l12']) }}
+                                    {{ cwi.card_with_image(title =p.title, 
+									content = p.content,
+									image = image, 
+									tags =p.tags,
+									actions = [p.title]
+									)}}
+                                {{ enddiv() }}
+                     {% endfor %}
+                {% else %}
+                                {{ col(['s12', 'm6','l12']) }}
+                                {{ util.card('Not Post','not post',[['/','index']]) }}
+                                {{ enddiv }}
+                {% endif %}
+      {{ enddiv() }}
+	  
+	  
+	  {# Macro for creating navigation links #}
+{% macro render_navigation(pagination, endpoint) %}
+  <div class=pagination>
+  {% for page in pagination.iter_pages() %}
+    {% if page %}
+      {% if page != pagination.page %}
+        <a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
+      {% else %}
+        <strong>{{ page }}</strong>
+      {% endif %}
+    {% else %}
+      <span class=ellipsis>…</span>
+    {% endif %}
+  {% endfor %}
+  </div>
+{% endmacro %}
+      {{ render_navigation(post,"blog.post_list") }}
+	 
+  {{ enddiv() }}
+  {{ enddiv() }}
+
+{% endblock %}
+{% include 'footer.html' %}
+{% endblock %}
+
+
+

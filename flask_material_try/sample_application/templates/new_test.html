@@ -5,6 +5,8 @@
 
 
 
+
+
 {% include 'header.html' %}
 
 
@@ -30,22 +32,22 @@
     $('.modal').modal();
 	$('.slider').slider({
         full_width: true,
-        interval: 2000, // 轮播间隔 
+        interval: 2000, // 轮播间隔
         transition: 1000, // 效果转换时长
         height: 600, // 轮播高度
         indicators: true // 是否显示小圆点
     });
   });
-  
-  $("modal_test").click(function(){ 
-    $(".modal").modal('open'); 
-	
-}); 
+
+  $("modal_test").click(function(){
+    $(".modal").modal('open');
+
+});
 
   </script>
-	
+
 	{% block content %}
-	
+
 	<div class="slider">
     <ul class="slides">
         <li>
@@ -80,76 +82,22 @@
 </div>
 
 
-	
-	
+
+
   <div class="section">
 	{{ container() }}
         {{ row() }}
-                {{ col(['s12', 'm6','l12']) }}
-                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
-				{{ enddiv() }}
-				
-				{{ col(['s12', 'm6','l12']) }}
-                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
-                {{ enddiv() }}
+		    {% if post %}
 
-						  
 				{{ col(['s12', 'm6','l12']) }}
-                	{{ cwi.card_with_image(
-					'test_card_with_image',
-					'images/coffee.jpg', 
-					"<p>I am a very simple card. I am good at containing small bits of information.</p>",
-					[['http://google.com/LINK.html', 'Link Title']]
-					) }}
-				
+                    {{ cwi.card_with_image(title = title,image = image,content = content,tags =tags,actions = actions) }}
 				{{ enddiv() }}
-				
-
-				
-				
-	
-				
-			    {{ col(['s12', 'm6','l12']) }}
-                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
-				{{ enddiv() }}
-				
-				{{ col(['s12', 'm6','l12']) }}
-                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
-                {{ enddiv() }}
-				
-			    {{ col(['s12', 'm6','l12']) }}
-                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
-				{{ enddiv() }}
-				
-				{{ col(['s12', 'm6','l12']) }}
-                	{{ util.card('Hello world!', 'test html' ,[['http://google.com/LINK.html', 'Link Title'], ['http://www.google.co.uk/link2.html', 'Link Title2']])}}
-                {{ enddiv() }}
-			
-			    {{ col(['s12', 'm6','l12']) }}
-                	{{ cwi.card_with_image(
-					'test_card_with_image',
-					'images/coffee.jpg', 
-					"<p>I am a very simple card. I am good at containing small bits of information.</p>",
-					[['http://google.com/LINK.html', 'Link Title']]
-					) }}
-				
-				{{ enddiv() }}
-				
-				{{ col(['s12', 'm6','l12']) }}
-                	{{ cwi.card_with_image(
-					'test_card_with_image',
-					"http://lorempixel.com/100/190/nature/6", 
-					"<p>I am a very simple card. I am good at containing small bits of information.</p>",
-					[['http://google.com/LINK.html', 'Link Title']]
-					) }}
-				{{ enddiv() }}
-
-
-				
-	
-	
-				
         {{ enddiv() }}
+		    {% else %}
+                                {{ col(['s12', 'm6','l12']) }}
+                                {{ util.card('Not Post','not post',[['/','index']]) }}
+                                {{ enddiv }}
+            {% endif %}
 		
 		{{ row() }}
 		{{ col(['s12', 'm6','l12']) }}

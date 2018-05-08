@@ -7,6 +7,13 @@ from .model import *
 from flask_login import LoginManager
 from .admin import create_admin
 from flask_mongoengine import MongoEngineSessionInterface
+from micawber import bootstrap_basic, parse_html
+from micawber.cache import Cache as OEmbedCache
+from micawber.contrib.mcflask import add_oembed_filters
+from flask_disqus import Disqus
+from flask_ckeditor import CKEditor
+
+oembed_providers = bootstrap_basic(OEmbedCache())
 
 
 
@@ -17,13 +24,18 @@ def register_database(app):
 def create_app():
 
     app = Flask(__name__)
-    #app.debug = True
+    app.debug = True
     #app.config.from_object('config')
     app.config['SECRET_KEY'] = 'devkeytestibsvbdsvbsd'
     #app.config['DEBUG_TB_PANELS'] = ['flask_mongoengine.panels.MongoDebugPanel']
     #app.config['MONGODB_SETTINGS'] = {'db': 'testing'}
     #toolbar = DebugToolbarExtension(app)
     #toolbar.init_app(app)
+	#app.config['DISQUS_SECRET_KEY']
+	#app.config['DISQUS_PUBLIC_KEY']
+    add_oembed_filters(app, oembed_providers)
+
+    app.config['CKEDITOR_PKG_TYPE'] = 'full'
 
 
     app.config['MONGODB_SETTINGS'] = {
@@ -37,6 +49,8 @@ def create_app():
     register_database(app)
     create_admin(app)
     Material(app)
+    disq = Disqus(app)
+    ckeditor = CKEditor(app)
 
 
     return app

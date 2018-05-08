@@ -1,10 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "material/base.html" %}
+{% import "card_with_image.html" as cwi %}
 
-</body>
-</html>
+{% include 'header.html' %}
+
+{% block body %}
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+	$('.slider').slider({
+        full_width: true,
+        interval: 3000, // 轮播间隔
+        transition: 2000, // 效果转换时长
+        height: 900, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+  });
+
+  </script>
+
+	{% block content %}
+  <div class="section">
+	{{ container() }}
+	  {{ row() }}
+	     {{ col(['s12', 'm6','l12']) }}
+  <div class="post-preview">
+        <h1>{{ post.title }}</h1>
+          {% if post.tags %}
+            <ul class="list-unstyled list-inline">
+                {% for tag in post.tags %}
+                      <div class="chip">
+                          <a href="/tag/{{ tag }}">{{ tag }}</a>
+                      </div>
+                {% endfor %}
+            </ul>
+          {% endif %}
+        <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">{{ post.name }}</a> on {{ post.create_time}}</p>
+    </div>
+    <hr>
+	{{ col(['s12', 'm6','l12']) }}
+    <div>
+        {% autoescape false %}
+            {{ post.content | oembed(html=True, maxwidth=300, maxheight=400) }}
+        {% endautoescape %}
+    </div>
+        {{ enddiv() }}
+		{{ enddiv() }}
+
+{{ enddiv() }}
+{{ enddiv() }}
+{{ enddiv() }}
+
+
+{% endblock content %}
+
+{% include 'footer.html' %}
+{% endblock body %}

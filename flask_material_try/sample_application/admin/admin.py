@@ -8,6 +8,7 @@ from flask_admin.form import rules
 from ..form import LoginForm
 import  os
 import os.path as op
+from flask_ckeditor import CKEditorField
 
 
 # Create directory for file fields to use
@@ -61,7 +62,7 @@ class UserView(ModelView):
     column_filters = ('name', 'email')
 
     edit_template = 'admin/edit_user.html'
-    form_overrides = dict(description=CKTextAreaField)
+    form_overrides = dict(description=CKEditorField)
 
     form_columns = ('name', 'email', 'description')
 
@@ -73,7 +74,7 @@ class PostView(ModelView):
 
     column_display_pk = True
 
-    form_overrides = dict(content=CKTextAreaField)
+    form_overrides = dict(content=CKEditorField)
     create_template = 'admin/create_post.html'
     edit_template = 'admin/edit_post.html'
 
@@ -105,7 +106,7 @@ class PostView(ModelView):
             'form_subdocuments': {
                 None: {
                     # Add <hr> at the end of the form
-                    'form_rules': ('name', 'tag', 'value', rules.HTML('<hr>')),
+                    'form_rules': ('created_at', 'body', 'author', rules.HTML('<hr>')),
                     'form_widget_args': {
                         'name': {
                             'style': 'color: red'
