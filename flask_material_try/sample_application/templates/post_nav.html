@@ -4,6 +4,7 @@
 {% import "material/pagination.html" as pag %}
 {% import "card_with_image.html" as cwi %}
 {% import "card_to_render_post.html" as ctrp %}
+{% import "utils.html" as ut %}
 
 
 
@@ -34,7 +35,7 @@
         full_width: true,
         interval: 2000, // 轮播间隔 
         transition: 1000, // 效果转换时长
-        height: 600, // 轮播高度
+        height: 800, // 轮播高度
         indicators: true // 是否显示小圆点
     });
   });
@@ -47,6 +48,10 @@
   </script>
 	
 	{% block content %}
+
+
+	        {{ row() }}
+				{{ col(['s12', 'm12','l12']) }}
 	
 	<div class="slider">
     <ul class="slides">
@@ -81,6 +86,10 @@
     </ul>
 </div>
 
+        {{ enddiv() }}
+
+{{ enddiv() }}
+
 
 
 	
@@ -90,40 +99,31 @@
         {{ row() }}
                 {% if post %}
                      {% for p in post.items %}
-                                {{ col(['s12', 'm6','l12']) }}
+                                {{ col(['s12', 'm12','l12']) }}
                                     {{ cwi.card_with_image(title =p.title, 
 									content = p.content,
-									image = image, 
+									image = p.image,
 									tags =p.tags,
 									actions = [p.title]
 									)}}
                                 {{ enddiv() }}
                      {% endfor %}
                 {% else %}
-                                {{ col(['s12', 'm6','l12']) }}
+                                {{ col(['s12', 'm12','l12']) }}
                                 {{ util.card('Not Post','not post',[['/','index']]) }}
                                 {{ enddiv }}
                 {% endif %}
       {{ enddiv() }}
 	  
-	  
-	  {# Macro for creating navigation links #}
-{% macro render_navigation(pagination, endpoint) %}
-  <div class=pagination>
-  {% for page in pagination.iter_pages() %}
-    {% if page %}
-      {% if page != pagination.page %}
-        <a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
-      {% else %}
-        <strong>{{ page }}</strong>
-      {% endif %}
-    {% else %}
-      <span class=ellipsis>…</span>
-    {% endif %}
-  {% endfor %}
-  </div>
-{% endmacro %}
-      {{ render_navigation(post,"blog.post_list") }}
+
+
+      	{{ container() }}
+        {{ row() }}
+
+      {{ut.render_pagination(post,"blog.post_list") }}
+
+        {{ enddiv() }}
+  {{ enddiv() }}
 	 
   {{ enddiv() }}
   {{ enddiv() }}

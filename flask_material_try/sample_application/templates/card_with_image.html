@@ -1,37 +1,61 @@
-{% macro card_with_image(title, image, content,tags, actions = []) %}
-                                    <h2 class="header flow-text"> {{ title }} </h2>
-                                      <div class="card horizontal">
-                                          <div class="card-image">
-                                          {% if 'http' in image or 'https' in  image %}
-                                            <img src={{ image }}>
-                                          {% else %}
-                                          <img src="{{ url_for('static', filename= image) }}">
-                                          {% endif %}
-                                          </div>
-                                       <div class="card-stacked">
-                                            <div class="card-content">
-                                             {{ content|safe }}
+{% macro card_with_image(title, image, content,tags = None, actions = []) %}
+             <div class="card">
+			    <div class="card-image">
+                    
+                        {% if image %}
+                                      
+                            {% if 'http' in image or 'https' in  image %}
+                                <img src={{ image  }}>
+								<span class="card-title"><strong>{{ title }} </strong></span>
+                            {% else %}
+                                <img src="{{ url_for('static', filename= image) }}">
+								<span class="card-title">{{ title }}</span>
+                            {% endif %}
+                </div>
 
-                                            </div>
-                                           <div class="row center-align">
-                                                       {% for t in tags %}
-                                                                 <div class="chip">
+                        {% else %}
+                            
+                                 <div class="card-image">
+                                    <img src="{{ url_for('static', filename= 'coffee.jpg') }}">
+									<span class="card-title"><h3> <strong>{{ title }}</strong></h3></span>
+                                        </div>
+                        {% endif %}
 
-                                                                     <a href="/tag/{{ t }}">{{ t }}</a>
 
-                                                                  </div>
-                                                            {% endfor %}
-                                             </div>
+                                     
+                            <div class="card-content ">
+                                {{ content | get_slug | oembed(html=True, maxwidth=300, maxheight=400)}}
+                                   
+
+                            </div>
+							
+                            <div class="container">
+                                 <ul class="list-unstyled list-inline center-align">
+                                      {% for tag in tags %}
+                                            <div class="chip">
+                                               <a href="/tag/{{ tag }}"><i class="material-icons left">bookmark</i>{{ tag }}</a>
+                                                </div>
+                             {% endfor %}
+			                 </div>
+
+
+                </div>
+                                               
+
+                                              <div class="row">
+
                                       {% if actions %}
-                                      <div class="card-action">
+                                      <div class="card-action center-align">
                                       {% if actions %}
                                         {% for each in actions %}
-                                          <a href="/posts/{{ each }}">View {{ each }}</a>
+										<a class="waves-effect waves-light orange darken-1 btn" href="/posts/{{ each }}"><i class="material-icons left">explore</i>View : {{ each }}</a>
+                                          
                                         {% endfor %}
                                       {% endif %}
                                       </div>
                                       {% endif %}
                                     </div>
-                                    </div>
+                                    
+                                    
 
 {% endmacro %}

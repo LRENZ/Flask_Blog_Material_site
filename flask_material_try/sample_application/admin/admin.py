@@ -9,6 +9,8 @@ from ..form import LoginForm
 import  os
 import os.path as op
 from flask_ckeditor import CKEditorField
+from ..utils import get_slug
+from jinja2 import Markup
 
 
 # Create directory for file fields to use
@@ -43,6 +45,8 @@ class MyIndexView(AdminIndexView):
         return redirect(url_for('.index'))
 
 
+
+"""
 # Define wtforms widget and field
 class CKTextAreaWidget(widgets.TextArea):
     def __call__(self, field, **kwargs):
@@ -53,6 +57,8 @@ class CKTextAreaWidget(widgets.TextArea):
 
 class CKTextAreaField(fields.TextAreaField):
     widget = CKTextAreaWidget()
+"""
+
 
 
 class UserView(ModelView):
@@ -71,14 +77,24 @@ class UserView(ModelView):
 
 
 class PostView(ModelView):
+    def get_content(view, context, model, name):
+        if not model.content:
+            return ''
+
+        return str(model.content)[:300]
+
+    column_formatters = {
+        'content': get_content
+    }
 
     column_display_pk = True
 
     form_overrides = dict(content=CKEditorField)
     create_template = 'admin/create_post.html'
     edit_template = 'admin/edit_post.html'
+    #column_formatters = dict(content = lambda v, c, m, p: m)
 
-    column_list = ('id', 'title', 'content', 'author', 'tags', 'status', 'create_time', 'modify_time','inner')
+    column_list = ( 'title', 'content',  'tags', 'status', 'create_time', 'modify_time','image')
     # column_labels = dict(id='ID',
     #                      title=u'标题',
     #                      content=u'内容',
@@ -95,9 +111,9 @@ class PostView(ModelView):
         ]
     }
 
-    column_filters = ('title',)
+    column_filters = ('title','content',)
 
-    column_searchable_list = ('content',)
+    column_searchable_list = ('content','title',)
 
     column_sortable_list = ('create_time', 'modify_time')
 
@@ -131,6 +147,7 @@ class FileView(ModelView):
     form_overrides = {
         'path': form.FileUploadField
     }
+    column_filters = ('name',)
 
     # Pass additional parameters to 'path' to FileUploadField constructor
     form_args = {
@@ -154,6 +171,7 @@ class ImageView(ModelView):
         'path': _list_thumbnail
     }
 
+
     # Alternative way to contribute field is to override it completely.
     # In this case, Flask-Admin won't attempt to merge various parameters for the field.
     form_extra_fields = {
@@ -161,3 +179,13 @@ class ImageView(ModelView):
                                       base_path=file_path,
                                       thumbnail_size=(100, 100, True))
     }
+
+    """
+        form_extra_fields = {
+        'path': form.ImageUploadField('Image',
+                                      base_path=file_path,
+                                      thumbnail_size=(100, 100, True))
+    }
+
+    """
+

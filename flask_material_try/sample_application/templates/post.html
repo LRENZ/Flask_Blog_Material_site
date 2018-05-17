@@ -23,9 +23,24 @@
         height: 900, // 轮播高度
         indicators: true // 是否显示小圆点
     });
+	$('#image').materialbox();
   });
+  
+  $('#image').click(function(){
+    //Some code
+	$('#image').materialbox('open');
+});
 
   </script>
+  <style type="text/css">
+  	#img:hover {
+  		background-image: url('https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png');
+  	}
+	#image {
+    max-width: 100%;
+    max-height: 100%;
+}
+  </style>
 
 	{% block content %}
   <div class="section">
@@ -33,27 +48,39 @@
 	  {{ row() }}
 	     {{ col(['s12', 'm6','l12']) }}
   <div class="post-preview">
-        <h1>{{ post.title }}</h1>
-          {% if post.tags %}
+  	     <div class="card">
+        <div class="card-image">
+          <img src="{{ post.image }}">
+          <span class="card-title"><h2>{{ post.title }}</h2></span>
+        </div>
+        <div class="card-content">
+		
+	 {% if post.tags %}
             <ul class="list-unstyled list-inline">
                 {% for tag in post.tags %}
                       <div class="chip">
-                          <a href="/tag/{{ tag }}">{{ tag }}</a>
+                          <a href="/tag/{{ tag }}"><i class="material-icons left">bookmark</i>{{ tag }}</a>
                       </div>
                 {% endfor %}
             </ul>
           {% endif %}
-        <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">{{ post.name }}</a> on {{ post.create_time}}</p>
+        <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">{{ post.name }}</a> on {{ post.create_time | my_format_datetime}}</p>
     </div>
+      </div>
+  
     <hr>
+	
 	{{ col(['s12', 'm6','l12']) }}
     <div>
+	    <div class="card-content white-text lighten-5">
         {% autoescape false %}
             {{ post.content | oembed(html=True, maxwidth=300, maxheight=400) }}
         {% endautoescape %}
+		</div>
     </div>
         {{ enddiv() }}
 		{{ enddiv() }}
+		
 
 {{ enddiv() }}
 {{ enddiv() }}

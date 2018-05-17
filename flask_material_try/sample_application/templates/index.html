@@ -2,7 +2,7 @@
 {% import "card_with_image.html" as cwi %}
 
 {% include 'header.html' %}
-
+{% include 'nav.html' %}
 {% block body %}
 
 {% block scripts %}
@@ -12,7 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 {%- endblock scripts %}
 
-{% include 'nav.html' %}
+
+
 
   <script type="text/javascript">
   $(document).ready(function(){
@@ -29,9 +30,11 @@
   </script>
 
 	{% block content %}
+
 	
 	        {{ row() }}
-				{{ col(['s12', 'm6','l12']) }}
+				{{ col(['s12', 'm12','l12']) }}
+
 
 	<div class="slider">
     <ul class="slides">
@@ -75,18 +78,39 @@
 	{{ container() }}
         {{ row() }}
 				{{ col(['s12', 'm6','l12']) }}
-                	{{ cwi.card_with_image(
-					'Evething About The Site',
-					'images/coffee.jpg',
-					" <h3>Four</h3><p>A “favicon” is an icon used by browsers for tabs and bookmarks. This helps to distinguish your website and to give it a unique brand.
+                {% if p %}
 
-A common question is how to add a favicon to a Flask application. </p>",
-					[['/', 'ReadME']]
-					) }}
+                                {{ col(['s12', 'm12','l12']) }}
+                                    {{ cwi.card_with_image(title =p.title,
+									content = p.content,
+									image = p.image,
+									tags =p.tags,
+									actions = [p.title]
+									)}}
+                                {{ enddiv() }}
+
+                {% else %}
+                                {{ col(['s12', 'm12','l12']) }}
+                                {{ util.card('Not Post','not post',[['/','index']]) }}
+                                {{ enddiv }}
+                {% endif %}
 				{{ enddiv() }}
+				
         {{ enddiv() }}
+		
+		 
+		  <!-- Tap Target Structure -->
+  <div class="tap-target" data-target="menu">
+    <div class="tap-target-content">
+      <h5>Title</h5>
+      <p>A bunch of text</p>
+    </div>
+  </div>
+          
+		
 
 {{ enddiv() }}
+
 
 {% endblock content %}
 

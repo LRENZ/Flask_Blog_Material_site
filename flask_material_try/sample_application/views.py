@@ -5,10 +5,55 @@ from .model import *
 
 
 
+
 @bp.route('/')
 def index():
-    return render_template('index.html')
+    p = Post.objects().first()
+    return render_template('index.html',p = p)
 
+@bp.route('/posts')
+@bp.route('/posts/<string:post_title>')
+def get_post(post_title):
+    post = Post.objects.get_or_404(title__contains=post_title)
+    return render_template("post.html", post=post)
+
+@bp.route('/readme')
+def readme():
+    return render_template('readme.html')
+
+@bp.route('/pag')
+@bp.route('/pag/<int:page>')
+def post_list(page=1):
+    #image = 'images/coffee.jpg'
+    post = Post.objects.paginate(page=page, per_page=5)
+    return render_template("post_nav.html",  post=post)
+
+
+@bp.route('/tag/<string:tag>')
+def view_tag_tags(tag, page=1):
+    image = 'images/coffee.jpg'
+    post = Post.objects.filter(tags__contains=tag)
+    #paginated_tags = post.paginate_field('tags', page=1, per_page=5)
+    return render_template("tags.html",image = image,  paginated_tags=post)
+
+@bp.route('/contact')
+def contact():
+    return render_template("contact.html")
+
+
+@bp.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+
+
+
+
+
+#################################################################3
+##############test router########################################
+##################################################################
 @bp.route('/post')
 def image():
     tags = ['tag1','tag2','tag3']
@@ -26,9 +71,7 @@ def image():
 """
 
 
-@bp.route('/readme')
-def readme():
-    return render_template('readme.html')
+
 
 @bp.route('/form')
 def testform():
@@ -41,18 +84,9 @@ def get_post_with():
     post = Post.objects().all()
     return render_template("post_list.html", post=post)
 
-@bp.route('/posts')
-@bp.route('/posts/<string:post_title>')
-def get_post(post_title):
-    post = Post.objects.get_or_404(title__contains=post_title)
-    return render_template("post.html", post=post)
 
-@bp.route('/pag')
-@bp.route('/pag/<int:page>')
-def post_list(page=1):
-    image = 'images/coffee.jpg'
-    post = Post.objects.paginate(page=page, per_page=5)
-    return render_template("post_nav.html",image = image,  post=post)
+
+
 
 @bp.route('/about')
 def about():
@@ -60,9 +94,7 @@ def about():
     return render_template("about.html", user=user)
 
 
-@bp.route('/contact')
-def contact():
-    return render_template("contact.html")
+
 
 @bp.route('/detail')
 def post():
@@ -75,15 +107,5 @@ def comment():
     return render_template('post.html',post = post)
 
 
-@bp.route('/tag/<string:tag>')
-def view_tag_tags(tag, page=1):
-    image = 'images/coffee.jpg'
-    post = Post.objects.filter(tags__contains=tag)
-    #paginated_tags = post.paginate_field('tags', page=1, per_page=5)
-    return render_template("tags.html",image = image,  paginated_tags=post)
 
-
-@bp.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
 	

@@ -8,6 +8,8 @@
     </a>
     <ul class="dropdown-menu">
         <li><a href="{{ url_for('admin.logout_view') }}">Log out</a></li>
+        <li><a href="{{ url_for('blog.index') }}">Index</a></li>
+        <li><a href="{{ url_for('blog.post_list') }}">Post</a></li>
     </ul>
 </div>
 {% endif %}

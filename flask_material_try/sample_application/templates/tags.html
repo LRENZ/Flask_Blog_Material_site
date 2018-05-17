@@ -34,7 +34,7 @@
         full_width: true,
         interval: 2000, // 轮播间隔 
         transition: 1000, // 效果转换时长
-        height: 600, // 轮播高度
+        height: 800, // 轮播高度
         indicators: true // 是否显示小圆点
     });
   });
@@ -47,6 +47,9 @@
   </script>
 	
 	{% block content %}
+
+	        {{ row() }}
+				{{ col(['s12', 'm12','l12']) }}
 	
 	<div class="slider">
     <ul class="slides">
@@ -81,6 +84,10 @@
     </ul>
 </div>
 
+        {{ enddiv() }}
+
+{{ enddiv() }}
+
 
 
 	
@@ -90,17 +97,17 @@
         {{ row() }}
                 {% if paginated_tags %}
                      {% for p in paginated_tags %}
-                                {{ col(['s12', 'm6','l12']) }}
+                                {{ col(['s12', 'm12','l12']) }}
                                     {{ cwi.card_with_image(title =p.title, 
 									content = p.content,
-									image = image, 
+									image = p.image, 
 									tags =p.tags,
 									actions = [p.title]
 									)}}
                                 {{ enddiv() }}
                      {% endfor %}
                 {% else %}
-                                {{ col(['s12', 'm6','l12']) }}
+                                {{ col(['s12', 'm12','l12']) }}
                                 {{ util.card('Not Post','not post',[['/','index']]) }}
                                 {{ enddiv }}
                 {% endif %}

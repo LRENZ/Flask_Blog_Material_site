@@ -1,8 +1,13 @@
 from flask_mongoengine import MongoEngine
+
 from datetime import datetime
 
 db = MongoEngine()
 
+class Image(db.Document):
+    name = db.StringField()
+    image = db.ImageField(thumbnail_size=(100, 100, True))
+    path =  db.StringField()
 
 class User(db.Document):
     name = db.StringField(required=True, max_length=128)
@@ -67,14 +72,15 @@ class Post(db.Document):
     title = db.StringField(required=True, max_length=64)
     content = db.StringField(required=True)
     comments = db.ListField(db.EmbeddedDocumentField('Comment'))
-	#author = db.ReferenceField(User)
-    tags = db.ListField(db.StringField(max_length=32))
+    #images = db.ListField(db.EmbeddedDocumentField('Image'))
+    tags = db.ListField(db.StringField(max_length=64))
     status = db.IntField(required=True, choices=post_status)
     create_time = db.DateTimeField(default=datetime.now)
     modify_time = db.DateTimeField(default=datetime.now)
     inner = db.ListField(db.EmbeddedDocumentField(Comment))
     name = db.StringField(required=True, max_length=64)
     lols = db.ListField(db.StringField(max_length=20))
+    image = db.StringField()
 
 
     def __unicode__(self):
@@ -94,8 +100,6 @@ class File(db.Document):
     path =  db.StringField(max_length=20)
 
 
-class Image(db.Document):
-    name = db.StringField(max_length=20)
-    image = db.ImageField(thumbnail_size=(100, 100, True))
-    path =  db.StringField(max_length=20)
+
+
 

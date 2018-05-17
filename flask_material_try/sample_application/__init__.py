@@ -12,8 +12,13 @@ from micawber.cache import Cache as OEmbedCache
 from micawber.contrib.mcflask import add_oembed_filters
 from flask_disqus import Disqus
 from flask_ckeditor import CKEditor
+#from flask_wtf.csrf import CSRFProtect
+from  .utils import  babel,my_format_datetime,format_meta_keywords,get_slug
+from flask_thumbnails import Thumbnail
+
 
 oembed_providers = bootstrap_basic(OEmbedCache())
+#csrf = CSRFProtect()
 
 
 
@@ -33,17 +38,23 @@ def create_app():
     #toolbar.init_app(app)
 	#app.config['DISQUS_SECRET_KEY']
 	#app.config['DISQUS_PUBLIC_KEY']
+    #app.config['CKEDITOR_HEIGHT'] = 400
+    #app.config['CKEDITOR_FILE_UPLOADER'] = 'upload'
+    #app.config['UPLOADED_PATH'] = basedir + '/uploads'
     add_oembed_filters(app, oembed_providers)
 
     app.config['CKEDITOR_PKG_TYPE'] = 'full'
+    app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+    app.config['THUMBNAIL_MEDIA_ROOT'] = '/home/www/media'
+    app.config['THUMBNAIL_MEDIA_URL'] = '/media/'
 
 
     app.config['MONGODB_SETTINGS'] = {
         'db': 'testing',
         'connect': False,
     }
-    #register_babel(app)
-    #register_jinjia_filters(app)
+    register_babel(app)
+    register_jinjia_filters(app)
     init_login(app)
     register_blueprints(app)
     register_database(app)
@@ -51,6 +62,8 @@ def create_app():
     Material(app)
     disq = Disqus(app)
     ckeditor = CKEditor(app)
+    thumb = Thumbnail(app)
+    #csrf.init_app(app)
 
 
     return app
@@ -68,3 +81,13 @@ def init_login(app):
     def load_user(user_id):
         from .model import User
         return User.objects(id=user_id).first()
+
+
+def register_babel(app):
+    babel.init_app(app)
+
+
+def register_jinjia_filters(app):
+    app.jinja_env.filters['my_format_datetime'] = my_format_datetime
+    app.jinja_env.filters['format_meta_keywords'] = format_meta_keywords
+    app.jinja_env.filters['get_slug'] = get_slug
