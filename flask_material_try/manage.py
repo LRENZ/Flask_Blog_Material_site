@@ -1,7 +1,6 @@
 from flask_script import Manager, Server
 from sample_application import create_app
 from sample_application.model import Post,User
-#from  import User, Post
 from werkzeug.security import generate_password_hash
 
 app = create_app()
