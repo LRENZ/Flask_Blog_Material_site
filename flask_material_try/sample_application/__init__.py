@@ -14,7 +14,8 @@ from flask_disqus import Disqus
 from flask_ckeditor import CKEditor
 #from flask_wtf.csrf import CSRFProtect
 from  .utils import  babel,my_format_datetime,format_meta_keywords,get_slug
-from flask_thumbnails import Thumbnail
+#from flask_thumbnails import Thumbnail
+import os
 
 
 oembed_providers = bootstrap_basic(OEmbedCache())
@@ -31,7 +32,7 @@ def create_app():
     app = Flask(__name__)
     app.debug = True
     #app.config.from_object('config')
-    app.config['SECRET_KEY'] = 'devkeytestibsvbdsvbsd'
+    #app.config['SECRET_KEY'] = 'devkeytestibsvbdsvbsd'
     #app.config['DEBUG_TB_PANELS'] = ['flask_mongoengine.panels.MongoDebugPanel']
     #app.config['MONGODB_SETTINGS'] = {'db': 'testing'}
     #toolbar = DebugToolbarExtension(app)
@@ -42,11 +43,12 @@ def create_app():
     #app.config['CKEDITOR_FILE_UPLOADER'] = 'upload'
     #app.config['UPLOADED_PATH'] = basedir + '/uploads'
     add_oembed_filters(app, oembed_providers)
+    app.config['SECRET_KEY'] = os.urandom(24)
 
     app.config['CKEDITOR_PKG_TYPE'] = 'full'
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-    app.config['THUMBNAIL_MEDIA_ROOT'] = '/home/www/media'
-    app.config['THUMBNAIL_MEDIA_URL'] = '/media/'
+    #app.config['THUMBNAIL_MEDIA_ROOT'] = '/home/www/media'
+    #app.config['THUMBNAIL_MEDIA_URL'] = '/media/'
 
 
     app.config['MONGODB_SETTINGS'] = {
@@ -62,7 +64,7 @@ def create_app():
     Material(app)
     disq = Disqus(app)
     ckeditor = CKEditor(app)
-    thumb = Thumbnail(app)
+    #thumb = Thumbnail(app)
     #csrf.init_app(app)
 
 
