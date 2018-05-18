@@ -8,4 +8,8 @@
 
 # git merge origin/master  把远程下载下来的代码合并到本地仓库，远程的和本地的合并 
 
-# git pull origin next:master 取回origin主机的next分支，与本地的master分支合并，需要写成下面这样。
+# git pull origin next:master 取回origin主机的next分支，与本地的master分支合并
+
+# $ git branch testing
+
+# git checkout testing
