@@ -6,3 +6,7 @@ Undone Now
 
 TO do:
   Finish All Template
+  Finish Movies & TV Series Template
+  Finish Pic Responsive
+  Finish Deploy
+  Finish Comments
