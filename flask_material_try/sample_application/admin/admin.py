@@ -63,7 +63,7 @@ class CKTextAreaField(fields.TextAreaField):
 
 class UserView(ModelView):
     can_create = False
-    can_delete = False
+    can_delete = True
     column_display_pk = True
     column_filters = ('name', 'email')
 
@@ -167,16 +167,19 @@ class ImageView(ModelView):
         return Markup('<img src="%s">' % url_for('static',
                                                  filename=form.thumbgen_filename(model.path)))
 
-    column_formatters = {
-        'path': _list_thumbnail
-    }
-
-
+    #column_formatters = {
+        #'path': _list_thumbnail
+    #}
+    #form_columns = ('name', 'Image', 'Url')
+    column_searchable_list = ( 'name',)
+    column_exclude_list = ('path', 'Path')
+    edit_modal = True
+    create_modal = True
     # Alternative way to contribute field is to override it completely.
     # In this case, Flask-Admin won't attempt to merge various parameters for the field.
     form_extra_fields = {
-        'path': form.ImageUploadField('Image',
-                                      base_path=file_path,
+        'path': form.ImageUploadField('path',
+                                      base_path='static/images',
                                       thumbnail_size=(100, 100, True))
     }
 

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
-from .form import  testForm
+from .form import  testForm,SearchForm
 bp = Blueprint('blog', __name__)
 from .model import *
 

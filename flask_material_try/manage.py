@@ -1,10 +1,22 @@
+import os
+
+if os.path.exists('.env'):
+    print('Importing environment from .env...')
+    for line in open('.env'):
+        var = line.strip().split('=')
+        if len(var) == 2:
+            os.environ[var[0]] = var[1]
+
 from flask_script import Manager, Server
 from sample_application import create_app
 from sample_application.model import Post,User
 from werkzeug.security import generate_password_hash
+from pprint import  pprint
+from werkzeug.contrib.fixers import ProxyFix
 
 app = create_app()
 manager = Manager(app)
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 manager.add_command("runserver",
                     Server(host='0.0.0.0',
@@ -33,6 +45,12 @@ def add_post():
                 tags=['python', 'flask'],
                 status=1)
     post.save()
+
+@manager.option('-s', '--search', dest='search', default='test')
+def search(search):
+    objects = Post.objects.search_text(search).order_by('$text_score')
+    pprint(objects)
+
 
 
 if __name__ == '__main__':

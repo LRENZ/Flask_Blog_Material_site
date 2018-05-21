@@ -8,6 +8,7 @@ class Image(db.Document):
     name = db.StringField()
     image = db.ImageField(thumbnail_size=(100, 100, True))
     path =  db.StringField()
+    url = db.StringField()
 
 class User(db.Document):
     name = db.StringField(required=True, max_length=128)
@@ -89,6 +90,10 @@ class Post(db.Document):
     meta = {
         'ordering': ['-create_time'],
 		'strict': False,
+		'indexes': [
+        {'fields': ['$title', "$content"],
+         'weights': {'title': 10, 'content': 2}
+        }]
     }
 
 

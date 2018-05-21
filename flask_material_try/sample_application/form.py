@@ -50,3 +50,8 @@ class RegistrationForm(form.Form):
 
 """
 
+class SearchForm(FlaskForm):
+  search = StringField('search', [DataRequired()])
+  submit = SubmitField('Search',
+                       render_kw={'class': 'btn waves-effect waves-light'})
+
