@@ -1,4 +1,5 @@
 from flask_mongoengine import MongoEngine
+from mongoengine import queryset_manager
 
 from datetime import datetime
 
@@ -75,13 +76,16 @@ class Post(db.Document):
     comments = db.ListField(db.EmbeddedDocumentField('Comment'))
     #images = db.ListField(db.EmbeddedDocumentField('Image'))
     tags = db.ListField(db.StringField(max_length=64))
-    status = db.IntField(required=True, choices=post_status)
+    #status = db.IntField(required=True, choices=post_status)
+    status = db.BooleanField(default=True)
     create_time = db.DateTimeField(default=datetime.now)
     modify_time = db.DateTimeField(default=datetime.now)
     inner = db.ListField(db.EmbeddedDocumentField(Comment))
     name = db.StringField(required=True, max_length=64)
     lols = db.ListField(db.StringField(max_length=20))
     image = db.StringField()
+
+
 
 
     def __unicode__(self):

@@ -88,6 +88,8 @@ class PostView(ModelView):
     }
 
     column_display_pk = True
+    edit_modal = True
+    create_modal = True
 
     form_overrides = dict(content=CKEditorField)
     create_template = 'admin/create_post.html'

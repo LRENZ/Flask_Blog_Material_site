@@ -2,19 +2,20 @@ from flask import Blueprint, render_template, redirect, url_for
 from .form import  testForm,SearchForm
 bp = Blueprint('blog', __name__)
 from .model import *
+from mongoengine.queryset.visitor import Q
 
 
 
 
 @bp.route('/')
 def index():
-    p = Post.objects().first()
+    p = Post.objects(status =True).first()
     return render_template('index.html',p = p)
 
 @bp.route('/posts')
 @bp.route('/posts/<string:post_title>')
 def get_post(post_title):
-    post = Post.objects.get_or_404(title__contains=post_title)
+    post = Post.objects.get_or_404(title__contains=post_title )
     return render_template("post.html", post=post)
 
 @bp.route('/readme')
@@ -25,14 +26,14 @@ def readme():
 @bp.route('/pag/<int:page>')
 def post_list(page=1):
     #image = 'images/coffee.jpg'
-    post = Post.objects.paginate(page=page, per_page=5)
+    post = Post.objects(status =True).paginate(page=page, per_page=5)
     return render_template("post_nav.html",  post=post)
 
 
 @bp.route('/tag/<string:tag>')
 def view_tag_tags(tag, page=1):
     image = 'images/coffee.jpg'
-    post = Post.objects.filter(tags__contains=tag)
+    post = Post.objects(status =True).filter(tags__contains=tag)
     #paginated_tags = post.paginate_field('tags', page=1, per_page=5)
     return render_template("tags.html",image = image,  paginated_tags=post)
 
