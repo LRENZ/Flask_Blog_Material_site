@@ -6,3 +6,4 @@ Undone Now
 
 TO do:
   Finish All Template
+  add a new custom search engine (https://cse.google.com/cse/all)
