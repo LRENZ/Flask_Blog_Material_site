@@ -1,9 +1,10 @@
 from flask_babel import Babel
 from flask_babel import format_datetime
+import html
 
 
 def  get_slug(text):
-    slug = str(text)[:300]+'......'
+    slug = html.escape(str(text)[:300])+'......'
     return slug
 
 def get_rate(rate):

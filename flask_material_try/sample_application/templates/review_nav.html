@@ -38,6 +38,8 @@
         height: 800, // 轮播高度
         indicators: true // 是否显示小圆点
     });
+     $('.collapsible').collapsible({ accordion: false});
+
   });
   
   $("modal_test").click(function(){ 
@@ -49,43 +51,52 @@
 	
 	{% block content %}
 
+    <div class="section">
 
+            {{ container() }}
 	        {{ row() }}
-				{{ col(['s12', 'm12','l12']) }}
-	
-	<div class="slider">
-    <ul class="slides">
-        <li>
-        <img src=" {{ url_for('static', filename= 'images/blade-runner.jpg') }} "> <!-- random image -->
-        <div class="caption center-align">
-            <h3>First Page </h3>
-            <h5 class="light grey-text text-lighten-3">Blade - Runner</h5>
-        </div>
-        </li>
-        <li>
-        <img src=" {{ url_for('static', filename= 'images/home.jpg') }} "> <!-- random image -->
-        <div class="caption left-align">
-            <h3>Second Switch</h3>
-            <h5 class="light grey-text text-lighten-3">The End Of the Fucking World</h5>
-        </div>
-        </li>
-        <li>
-        <img src=" {{ url_for('static', filename= 'images/Batman.jpg') }} "> <!-- random image -->
-        <div class="caption right-align">
-            <h3>Three</h3>
-            <h5 class="light grey-text text-lighten-3">Template</h5>
-        </div>
-        </li>
-        <li>
-        <img src=" {{ url_for('static', filename= 'images/blade-runner-2049.jpg' ) }} "> <!-- random image -->
-        <div class="caption center-align">
-            <h3>Four</h3>
-            <h5 class="light grey-text text-lighten-3">Also Test</h5>
-        </div>
-        </li>
-    </ul>
+                <ul class="collapsible expandable z-depth-5">
+                    <li class  = "active">
+                      <div class="collapsible-header"><i class="material-icons">looks_one</i>Interge With Google Search</div>
+                      <div class="collapsible-body white-text"><span>Use Google To Search Resourse, Like Movies & TV Series.</span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">looks_two</i>Result From Following Site</div>
+                      <div class="collapsible-body white-text"><span>
+                                          <ul>
+                                              <li><a class="grey-text text-lighten-3" href="/">来自我常用的资源站</a></li>
+                                              <li><a class="grey-text text-lighten-3" href="/">zimumu.tv</a></li>
+                </ul>
+                      </span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">looks_3</i>Only Works When Google Service is Avaliable</div>
+                      <div class="collapsible-body white-text"><span>Google Service Is Necessary</span></div>
+                    </li>
+                  </ul>
+        {{ row() }}
+				{{ col(['s12', 'm12','l6','offset-l3']) }}
+	<div class="search_bar">
+<script>
+  (function() {
+    var cx = '007493183789722737247:pm9gx0g3ewa';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+</div>
+</div>
 </div>
 
+</div>
+
+        {{ enddiv() }}
         {{ enddiv() }}
 
 {{ enddiv() }}
@@ -97,6 +108,7 @@
   <div class="section">
 	{{ container() }}
         {{ row() }}
+
                 {% if post %}
                      {% for p in post.items %}
                                 {{ col(['s12', 'm6']) }}

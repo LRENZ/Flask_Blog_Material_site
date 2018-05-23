@@ -1,5 +1,5 @@
 {% macro card_with_image(title, image, content,tags = None,rate = None, actions = []) %}
-             <div class="card">
+             <div class="card z-depth-2">
 			    <div class="card-image">
                     
                         {% if image %}
@@ -60,7 +60,7 @@
                                       <div class="card-action center-align">
                                       {% if actions %}
                                         {% for each in actions %}
-										<a class="waves-effect waves-light orange darken-1 btn" href="/reviews/{{ each }}"><i class="material-icons left">explore</i>View : {{ each }}</a>
+										<a class="waves-effect waves-light orange darken-1 btn z-depth-5" href="/reviews/{{ each }}"><i class="material-icons left">explore</i>View : {{ each }}</a>
                                           
                                         {% endfor %}
                                       {% endif %}
