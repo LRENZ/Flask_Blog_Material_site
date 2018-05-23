@@ -35,7 +35,7 @@ def view_tag_tags(id, page=1):
     #image = 'images/coffee.jpg'
     post = Post.objects(status =True).filter(tags__in=[id])
     #paginated_tags = post.paginate_field('tags', page=1, per_page=5)
-    return render_template("tags.html",image = image,  paginated_tags=post)
+    return render_template("tags.html",  paginated_tags=post)
 
 @bp.route('/contact')
 def contact():

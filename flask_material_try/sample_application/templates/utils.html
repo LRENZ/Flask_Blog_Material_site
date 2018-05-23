@@ -35,3 +35,78 @@
 
 
 {% endmacro %}
+
+
+{% macro card_with_image_reviews(title, image, content,tags = None,rate = None, actions = []) %}
+             <div class="card">
+			    <div class="card-image">
+
+                        {% if image %}
+
+                            {% if 'http' in image or 'https' in  image %}
+                                <img src={{ image  }}>
+								<span class="card-title"><strong>{{ title }} </strong></span>
+                            {% else %}
+                                <img src="{{ url_for('static', filename= image) }}">
+								<span class="card-title">{{ title }}</span>
+                            {% endif %}
+                </div>
+
+                        {% else %}
+
+                                 <div class="card-image">
+                                    <img src="{{ url_for('static', filename= 'coffee.jpg') }}">
+									<span class="card-title"><h3> <strong>{{ title }}</strong></h3></span>
+                                        </div>
+
+                        {% endif %}
+
+
+
+                            <div class="card-content ">
+                                {{ content | get_slug | oembed(html=True, maxwidth=300, maxheight=400)}}
+
+
+                            </div>
+                                    {% if rate %}
+                                    <div class="container">
+                                          <span><strong>STAR:</strong> </span>
+                                         <i class="material-icons Medium">filter_{{ rate | get_rate }} </i>
+                                        </div>
+                                     {% endif %}
+
+                            <div class="container">
+                                 <ul class="list-unstyled list-inline center-align">
+                                      {% for tag in tags %}
+                                            <div class="chip">
+                                                {% if tag.name %}
+                                               <a href="/review_tag/{{ tag.id }}"><i class="material-icons left">bookmark</i>{{ tag.name }}</a>
+                                                </div>
+                                                {% else  %}
+                                                 <a href="/review_tag/{{ tag.id }}"><i class="material-icons left">Tag Have Been Deleted</a>
+                                                {% endif %}
+
+                             {% endfor %}
+			                 </div>
+
+
+                </div>
+
+
+                                              <div class="row">
+
+                                      {% if actions %}
+                                      <div class="card-action center-align">
+                                      {% if actions %}
+                                        {% for each in actions %}
+										<a class="waves-effect waves-light orange darken-1 btn" href="/reviews/{{ each }}"><i class="material-icons left">explore</i>View : {{ each }}</a>
+
+                                        {% endfor %}
+                                      {% endif %}
+                                      </div>
+                                      {% endif %}
+                                    </div>
+
+
+
+{% endmacro %}
