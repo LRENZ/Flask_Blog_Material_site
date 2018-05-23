@@ -69,10 +69,22 @@
                 {% endfor %}
             </ul>
           {% endif %}
-        <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">{{ post.name }}</a> on {{ post.create_time | my_format_datetime}}</p>
+        <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">{{ post.name }}</a> on {{ post.create_time | my_format_datetime}}
+
+                                     {% if post.rate %}
+
+                                          <span><h6>STAR:</h6> </span>
+                                         <i class="material-icons Medium">filter_{{ post.rate | get_rate }} </i>
+
+                                     {% endif %}
+
+            </p>
+
     </div>
       </div>
-  
+
+                  <hr>
+
     <hr>
 	
 	{{ col(['s12', 'm12','l12']) }}

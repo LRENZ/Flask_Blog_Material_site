@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for
 from .form import  testForm,SearchForm
 bp = Blueprint('blog', __name__)
 from .model import *
-from mongoengine.queryset.visitor import Q
+#from mongoengine.queryset.visitor import Q
 
 
 
@@ -30,10 +30,10 @@ def post_list(page=1):
     return render_template("post_nav.html",  post=post)
 
 
-@bp.route('/tag/<string:tag>')
-def view_tag_tags(tag, page=1):
-    image = 'images/coffee.jpg'
-    post = Post.objects(status =True).filter(tags__contains=tag)
+@bp.route('/tag/<string:id>')
+def view_tag_tags(id, page=1):
+    #image = 'images/coffee.jpg'
+    post = Post.objects(status =True).filter(tags__in=[id])
     #paginated_tags = post.paginate_field('tags', page=1, per_page=5)
     return render_template("tags.html",image = image,  paginated_tags=post)
 

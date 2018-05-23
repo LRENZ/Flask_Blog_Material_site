@@ -59,10 +59,13 @@
 		
 	 {% if post.tags %}
             <ul class="list-unstyled list-inline">
-                {% for tag in post.tags %}
+                {% for t in post.tags %}
+
+
                       <div class="chip">
-                          <a href="/tag/{{ tag }}"><i class="material-icons left">bookmark</i>{{ tag }}</a>
+                          <a href="/tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name }}</a>
                       </div>
+
                 {% endfor %}
             </ul>
           {% endif %}

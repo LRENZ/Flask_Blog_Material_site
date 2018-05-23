@@ -33,8 +33,8 @@
     $('.modal').modal();
 	$('.slider').slider({
         full_width: true,
-        interval: 2000, // 轮播间隔 
-        transition: 1000, // 效果转换时长
+        interval: 3000, // 轮播间隔
+        transition: 2000, // 效果转换时长
         height: 800, // 轮播高度
         indicators: true // 是否显示小圆点
     });
@@ -99,11 +99,12 @@
         {{ row() }}
                 {% if post %}
                      {% for p in post.items %}
-                                {{ col(['s12', 'm12','l12']) }}
+                                {{ col(['s12', 'm6']) }}
                                     {{ cwi.card_with_image(title =p.title, 
 									content = p.content,
 									image = p.image,
 									tags =p.tags,
+                                    rate = p.rate,
 									actions = [p.title]
 									)}}
                                 {{ enddiv() }}
@@ -120,7 +121,7 @@
       	{{ container() }}
         {{ row() }}
 
-      {{ut.render_pagination(post,"blog.post_list") }}
+      {{ut.render_pagination(post,"reviews.review_list") }}
 
         {{ enddiv() }}
   {{ enddiv() }}

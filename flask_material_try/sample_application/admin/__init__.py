@@ -1,7 +1,7 @@
 from flask_admin import Admin
-from .admin import UserView,PostView,TodoView,ModelView,MyIndexView,FileView,ImageView
+from .admin import UserView,PostView,TodoView,ModelView,MyIndexView,FileView,ImageView,ReviewsView
 #from app.models import User, Post
-from ..model import User,Post,Tag,Todo,Comment,Image,File
+from ..model import User,Post,Tag,Todo,Comment,Image,File,Review
 from werkzeug.security import generate_password_hash
 from flask_admin.contrib.fileadmin import FileAdmin
 import os.path as op
@@ -16,8 +16,6 @@ def create_admin(app=None):
     admin.add_view(ModelView(Tag))
     admin.add_view(FileView(File))
     admin.add_view(ImageView(Image))
+    admin.add_view(ReviewsView(Review))
     admin.add_view(FileAdmin(path, '/files/', name='Static Files'))
 
-def create_test_admin(name = 'lrenz', password = 'liurenzhongqq!0'):
-    admin = User(name=name, password=generate_password_hash(password))
-    admin.save()

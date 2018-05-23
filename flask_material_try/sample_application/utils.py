@@ -6,6 +6,15 @@ def  get_slug(text):
     slug = str(text)[:300]+'......'
     return slug
 
+def get_rate(rate):
+    try:
+        r = int(rate)
+    except:
+        r = 1
+    if r == 10:
+        return "9_plus"
+    return rate
+
 
 
 
