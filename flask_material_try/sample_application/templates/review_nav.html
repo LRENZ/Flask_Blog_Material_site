@@ -1,0 +1,149 @@
+{% extends "material/base.html" %}
+{% import "material/utils.html" as util %}
+{% import "material/wtf.html" as wtf %}
+{% import "material/pagination.html" as pag %}
+{% import "card_with_image.html" as cwi %}
+{% import "card_to_render_post.html" as ctrp %}
+{% import "utils.html" as ut %}
+
+
+
+{% include 'header.html' %}
+
+
+
+
+
+
+
+
+{% block body %}
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal').modal();
+	$('.slider').slider({
+        full_width: true,
+        interval: 3000, // 轮播间隔
+        transition: 2000, // 效果转换时长
+        height: 800, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+     $('.collapsible').collapsible({ accordion: false});
+
+  });
+  
+  $("modal_test").click(function(){ 
+    $(".modal").modal('open'); 
+	
+}); 
+
+  </script>
+	
+	{% block content %}
+
+    <div class="section">
+
+            {{ container() }}
+	        {{ row() }}
+                <ul class="collapsible expandable z-depth-5 hoverable">
+                    <li class  = "active">
+                      <div class="collapsible-header flow-text"><i class="material-icons">looks_one</i>Interge With Google Search</div>
+                      <div class="collapsible-body white-text flow-text"><span>Use Google To Search Resourse, Like Movies & TV Series.</span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header flow-text"><i class="material-icons">looks_two</i>Result From Following Site</div>
+                      <div class="collapsible-body white-text"><span>
+                                          <ul>
+                                              <li><a class="grey-text text-lighten-3 flow-text" href="/">来自我常用的资源站</a></li>
+                                              <li><a class="grey-text text-lighten-3 flow-text" href="/">zimumu.tv</a></li>
+                </ul>
+                      </span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header flow-text"><i class="material-icons">looks_3</i>Only Works When Google Service is Avaliable</div>
+                      <div class="collapsible-body white-text flow-text"><span>Google Service Is Necessary</span></div>
+                    </li>
+                  </ul>
+        {{ row() }}
+				{{ col(['s12', 'm12','l6','offset-l3']) }}
+	<div class="search_bar">
+<script>
+  (function() {
+    var cx = '007493183789722737247:pm9gx0g3ewa';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+</div>
+</div>
+</div>
+
+</div>
+
+        {{ enddiv() }}
+        {{ enddiv() }}
+
+{{ enddiv() }}
+
+
+
+	
+	
+  <div class="section">
+	{{ container() }}
+        {{ row() }}
+
+                {% if post %}
+                     {% for p in post.items %}
+                                {{ col(['s12', 'm6']) }}
+                                    {{ ut.card_with_image_reviews(title =p.title,
+									content = p.content,
+									image = p.image,
+									tags =p.tags,
+                                    rate = p.rate,
+									actions = [p.title]
+									)}}
+                                {{ enddiv() }}
+                     {% endfor %}
+                {% else %}
+                                {{ col(['s12', 'm12','l12']) }}
+                                {{ util.card('Not Post','not post',[['/','index']]) }}
+                                {{ enddiv }}
+                {% endif %}
+      {{ enddiv() }}
+	  
+
+
+      	{{ container() }}
+        {{ row() }}
+
+      {{ut.render_pagination(post,"reviews.review_list") }}
+
+        {{ enddiv() }}
+  {{ enddiv() }}
+	 
+  {{ enddiv() }}
+  {{ enddiv() }}
+
+{% endblock %}
+{% include 'footer.html' %}
+{% endblock %}
+
+
+

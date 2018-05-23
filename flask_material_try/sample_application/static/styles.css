@@ -46,3 +46,8 @@ body::before {
     background-image: url('images/bg_2880.jpg');
   }
 }
+
+
+img{  max-width: 100%; 
+           display:block; 
+             height: auto;}

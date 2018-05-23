@@ -2,9 +2,19 @@ from flask_babel import Babel
 from flask_babel import format_datetime
 
 
+
 def  get_slug(text):
-    slug = str(text)[:300]+'......'
+    slug = str(text)[:300]+'<br />......And More'
     return slug
+
+def get_rate(rate):
+    try:
+        r = int(rate)
+    except:
+        r = 1
+    if r == 10:
+        return "9_plus"
+    return rate
 
 
 

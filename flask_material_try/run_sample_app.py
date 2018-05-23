@@ -4,8 +4,6 @@
 # to make it work
 
 from sample_application import create_app
-from sample_application.admin import create_test_admin
-
 from flask_debugtoolbar import DebugToolbarExtension
 app = create_app()
 app.debug = True

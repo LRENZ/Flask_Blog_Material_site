@@ -1,5 +1,5 @@
-{% macro card_with_image(title, image, content,tags = None, actions = []) %}
-             <div class="card">
+{% macro card_with_image(title, image, content,tags = None,rate = None, actions = []) %}
+             <div class="card z-depth-2 hoverable">
 			    <div class="card-image">
                     
                         {% if image %}
@@ -19,6 +19,7 @@
                                     <img src="{{ url_for('static', filename= 'coffee.jpg') }}">
 									<span class="card-title"><h3> <strong>{{ title }}</strong></h3></span>
                                         </div>
+
                         {% endif %}
 
 
@@ -28,13 +29,24 @@
                                    
 
                             </div>
+                                    {% if rate %}
+                                    <div class="container">
+                                          <span><strong>STAR:</strong> </span>
+                                         <i class="material-icons Medium">filter_{{ rate | get_rate }} </i>
+                                        </div>
+                                     {% endif %}
 							
                             <div class="container">
                                  <ul class="list-unstyled list-inline center-align">
                                       {% for tag in tags %}
                                             <div class="chip">
-                                               <a href="/tag/{{ tag }}"><i class="material-icons left">bookmark</i>{{ tag }}</a>
+                                                {% if tag.name %}
+                                               <a href="/tag/{{ tag.id }}"><i class="material-icons left">bookmark</i>{{ tag.name }}</a>
                                                 </div>
+                                                {% else  %}
+                                                 <a href="/tag/{{ tag.id }}"><i class="material-icons left">Tag Have Been Deleted</a>
+                                                {% endif %}
+
                              {% endfor %}
 			                 </div>
 
@@ -48,7 +60,7 @@
                                       <div class="card-action center-align">
                                       {% if actions %}
                                         {% for each in actions %}
-										<a class="waves-effect waves-light orange darken-1 btn" href="/posts/{{ each }}"><i class="material-icons left">explore</i>View : {{ each }}</a>
+										<a class="waves-effect waves-light orange darken-1 btn z-depth-5" href="/reviews/{{ each }}"><i class="material-icons left">explore</i>View : {{ each }}</a>
                                           
                                         {% endfor %}
                                       {% endif %}

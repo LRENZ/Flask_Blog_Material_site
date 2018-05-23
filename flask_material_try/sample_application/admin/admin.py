@@ -13,6 +13,7 @@ from ..utils import get_slug
 from jinja2 import Markup
 
 
+
 # Create directory for file fields to use
 file_path = op.join(op.dirname(__file__), 'files')
 try:
@@ -63,7 +64,7 @@ class CKTextAreaField(fields.TextAreaField):
 
 class UserView(ModelView):
     can_create = False
-    can_delete = False
+    can_delete = True
     column_display_pk = True
     column_filters = ('name', 'email')
 
@@ -88,6 +89,8 @@ class PostView(ModelView):
     }
 
     column_display_pk = True
+    #edit_modal = True
+    #create_modal = True
 
     form_overrides = dict(content=CKEditorField)
     create_template = 'admin/create_post.html'
@@ -111,11 +114,17 @@ class PostView(ModelView):
         ]
     }
 
-    column_filters = ('title','content',)
+    column_filters = ('title','content','create_time')
 
     column_searchable_list = ('content','title',)
 
     column_sortable_list = ('create_time', 'modify_time')
+
+    form_ajax_refs = {
+        'tags': {
+            'fields': ('name',)
+        }
+    }
 
     form_subdocuments = {
         'inner': {
@@ -167,16 +176,19 @@ class ImageView(ModelView):
         return Markup('<img src="%s">' % url_for('static',
                                                  filename=form.thumbgen_filename(model.path)))
 
-    column_formatters = {
-        'path': _list_thumbnail
-    }
-
-
+    #column_formatters = {
+        #'path': _list_thumbnail
+    #}
+    #form_columns = ('name', 'Image', 'Url')
+    column_searchable_list = ( 'name',)
+    column_exclude_list = ('path', 'Path')
+    edit_modal = True
+    create_modal = True
     # Alternative way to contribute field is to override it completely.
     # In this case, Flask-Admin won't attempt to merge various parameters for the field.
     form_extra_fields = {
-        'path': form.ImageUploadField('Image',
-                                      base_path=file_path,
+        'path': form.ImageUploadField('path',
+                                      base_path='static/images',
                                       thumbnail_size=(100, 100, True))
     }
 
@@ -188,4 +200,76 @@ class ImageView(ModelView):
     }
 
     """
+
+
+
+
+
+class ReviewsView(ModelView):
+    def get_content(view, context, model, name):
+        if not model.content:
+            return ''
+
+        return str(model.content)[:300]
+
+    column_formatters = {
+        'content': get_content
+    }
+
+    column_display_pk = True
+    #edit_modal = True
+    #create_modal = True
+
+    form_overrides = dict(content=CKEditorField)
+    create_template = 'admin/create_post.html'
+    edit_template = 'admin/edit_post.html'
+    #column_formatters = dict(content = lambda v, c, m, p: m)
+
+    column_list = ( 'title', 'content',  'tags','rate' ,'status', 'create_time', 'modify_time','image')
+    # column_labels = dict(id='ID',
+    #                      title=u'标题',
+    #                      content=u'内容',
+    #                      author=u'作者',
+    #                      tags=u'标签',
+    #                      status=u'状态',
+    #                      create_time=u'创建时间',
+    #                      modify_time=u'修改时间')
+
+    column_choices = {
+        'status': [
+            (0, 'draft'),
+            (1, 'published')
+        ]
+    }
+
+    column_filters = ('title','content','create_time')
+
+    column_searchable_list = ('content','title',)
+
+    column_sortable_list = ('create_time', 'modify_time')
+
+    form_ajax_refs = {
+        'tags': {
+            'fields': ('name',)
+        }
+    }
+
+    form_subdocuments = {
+        'inner': {
+            'form_subdocuments': {
+                None: {
+                    # Add <hr> at the end of the form
+                    'form_rules': ('created_at', 'body', 'author', rules.HTML('<hr>')),
+                    'form_widget_args': {
+                        'name': {
+                            'style': 'color: red'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def is_accessible(self):
+        return current_user.is_authenticated
 
