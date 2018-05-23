@@ -1,6 +1,6 @@
 {% extends "material/base.html" %}
 {% import "card_with_image.html" as cwi %}
-
+{% import "material/utils.html" as utils %}
 {% include 'header.html' %}
 {% include 'nav.html' %}
 {% block body %}
@@ -91,7 +91,7 @@
 
                 {% else %}
                                 {{ col(['s12', 'm12','l12']) }}
-                                {{ util.card('Not Post','not post',[['/','index']]) }}
+                                {{ utils.card('Not Post','not post',[['/','index']]) }}
                                 {{ enddiv }}
                 {% endif %}
 				{{ enddiv() }}

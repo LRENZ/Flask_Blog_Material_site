@@ -6,10 +6,10 @@
                                       
                             {% if 'http' in image or 'https' in  image %}
                                 <img src={{ image  }}>
-								<span class="card-title"><strong>{{ title }} </strong></span>
+                    <span class="card-title"><strong><h3>{{ title | upper }}</h3> </strong></span>
                             {% else %}
                                 <img src="{{ url_for('static', filename= image) }}">
-								<span class="card-title">{{ title }}</span>
+                    <span class="card-title"><h3>{ {{ title | upper }}</h3></span>
                             {% endif %}
                 </div>
 
@@ -17,7 +17,7 @@
                             
                                  <div class="card-image">
                                     <img src="{{ url_for('static', filename= 'coffee.jpg') }}">
-									<span class="card-title"><h3> <strong>{{ title }}</strong></h3></span>
+                                     <span class="card-title"><h3> <strong>{{ title | upper }}/strong></h3></span>
                                         </div>
 
                         {% endif %}
