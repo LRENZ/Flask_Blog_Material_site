@@ -26,7 +26,7 @@ def readme():
 @bp.route('/pag/<int:page>')
 def post_list(page=1):
     #image = 'images/coffee.jpg'
-    post = Post.objects(status =True).paginate(page=page, per_page=5)
+    post = Post.objects(status =True).paginate(page=page, per_page=4)
     return render_template("post_nav.html",  post=post)
 
 

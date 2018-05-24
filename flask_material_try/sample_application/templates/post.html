@@ -52,8 +52,12 @@
   <div class="post-preview">
   	     <div class="card">
         <div class="card-image">
+          {% if  post.image %}
           <img src="{{ post.image }}">
-          <span class="card-title"><h2>{{ post.title }}</h2></span>
+		  {% else %}
+		  <img src="{{ url_for('static', filename= 'images/coffee.jpg') }}">
+		   {% endif %}
+          <span class="card-title flow-text"><h4>{{ post.title }}</h4></span>
         </div>
         <div class="card-content">
 		

@@ -4,7 +4,7 @@ from flask_babel import format_datetime
 
 
 def  get_slug(text):
-    slug = str(text)[:300]+'<br />......And More'
+    slug = str(text)[:200]+'<br />......And More'
     return slug
 
 def get_rate(rate):

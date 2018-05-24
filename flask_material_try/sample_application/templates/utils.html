@@ -45,18 +45,18 @@
 
                             {% if 'http' in image or 'https' in  image %}
                                 <img src={{ image  }}>
-								<span class="card-title"><strong>{{ title }} </strong></span>
+								<span class="card-title flow-text"><strong><h4>{{ title | upper }}</h4> </strong></span>
                             {% else %}
                                 <img src="{{ url_for('static', filename= image) }}">
-								<span class="card-title">{{ title }}</span>
+                    <span class="card-title flow-text"><h4> {{ title | upper }}</h4></span>
                             {% endif %}
                 </div>
 
                         {% else %}
 
-                                 <div class="card-image">
-                                    <img src="{{ url_for('static', filename= 'coffee.jpg') }}">
-									<span class="card-title"><h3> <strong>{{ title }}</strong></h3></span>
+
+                                    <img src="{{ url_for('static', filename= 'images/coffee.jpg') }}">
+									<span class="card-title flow-text"><h4> <strong>{{ title | upper }}</strong></h4></span>
                                         </div>
 
                         {% endif %}
@@ -70,7 +70,7 @@
                             </div>
                                     {% if rate %}
                                     <div class="container">
-                                          <span><strong>STAR:</strong> </span>
+                                          <span><strong><h4>STAR:</h4></strong> </span>
                                          <i class="material-icons Medium">filter_{{ rate | get_rate }} </i>
                                         </div>
                                      {% endif %}
@@ -99,7 +99,7 @@
                                       <div class="card-action center-align">
                                       {% if actions %}
                                         {% for each in actions %}
-										<a class="waves-effect waves-light orange darken-1 btn z-depth-5" href="/reviews/{{ each }}"><i class="material-icons left">explore</i>View : {{ each }}</a>
+										<a class="waves-effect waves-light orange darken-1 btn z-depth-5" href="/reviews/{{ each }}"><i class="material-icons left">explore</i>View : More</a>
 
                                         {% endfor %}
                                       {% endif %}

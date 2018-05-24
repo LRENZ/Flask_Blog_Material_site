@@ -22,7 +22,7 @@
 <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
  <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 {%- endblock scripts %}
 
 {% include 'nav.html' %}
@@ -97,7 +97,7 @@
         {{ row() }}
                 {% if paginated_tags %}
                      {% for p in paginated_tags %}
-                                {{ col(['s12', 'm6']) }}
+                                {{ col(['s12', 'm6','l6']) }}
                                     {{ cwi.card_with_image(title =p.title, 
 									content = p.content,
 									image = p.image, 

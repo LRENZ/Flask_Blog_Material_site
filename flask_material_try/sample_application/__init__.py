@@ -17,6 +17,7 @@ from  .utils import  babel,my_format_datetime,format_meta_keywords,get_slug,get_
 #from flask_thumbnails import Thumbnail
 import os
 from .reviews import rv
+from mongoengine.queryset.visitor import Q
 
 
 oembed_providers = bootstrap_basic(OEmbedCache())
@@ -96,3 +97,12 @@ def register_jinjia_filters(app):
     app.jinja_env.filters['format_meta_keywords'] = format_meta_keywords
     app.jinja_env.filters['get_slug'] = get_slug
     app.jinja_env.filters['get_rate'] = get_rate
+    app.add_template_global(get_js, 'get_js')
+
+
+
+def get_js():
+    search_code = Code.objects(Q(published=True) & Q(category='google_customs_search_js')).first() or "something wrong"
+    return search_code.code
+
+

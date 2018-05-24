@@ -1,6 +1,6 @@
 {% extends "material/base.html" %}
 {% import "card_with_image.html" as cwi %}
-
+{% import "material/utils.html" as utils %}
 {% include 'header.html' %}
 {% include 'nav.html' %}
 {% block body %}
@@ -9,7 +9,7 @@
 <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
  <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 {%- endblock scripts %}
 
 
@@ -91,7 +91,7 @@
 
                 {% else %}
                                 {{ col(['s12', 'm12','l12']) }}
-                                {{ util.card('Not Post','not post',[['/','index']]) }}
+                                {{ utils.card('Not Post','not post',[['/','index']]) }}
                                 {{ enddiv }}
                 {% endif %}
 				{{ enddiv() }}

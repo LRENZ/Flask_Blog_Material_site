@@ -41,6 +41,13 @@ class User(db.Document):
     def __unicode__(self):
         return self.name
 
+class Code(db.Document):
+    code = db.StringField()
+    des = db.StringField()
+    published = db.BooleanField(default=False)
+    pub_date = db.DateTimeField(default=datetime.now)
+    category = db.StringField()
+
 
 
 

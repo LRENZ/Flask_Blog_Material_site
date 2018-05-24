@@ -2,11 +2,13 @@ from flask import Blueprint, render_template, redirect, url_for
 rv = Blueprint('reviews', __name__)
 from .model import *
 
+
 @rv.route('/reviews')
 @rv.route('/reviews/<int:page>')
 def review_list(page=1):
     #image = 'images/coffee.jpg'
-    post = Review.objects(status =True).paginate(page=page, per_page=5)
+    #search_code = Code.objects( Q(published =True) & Q(category = 'google_customs_search_js')).first() or "something wrong"
+    post = Review.objects(status =True).paginate(page=page, per_page=4)
     return render_template("review_nav.html",  post=post)
 
 
