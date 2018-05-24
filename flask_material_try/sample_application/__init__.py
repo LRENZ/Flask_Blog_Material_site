@@ -13,7 +13,7 @@ from micawber.contrib.mcflask import add_oembed_filters
 from flask_disqus import Disqus
 from flask_ckeditor import CKEditor
 #from flask_wtf.csrf import CSRFProtect
-from  .utils import  babel,my_format_datetime,format_meta_keywords,get_slug,get_rate
+from  .utils import  babel,my_format_datetime,format_meta_keywords,get_slug,get_rate,resize
 #from flask_thumbnails import Thumbnail
 import os
 from .reviews import rv
@@ -97,6 +97,7 @@ def register_jinjia_filters(app):
     app.jinja_env.filters['format_meta_keywords'] = format_meta_keywords
     app.jinja_env.filters['get_slug'] = get_slug
     app.jinja_env.filters['get_rate'] = get_rate
+    #app.jinja_env.filters['resize'] = resize
     app.add_template_global(get_js, 'get_js')
 
 
