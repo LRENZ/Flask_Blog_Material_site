@@ -1,0 +1,148 @@
+{% extends "material/base.html" %}
+{% import "material/utils.html" as util %}
+{% import "material/wtf.html" as wtf %}
+{% import "material/pagination.html" as pag %}
+{% import "card_with_image.html" as cwi %}
+{% import "card_to_render_post.html" as ctrp %}
+{% import "utils.html" as ut %}
+
+
+
+{% include 'header.html' %}
+
+
+
+
+
+
+
+
+{% block body %}
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+{{ ckeditor.load() }}
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal').modal();
+	$('.slider').slider({
+        full_width: true,
+        interval: 3000, // 轮播间隔
+        transition: 2000, // 效果转换时长
+        height: 800, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+     $('.collapsible').collapsible({ accordion: false});
+     $('.scrollspy').scrollSpy({
+     throttle:200,
+     scrollOffset: 400
+     });
+
+           $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
+
+  });
+  
+  $("modal_test").click(function(){ 
+    $(".modal").modal('open'); 
+	
+});
+
+
+
+
+
+  </script>
+	
+	{% block content %}
+
+
+
+
+
+
+	
+	
+  <div class="section">
+	{{ container() }}
+        {{ row() }}
+
+                {% if contact %}
+                              {% if mes == 'Things Done' -%}
+                                            <!-- begin message block -->
+                                            <div class="container">
+                                              <div class="row">
+                                                <div class="col-md-14">
+                                                    <script>
+                                                        $(document).ready(function(){
+                                               Materialize.toast('I Got Your Message,Thanks', 8000,'rounded');
+                                               setTimeout(function(){
+                                               Materialize.toast('I Will Email You When I Saw Messages', 8000,'rounded');}
+                                               , 3000);
+                                            });
+                                                    </script>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            {% endif -%}
+
+                                {{ col(['s12', 'm12','l10','offset-l1']) }}
+                                    <div class="card">
+                                          <div class="card-content ">
+                                               <span class="card-title black-text "> <i class="material-icons prefix">account_circle</i>
+                                                   <h5 class="center">Your Name : </h5>  {{ contact.Author }}</span>
+                                                    <hr>
+
+
+                                              <div>
+                                                   <i class="material-icons prefix">mode_edit</i> <span> <h5 class="center"> Your FeedBack : </h5></span>
+                                                          {% autoescape false %}
+                                                          {{ contact.Content | oembed(html=True, maxwidth=300, maxheight=400) }}
+                                                        {% endautoescape %}
+
+                                              </div>
+                                              <hr>
+                                                <div>  <i class="material-icons prefix">email</i> <h5 class="center"> Your Email : </h5>{{ contact.Email }}</div>
+                                              </div>
+                                        <div class="center">
+                                             <a href="/" class="btn waves-effect waves-light center" >Back To Index
+                                                                         <a/>
+                                        </div>
+
+                                        </div>
+
+
+                                {{ enddiv() }}
+
+                {% else %}
+                                {{ col(['s12', 'm12','l12']) }}
+                                {{ util.card('Not Post','not post',[['/','index']]) }}
+                                {{ enddiv }}
+                {% endif %}
+      {{ enddiv() }}
+  {{ enddiv() }}
+  {{ enddiv() }}
+
+
+{% endblock  %}
+{% include 'footer.html' %}
+{% endblock %}
+
+
+

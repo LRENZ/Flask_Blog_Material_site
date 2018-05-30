@@ -1,0 +1,149 @@
+{% extends "material/base.html" %}
+{% import "material/utils.html" as util %}
+{% import "material/wtf.html" as wtf %}
+{% import "material/pagination.html" as pag %}
+{% import "card_with_image.html" as cwi %}
+{% import "card_to_render_post.html" as ctrp %}
+{% import "utils.html" as ut %}
+
+
+
+{% include 'header.html' %}
+
+
+
+
+
+
+
+
+{% block body %}
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal').modal();
+	$('.slider').slider({
+        full_width: true,
+        interval: 2000, // 轮播间隔 
+        transition: 1000, // 效果转换时长
+        height: 800, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+  });
+  
+  $("modal_test").click(function(){ 
+    $(".modal").modal('open'); 
+	
+}); 
+
+  </script>
+	
+	{% block content %}
+
+
+	        {{ row() }}
+				{{ col(['s12', 'm12','l12']) }}
+	
+		<div class="slider hide-on-small-only">
+    <ul class="slides">
+        {% for i in image %}
+          {% if i %}
+                   <li>
+        <img src=" {{ i.url }} "> <!-- random image -->
+        <div class="caption center-align">
+            <h3>{{ i.name }}</h3>
+            <h5 class="light grey-text text-lighten-3">{{ i.des }}</h5>
+        </div>
+                       <li>
+        {% else %}
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/blade-runner.jpg') }} "> <!-- random image -->
+        <div class="caption center-align">
+            <h3>First Page </h3>
+            <h5 class="light grey-text text-lighten-3">Blade - Runner</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/home.jpg') }} "> <!-- random image -->
+        <div class="caption left-align">
+            <h3>Second Switch</h3>
+            <h5 class="light grey-text text-lighten-3">The End Of the Fucking World</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/Batman.jpg') }} "> <!-- random image -->
+        <div class="caption right-align">
+            <h3>Three</h3>
+            <h5 class="light grey-text text-lighten-3">Template</h5>
+        </div>
+        </li>
+        <li>
+        <img src=" {{ url_for('static', filename= 'images/blade-runner-2049.jpg' ) }} "> <!-- random image -->
+        <div class="caption center-align">
+            <h3>Four</h3>
+            <h5 class="light grey-text text-lighten-3">Also Test</h5>
+        </div>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+
+        {{ enddiv() }}
+
+{{ enddiv() }}
+
+
+
+	
+	
+  <div class="section">
+	{{ container() }}
+        {{ row() }}
+                {% if post %}
+                     {% for p in post.items %}
+                                {{ col(['s12', 'm12','l6']) }}
+                                    {{ cwi.card_with_image(title =p.title, 
+									content = p.content,
+									image = p.image,
+									tags =p.tags,
+									actions = [p.title]
+									)}}
+                                {{ enddiv() }}
+                     {% endfor %}
+                {% else %}
+                                {{ col(['s12', 'm12','l12']) }}
+                                {{ utils.card('Not Post','not post',[['/','index']]) }}
+                                {{ enddiv }}
+                {% endif %}
+      {{ enddiv() }}
+	  
+
+
+      	{{ container() }}
+        {{ row() }}
+
+      {{ut.render_pagination(post,"blog.post_list") }}
+
+        {{ enddiv() }}
+  {{ enddiv() }}
+	 
+  {{ enddiv() }}
+  {{ enddiv() }}
+
+{% endblock %}
+{% include 'footer.html' %}
+{% endblock %}
+
+
+

@@ -1,0 +1,168 @@
+{% extends "material/base.html" %}
+{% import "material/utils.html" as util %}
+{% import "material/wtf.html" as wtf %}
+{% import "material/pagination.html" as pag %}
+{% import "card_with_image.html" as cwi %}
+{% import "card_to_render_post.html" as ctrp %}
+{% import "utils.html" as ut %}
+
+
+
+{% include 'header.html' %}
+
+
+
+
+
+
+
+
+{% block body %}
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal').modal();
+	$('.slider').slider({
+        full_width: true,
+        interval: 3000, // 轮播间隔
+        transition: 2000, // 效果转换时长
+        height: 800, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+     $('.collapsible').collapsible({ accordion: false});
+     $('.scrollspy').scrollSpy({
+     throttle:200,
+     scrollOffset: 400
+     });
+
+           $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
+
+  });
+  
+  $("modal_test").click(function(){ 
+    $(".modal").modal('open'); 
+	
+});
+M.AutoInit();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.scrollspy');
+    var instances = M.ScrollSpy.init(elems);
+  });
+
+
+  </script>
+	
+	{% block content %}
+
+    <div class="section">
+
+            {{ container() }}
+	        {{ row() }}
+                <ul class="collapsible expandable z-depth-5 hoverable">
+                    <li class  = "active">
+                      <div class="collapsible-header "><i class="material-icons">details</i>Interge With Google Search</div>
+                      <div class="collapsible-body white-text "><span>Use Google To Search Resourse, Like Movies & TV Series.</span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header "><i class="material-icons">details</i>Result From Following Site</div>
+                      <div class="collapsible-body white-text"><span>
+                                          <ul>
+                                              <li><a class="grey-text text-lighten-3 " href="/">来自我常用的资源站</a></li>
+                                              <li><a class="grey-text text-lighten-3 " href="/">zimumu.tv</a></li>
+                </ul>
+                      </span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header "><i class="material-icons">details</i>Only Works When Google Service is Avaliable</div>
+                      <div class="collapsible-body white-text "><span>Google Service Is Necessary</span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header "><i class="material-icons">details</i>Search Tip</div>
+                      <div class="collapsible-body white-text "><span>Google Service Is Necessary</span></div>
+                    </li>
+                  </ul>
+        {{ row() }}
+				{{ col(['s12', 'm12','l6','offset-l3']) }}
+	<div class="search_bar">
+
+    {{ get_js() | safe }}
+
+
+
+</div>
+</div>
+</div>
+
+</div>
+
+        {{ enddiv() }}
+        {{ enddiv() }}
+
+{{ enddiv() }}
+
+
+
+	
+	
+  <div class="section">
+	{{ container() }}
+        {{ row() }}
+                {% if post %}
+                     {% for p in post.items %}
+                                {{ col(['s12', 'm6','l6','scrollspy']) }}
+                                    {{ ut.card_with_image_news(title =p.title,
+									content = p.content,
+									image = p.image,
+									tags =p.tags,
+                                    rate = p.rate,
+									actions = [p.title]
+									)}}
+                                {{ enddiv() }}
+                     {% endfor %}
+                {% else %}
+                                {{ col(['s12', 'm12','l12']) }}
+                                {{ utils.card('Not Post','not post',[['/','index']]) }}
+                                {{ enddiv }}
+                {% endif %}
+      {{ enddiv() }}
+	  
+
+
+      	{{ container() }}
+        {{ row() }}
+
+      {{ut.render_pagination(post,"reviews.review_list") }}
+
+        {{ enddiv() }}
+  {{ enddiv() }}
+	 
+  {{ enddiv() }}
+  {{ enddiv() }}
+
+{% endblock %}
+{% include 'footer.html' %}
+{% endblock %}
+
+
+

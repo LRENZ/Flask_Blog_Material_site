@@ -1,0 +1,111 @@
+{% extends "material/base.html" %}
+{% import "card_with_image.html" as cwi %}
+
+{% include 'header.html' %}
+
+{% block body %}
+
+<title> {{ post.title }} </title>
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+	$('.slider').slider({
+        full_width: true,
+        interval: 3000, // 轮播间隔
+        transition: 2000, // 效果转换时长
+        height: 900, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+	$('#image').materialbox();
+  });
+  
+  $('#image').click(function(){
+    //Some code
+	$('#image').materialbox('open');
+});
+
+  </script>
+  <style type="text/css">
+  	#img:hover {
+  		background-image: url('https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png');
+  	}
+	#image {
+    max-width: 100%;
+    max-height: 100%;
+}
+  </style>
+
+	{% block content %}
+  <div class="section">
+	{{ container() }}
+	  {{ row() }}
+	     {{ col(['s12', 'm12','l12']) }}
+  <div class="post-preview">
+  	     <div class="card">
+        <div class="card-image">
+          {% if  post.image %}
+          <img src="{{ post.image }}">
+		  {% else %}
+		  <img src="{{ url_for('static', filename= 'images/coffee.jpg') }}">
+		   {% endif %}
+          <span class="card-title flow-text orange darken-1-text"><h5>{{ post.title }}</h5></span>
+        </div>
+        <div class="card-content">
+		
+	 {% if post.tags %}
+            <ul class="list-unstyled list-inline">
+                {% for t in post.tags %}
+
+
+                      <div class="chip">
+                          <a href="/tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
+                      </div>
+
+                {% endfor %}
+            </ul>
+          {% endif %}
+            {% if post.name %}
+        <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">{{ post.name }}</a> on {{ post.create_time | my_format_datetime}}
+            {% else %}
+            <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">Admin</a> on {{ post.create_time | my_format_datetime}}
+            {% endif %}
+
+    </div>
+      </div>
+  
+    <hr>
+	
+	{{ col(['s12', 'm12','l12']) }}
+    <div>
+	    <div class="card-content white-text lighten-5">
+        {% autoescape false %}
+            {% if post.content %}
+            {{ post.content | oembed(html=True, maxwidth=300, maxheight=400) }}
+            {% else %}
+            {{ post.html }}
+            {% endif %}
+        {% endautoescape %}
+		</div>
+    </div>
+        {{ enddiv() }}
+		{{ enddiv() }}
+		
+
+{{ enddiv() }}
+{{ enddiv() }}
+{{ enddiv() }}
+
+
+{% endblock content %}
+
+{% include 'footer.html' %}
+{% endblock body %}

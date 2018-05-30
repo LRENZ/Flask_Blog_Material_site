@@ -1,0 +1,187 @@
+{% extends "material/base.html" %}
+{% import "material/utils.html" as util %}
+{% import "material/wtf.html" as wtf %}
+{% import "material/pagination.html" as pag %}
+{% import "card_with_image.html" as cwi %}
+{% import "card_to_render_post.html" as ctrp %}
+
+
+
+{% include 'header.html' %}
+
+
+
+
+
+
+
+
+{% block body %}
+
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal').modal();
+	$('.slider').slider({
+        full_width: true,
+        interval: 2000, // 轮播间隔 
+        transition: 1000, // 效果转换时长
+        height: 800, // 轮播高度
+        indicators: true // 是否显示小圆点
+    });
+  });
+  
+  $("modal_test").click(function(){ 
+    $(".modal").modal('open'); 
+	
+}); 
+
+  </script>
+	
+	{% block content %}
+            <div class="section">
+
+            {{ container() }}
+
+	        {{ row() }}
+                  {{ col(['s12', 'm12','l10','offset-l1 ']) }}
+
+
+          <div class="card light-green darken-2 z-depth-5 hoverable">
+            <div class="card-content white-text">
+              <span class="card-title">Archive : Post Tag</span>
+                                                          {% for t in tags_post %}
+                                                 {% if t %}
+                                                <div class="chip">
+                                               <a href="/tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
+                                                  </div>
+                                    {% else %}
+                     <div> Not Tag Right Now</div>
+                      {% endif %}
+                    {% endfor %}
+
+          </div>
+        </div>
+
+        {{ enddiv() }}
+
+
+                                  {{ col(['s12', 'm12','l10','offset-l1 ']) }}
+
+
+          <div class="card purple darken-2 z-depth-5 hoverable">
+            <div class="card-content white-text">
+              <span class="card-title">Archive : Reviews Tag</span>
+                                                          {% for t in tags_reviews %}
+                                                 {% if t %}
+                                                <div class="chip">
+                                               <a href="/review_tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
+                                                  </div>
+                                    {% else %}
+                     <div> Not Tag Right Now</div>
+                      {% endif %}
+                    {% endfor %}
+
+          </div>
+        </div>
+
+        {{ enddiv() }}
+
+
+
+
+
+
+                                  {{ col(['s12', 'm12','l10','offset-l1 ']) }}
+
+
+          <div class="card pink darken-4 z-depth-5 hoverable">
+            <div class="card-content white-text">
+              <span class="card-title">Archive : News Tag</span>
+                                                          {% for t in tags_news %}
+                                                 {% if t %}
+                                                <div class="chip">
+                                               <a href="/news_tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
+                                                  </div>
+                                    {% else %}
+                     <div> Not Tag Right Now</div>
+                      {% endif %}
+                    {% endfor %}
+
+          </div>
+        </div>
+
+        {{ enddiv() }}
+
+
+
+
+
+{{ enddiv() }}
+{{ enddiv() }}
+                {{ enddiv() }}
+
+
+
+	
+	
+  <div class="section">
+	{{ container() }}
+        {{ row() }}
+                 <h4 class="center"><strong><span class="white-text">
+                     Archive : {{ tag | get_clean_tag}}</span>
+                 </strong></h4>
+                {% if paginated_tags %}
+                     {% for p in paginated_tags %}
+                                {{ col(['s12', 'm6','l6']) }}
+                                    {{ cwi.card_with_image(title =p.title, 
+									content = p.content,
+									image = p.image, 
+									tags =p.tags,
+									actions = [p.title]
+									)}}
+                                {{ enddiv() }}
+                     {% endfor %}
+                {% else %}
+                                {{ col(['s12', 'm12','l12']) }}
+                                {{ util.card('Not Post','not post',[['/','index']]) }}
+                                {{ enddiv }}
+                {% endif %}
+      {{ enddiv() }}
+	  
+	  
+	  {# Macro for creating navigation links #}
+{% macro render_navigation(pagination, endpoint) %}
+  <div class=pagination>
+  {% for page in pagination.iter_pages() %}
+    {% if page %}
+      {% if page != pagination.page %}
+        <a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
+      {% else %}
+        <strong>{{ page }}</strong>
+      {% endif %}
+    {% else %}
+      <span class=ellipsis>…</span>
+    {% endif %}
+  {% endfor %}
+  </div>
+{% endmacro %}
+      
+	 
+  {{ enddiv() }}
+  {{ enddiv() }}
+
+{% endblock %}
+{% include 'footer.html' %}
+{% endblock %}
+
+
+

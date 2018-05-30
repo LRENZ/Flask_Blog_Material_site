@@ -1,0 +1,7 @@
+{% extends 'admin/model/create.html' %}
+
+
+{% block tail %}
+    {{ ckeditor.load(custom_url=url_for('static', filename='lib/ckeditor/ckeditor.js')) }}
+    {{ super() }}
+{% endblock %}
