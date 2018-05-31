@@ -81,12 +81,28 @@ input[type="password"] {
                 </div>
             {% endfor %}
             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+
+
+
+
+
 			
         </form>
         {{ link | safe }}
         {% endif %}
-		
+<div class="row">
+  <div class="col-sm-12">
+    <div class="text-center">
+      <a class="btn btn-primary" href="/" role="button">Back To Index</a>
+        <a class="btn btn-primary" href="{{ url_for('admin.logout_view') }}">Log out</a>
     </div>
+  </div>
+</div>
+
+
+
+    </div>
+
 
     
    </div>

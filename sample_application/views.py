@@ -8,6 +8,7 @@ from datetime import datetime
 from werkzeug import secure_filename
 #from mongoengine.queryset.visitor import Q
 from jinja2 import utils
+from flask_login import current_user
 
 
 
@@ -19,7 +20,7 @@ def index():
     t = Info.objects(done =True)[:3]
     i = Image.objects(to_pub=True)[:3]
 
-    return render_template('index.html',post = p,reviews = r,todo =t, image = i)
+    return render_template('index.html',post = p,reviews = r,todo =t, image = i,user=current_user)
 
 @bp.route('/contact',methods=['GET', 'POST'])
 def contact():
@@ -32,27 +33,23 @@ def contact():
        # confirm_id = contact.id
         id = contact.id
         return redirect('/contact_sumbmit/{}/{}'.format(id,mes))
-    return render_template('contact.html', form=form)
+    return render_template('contact.html', form=form,user=current_user)
 
 @bp.route('/contact_sumbmit/<string:cid>/<string:mes>',methods=['GET', 'POST'])
 def contact_confirm(cid,mes):
     c = cn.objects.get_or_404(id = cid)
-    return render_template('contact_confirm.html', contact = c,mes = mes)
-
-
-
-
+    return render_template('contact_confirm.html', contact = c,mes = mes,user=current_user)
 
 
 @bp.route('/posts')
 @bp.route('/posts/<string:post_title>')
 def get_post(post_title):
     post = Post.objects.get_or_404(title__contains=post_title )
-    return render_template("post.html", post=post)
+    return render_template("post.html", post=post,user=current_user)
 
 @bp.route('/readme')
 def readme():
-    return render_template('readme.html')
+    return render_template('readme.html',user=current_user)
 
 @bp.route('/post')
 @bp.route('/post/<int:page>')
@@ -60,7 +57,7 @@ def post_list(page=1):
     #image = 'images/coffee.jpg'
     i = Image.objects(cata = 'Post')[:3]
     post = Post.objects(status =True).paginate(page=page, per_page=4)
-    return render_template("post_nav.html",  post=post,image = i)
+    return render_template("post_nav.html",  post=post,image = i,user=current_user)
 
 
 @bp.route('/tag/<string:id>')
@@ -74,7 +71,7 @@ def view_tag_tags(id, page=1):
     tag = Tag.objects(id = id).first()
     i = Image.objects(to_pub=True)[:3]
     #paginated_tags = post.paginate_field('tags', page=1, per_page=5)
-    return render_template("tags.html",  paginated_tags=post,image = i,tags_post = tags_post,tags_news = tags_news,tags_reviews = tags_reviews,tag = tag)
+    return render_template("tags.html",  user=current_user,paginated_tags=post,image = i,tags_post = tags_post,tags_news = tags_news,tags_reviews = tags_reviews,tag = tag)
 
 
 
