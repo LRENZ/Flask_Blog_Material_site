@@ -9,9 +9,6 @@ from .model import *
 from flask_login import LoginManager
 from .admin import create_admin
 from flask_mongoengine import MongoEngineSessionInterface
-from micawber import bootstrap_basic, parse_html
-from micawber.cache import Cache as OEmbedCache
-from micawber.contrib.mcflask import add_oembed_filters
 from flask_disqus import Disqus
 from flask_ckeditor import CKEditor
 #from flask_wtf.csrf import CSRFProtect
@@ -26,7 +23,6 @@ import config
 #from .form import photos
 
 
-oembed_providers = bootstrap_basic(OEmbedCache())
 
 #def register_upload(app):
 
@@ -42,7 +38,6 @@ def create_app():
 
     app = Flask(__name__)
     app.config.from_object(config.config['development'])
-    add_oembed_filters(app, oembed_providers)
     register_babel(app)
     #register_upload(app)
     register_jinjia_filters(app)

@@ -89,7 +89,7 @@
 	    <div class="card-content white-text lighten-5">
         {% autoescape false %}
             {% if post.text %}
-            {{ post.text | oembed(html=True, maxwidth=300, maxheight=400) }}
+            {{ post.text  }}
             {% else %}
             {{ post.html }}
             {% endif %}

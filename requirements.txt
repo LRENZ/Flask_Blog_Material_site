@@ -1,0 +1,14 @@
+Flask_Script==2.0.6
+Flask_Material==0.1.1
+Werkzeug==0.14.1
+Flask_WTF==0.14.2
+flask_mongoengine==0.9.3
+Flask_Admin==1.5.1
+Flask==1.0.2
+Flask_CKEditor==0.4.0
+mongoengine==0.15.0
+Jinja2==2.10
+Flask_Login==0.4.0
+WTForms==2.1
+Flask_Babel==0.11.2
+Flask_Disqus==0.0.1
