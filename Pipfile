@@ -1,0 +1,28 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+
+
+[packages]
+
+flask-script = "==2.0.6"
+flask-material = "==0.1.1"
+werkzeug = "==0.14.1"
+flask-wtf = "==0.14.2"
+flask-mongoengine = "==0.9.3"
+flask-admin = "==1.5.1"
+flask = "==1.0.2"
+flask-ckeditor = "==0.4.0"
+mongoengine = "==0.15.0"
+"jinja2" = "==2.10"
+flask-login = "==0.4.0"
+wtforms = "==2.1"
+flask-babel = "==0.11.2"
+flask-disqus = "==0.0.1"
+pillow = "*"

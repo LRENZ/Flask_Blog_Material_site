@@ -54,8 +54,8 @@ def get_post(post_title):
 def readme():
     return render_template('readme.html')
 
-@bp.route('/pag')
-@bp.route('/pag/<int:page>')
+@bp.route('/post')
+@bp.route('/post/<int:page>')
 def post_list(page=1):
     #image = 'images/coffee.jpg'
     i = Image.objects(cata = 'Post')[:3]

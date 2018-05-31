@@ -1,6 +1,6 @@
 from flask_babel import Babel
 from flask_babel import format_datetime
-from flask import Markup
+from flask import Markup,url_for,request
 
 
 
@@ -65,3 +65,21 @@ def get_clean_tag(tag):
         return t[0]
     except:
         pass
+
+def get_header_title(title):
+    try:
+        t = str(title).strip().split(r'/')
+        ti = [x  for x in t if len(x) > 4]
+        return ti[0]
+    except:
+        return "LRENZ"
+
+def remove_slash(title):
+    try:
+        t = str(title).strip().replace('/','')
+        if t:
+            return t
+        else:
+            return "LRENZ"
+    except:
+        return "LRENZ"

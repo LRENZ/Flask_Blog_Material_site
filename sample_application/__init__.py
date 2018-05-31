@@ -12,7 +12,7 @@ from flask_mongoengine import MongoEngineSessionInterface
 from flask_disqus import Disqus
 from flask_ckeditor import CKEditor
 #from flask_wtf.csrf import CSRFProtect
-from  .utils import  babel,my_format_datetime,format_meta_keywords,get_slug,get_rate,get_clean_tag
+from  .utils import  babel,my_format_datetime,format_meta_keywords,get_slug,get_rate,get_clean_tag,get_header_title,remove_slash
 #from flask_thumbnails import Thumbnail
 import os
 from .reviews import rv
@@ -88,8 +88,11 @@ def register_jinjia_filters(app):
     app.jinja_env.filters['get_slug'] = get_slug
     app.jinja_env.filters['get_rate'] = get_rate
     app.jinja_env.filters['get_clean_tag'] = get_clean_tag
+    app.jinja_env.filters['get_header_title'] = get_header_title
+    app.jinja_env.filters['remove_slash'] = remove_slash
     #app.jinja_env.filters['resize'] = resize
     app.add_template_global(get_js, 'get_js')
+
 
 
 
