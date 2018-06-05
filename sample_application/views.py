@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for,flash
+from flask import Blueprint, render_template, redirect, url_for,flash,session,make_response
 from .form import ContactForm
 bp = Blueprint('blog', __name__)
 from .model import *
@@ -88,57 +88,14 @@ def page_not_found(e):
 #################################################################3
 ##############test router########################################
 ##################################################################
-@bp.route('/post')
-def image():
-    tags = ['tag1','tag2','tag3']
-    content = 'micawber supplies a few methods for retrieving rich metadata about a variety of links'
-    return render_template('new_test.html',title = 'title',
-                           content = content,
-                           image = 'images/coffee.jpg',
-                           tags = tags,
-                           actions = [['/','test']])
+@bp.route('/cookies')
+def cookies():
+    resp = make_response(render_template('404.html'))
+    # only after make_response  it can set cookies
+    resp.set_cookie('name', 'cookiesvaluehere')
+    resp.set_cookie('test', 'cookiesvalue')
+    return resp
 
-"""
-@bp.route('/post')
-def image():
-    return render_template('new_test.html')
-"""
-
-
-
-
-@bp.route('/form')
-def testform():
-    form = testForm()
-    return render_template('test.html',form=form)
-
-@bp.route('/test')
-#@bp.route('/posts/<string:post_id>')
-def get_post_with():
-    post = Post.objects().all()
-    return render_template("post_list.html", post=post)
-
-
-
-
-
-@bp.route('/about')
-def about():
-    user = User.objects.first()
-    return render_template("about.html", user=user)
-
-
-
-
-@bp.route('/detail')
-def post():
-    post = Post.objects.first()
-    return render_template('post.html',post = post)
-	
-@bp.route('/addcomment')
-def comment():
-    post = Post.objects.first()
-    return render_template('post.html',post = post)
 
 
 
