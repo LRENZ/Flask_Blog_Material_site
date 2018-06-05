@@ -54,9 +54,9 @@
           {% if i %}
                    <li>
         <img src=" {{ i.url }} "> <!-- random image -->
-        <div class="caption center-align">
+        <div class="caption center-align"><a href="/posts/Readme" class="white-text">
             <h3>{{ i.name }}</h3>
-            <h5 class="light grey-text text-lighten-3">{{ i.des }}</h5>
+            <h5 class="light grey-text text-lighten-3">{{ i.des }}</h5></a>
         </div>
                        <li>
         {% else %}
@@ -100,27 +100,14 @@
 
   <div class="section">
 	{{ container() }}
-
-      <div class="row">
-
-      <div class="col s4 white-text">
-        <!-- Promo Content 1 goes here -->
-          Operators other than equality may also be used in queries — just attach the operator name to a key with a double-underscore:
-      </div>
-      <div class="col s4 white-text">
-        <!-- Promo Content 2 goes here -->
-          Operators other than equality may also be used in queries — just attach the operator name to a key with a double-underscore:
-      </div>
-      <div class="col s4 white-text">
-        <!-- Promo Content 3 goes here -->
-          Operators other than equality may also be used in queries — just attach the operator name to a key with a double-underscore:
-      </div>
-
-    </div>
         {{ row() }}
 				{{ col(['s12', 'm6','l4']) }}
+                         <div class="white-text center"">
+        <!-- Promo Content 1 goes here -->
+          The Post, The Articles,The Documents
+      </div>
 
-                    <a href="/pag" class="white-text text-darken-2 center"> <div class="card-panel  pink darken-2 hoverable z-depth-5 waves-effect waves-block waves-orange">
+                    <a href="/post" class="white-text text-darken-2 center"> <div class="card-panel  pink darken-2 hoverable z-depth-5 waves-effect waves-block waves-orange">
                          <span class="white-text text-darken-2">The Lastest Post</span>
                           </div></a>
 
@@ -147,6 +134,11 @@
 				{{ enddiv() }}
 
                 				{{ col(['s12', 'm6','l4']) }}
+
+                               <div class="white-text center">
+        <!-- Promo Content 1 goes here -->
+          Music, Movies, TV Series & Game
+      </div>
 
                     <a href="/reviews" class="white-text text-darken-2 center"> <div class="card-panel red darken-3 hoverable z-depth-5 waves-effect waves-block waves-orange">
                          <span class="white-text text-darken-2">The Lastest Reviews</span>
@@ -175,10 +167,14 @@
 				{{ enddiv() }}
 
                                  				{{ col(['s12', 'm6','l4']) }}
+                               <div class="white-text center"">
+        <!-- Promo Content 1 goes here -->
+          The Interesting News & Info
+      </div>
 
                      <a href="/news" class="white-text text-darken-2 center">
                          <div class="card-panel light-green darken-1 hoverable z-depth-5 waves-effect waves-block waves-orange">
-                         <span class="white-text text-darken-2">The Lastest Info</span>
+                         <span class="white-text text-darken-2">The Lastest News</span>
 
                           </div>
                          </a>

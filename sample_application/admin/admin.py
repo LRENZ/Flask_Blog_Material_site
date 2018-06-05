@@ -108,6 +108,8 @@ class PostView(ModelView):
     column_display_pk = True
     #edit_modal = True
     #create_modal = True
+    can_export = True
+    export_types = ['xls','csv']
 
     form_overrides = dict(content=CKEditorField)
     create_template = 'admin/create_post.html'
@@ -177,6 +179,8 @@ class TodoView(ModelView):
 
 
     column_filters = ['done']
+    can_export = True
+    export_types = ['xls','csv']
     create_template = 'admin/create_post.html'
     edit_template = 'admin/edit_post.html'
     column_filters = ('title', 'text', 'pub_date')
@@ -294,6 +298,8 @@ class ReviewsView(ModelView):
     column_display_pk = True
     #edit_modal = True
     #create_modal = True
+    can_export = True
+    export_types = ['xls','csv']
 
     form_overrides = dict(content=CKEditorField)
     create_template = 'admin/create_post.html'
