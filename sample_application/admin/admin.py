@@ -99,7 +99,7 @@ class PostView(ModelView):
         if not model.content:
             return ''
 
-        return str(model.content)[:300]
+        return str(model.content)[:200]
 
     column_formatters = {
         'content': get_content
@@ -289,7 +289,7 @@ class ReviewsView(ModelView):
         if not model.content:
             return ''
 
-        return str(model.content)[:300]
+        return str(model.content)[:200]
 
     column_formatters = {
         'content': get_content
@@ -363,7 +363,7 @@ class ContactView(ModelView):
             if not model.Content:
                 return ''
 
-            return str(model.Content )[:300]
+            return str(model.Content )[:200]
 
         column_formatters = {
             'Content': get_content
