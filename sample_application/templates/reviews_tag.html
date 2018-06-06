@@ -56,32 +56,29 @@
                   {{ col(['s12', 'm12','l10','offset-l1 ']) }}
 
 
-          <div class="card light-green darken-2 z-depth-5 hoverable">
-            <div class="card-content white-text">
-              <span class="card-title">Archive : Post Tag</span>
-                                                          {% for t in tags_post %}
-                                                 {% if t %}
-                                                <div class="chip">
-                                               <a href="/tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
+                         <ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Archive : Post Tag</div>
+      <div class="collapsible-body">
+          {% for t in tags_post %}
+              {% if t %}
+
+                   <div class="chip">
+                       <a href="/tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
                                                   </div>
-                                    {% else %}
+          {% else %}
                      <div> Not Tag Right Now</div>
-                      {% endif %}
-                    {% endfor %}
-
-          </div>
-        </div>
-
-        {{ enddiv() }}
+          {% endif %}
+          {% endfor %}
+      </div>
+   </li>
 
 
-                                  {{ col(['s12', 'm12','l10','offset-l1 ']) }}
 
-
-          <div class="card purple darken-2 z-depth-5 hoverable">
-            <div class="card-content white-text">
-              <span class="card-title">Archive : Reviews Tag</span>
-                                                          {% for t in tags_reviews %}
+       <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Archive : Reviews Tag</div>
+      <div class="collapsible-body">
+                                                {% for t in tags_reviews %}
                                                  {% if t %}
                                                 <div class="chip">
                                                <a href="/review_tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
@@ -90,24 +87,16 @@
                      <div> Not Tag Right Now</div>
                       {% endif %}
                     {% endfor %}
-
-          </div>
-        </div>
-
-        {{ enddiv() }}
+      </div>
+   </li>
 
 
 
 
-
-
-                                  {{ col(['s12', 'm12','l10','offset-l1 ']) }}
-
-
-          <div class="card pink darken-4 z-depth-5 hoverable">
-            <div class="card-content white-text">
-              <span class="card-title">Archive : News Tag</span>
-                                                          {% for t in tags_news %}
+                             <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Archive : News Tag</div>
+      <div class="collapsible-body">
+                                            {% for t in tags_news %}
                                                  {% if t %}
                                                 <div class="chip">
                                                <a href="/news_tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
@@ -116,9 +105,9 @@
                      <div> Not Tag Right Now</div>
                       {% endif %}
                     {% endfor %}
-
-          </div>
-        </div>
+      </div>
+   </li>
+  </ul>
 
         {{ enddiv() }}
 
