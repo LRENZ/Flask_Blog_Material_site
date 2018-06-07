@@ -1,12 +1,12 @@
 <head>
     {% if post %}
         {% if post.title %}
-         <title> {{ post.title | capitalize }} </title>
+         <title> {{ post.title | upper }} </title>
         {% else %}
-        <title>{{ request.path | remove_slash | capitalize }}</title>
+        <title>{{ request.path | remove_slash | upper }}</title>
         {% endif %}
     {% else %}
-    <title>{{ request.path |get_header_title | capitalize}}</title>
+    <title>{{ request.path |get_header_title | upper}}</title>
     {% endif %}
 
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
