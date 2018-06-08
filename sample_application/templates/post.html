@@ -26,6 +26,8 @@
         indicators: true // 是否显示小圆点
     });
 	$('#image').materialbox();
+		$("input.vmail.vinput").attr("placeholder", "邮箱（可选）")
+	$("input.vlink.vinput").attr("placeholder", "网址[http://](可选）")
   });
   
   $('#image').click(function(){
@@ -97,7 +99,7 @@
 		</div>
     </div>
           <hr>
-                 <div class="section">
+                 <div class="section z-depth-4 hoverable">
                      <h5 class="white-text"> Comments:</h5>
                 <div class="comment  white"></div>
     <script>
@@ -109,7 +111,7 @@
             verify:false,
             app_id: '6oLEzb6tVlViPP2NCPa3eTjw-gzGzoHsz', // 这里填写上面得到的APP ID
             app_key: 'tlGbmo4f53nLPl1sfbvgBbFG', // 这里填写上面得到的APP KEY
-            placeholder: 'Comment Here' // [v1.0.7 new]留言框占位提示文字
+            placeholder: '评论支持Markdown语法，点击preview可预览' // [v1.0.7 new]留言框占位提示文字
         });
     </script>
                      </div>
