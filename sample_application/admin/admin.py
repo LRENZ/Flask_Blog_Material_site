@@ -102,7 +102,9 @@ class PostView(ModelView):
         return str(model.content)[:200]
 
     column_formatters = {
-        'content': get_content
+        'content': get_content,
+        'html' :get_content,
+
     }
 
     column_display_pk = True
@@ -174,7 +176,7 @@ class TodoView(ModelView):
         if not model.text:
             return ''
 
-        return str(model.text)[:100]
+        return str(model.text)[:200]
 
 
 
@@ -186,7 +188,8 @@ class TodoView(ModelView):
     column_filters = ('title', 'text', 'pub_date')
     column_sortable_list = ('pub_date', )
     column_formatters = {
-        'text': get_content
+        'text': get_content,
+        'html': get_content
     }
     form_overrides = {
         'text':CKEditorField,
@@ -292,7 +295,8 @@ class ReviewsView(ModelView):
         return str(model.content)[:200]
 
     column_formatters = {
-        'content': get_content
+        'content': get_content,
+        'html': get_content
     }
 
     column_display_pk = True

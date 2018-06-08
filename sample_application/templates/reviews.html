@@ -14,6 +14,8 @@
 
       <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
 
 {%- endblock scripts %}
@@ -127,6 +129,24 @@
         {% endautoescape %}
 		</div>
     </div>
+              <hr>
+          <div class="section">
+          <h5 class="white-text"> Comments:</h5>
+          <div class="comment  white"></div>
+    <script>
+        new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+            av: AV,
+            el: '.comment', //
+            notify:false,
+            verify:false,
+            app_id: '6oLEzb6tVlViPP2NCPa3eTjw-gzGzoHsz', // 这里填写上面得到的APP ID
+            app_key: 'tlGbmo4f53nLPl1sfbvgBbFG', // 这里填写上面得到的APP KEY
+            placeholder: 'Comment Here' // [v1.0.7 new]留言框占位提示文字
+        });
+    </script>
+              </div>
+
         {{ enddiv() }}
 		{{ enddiv() }}
 		
