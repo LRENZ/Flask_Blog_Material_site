@@ -9,7 +9,7 @@
 #source venv/bin/activate
 #gunicorn -w 4 wsgi:app -b 0.0.0.0:80
 #pip install -r requirement
-
+# set SECRET_KEY
 
 from werkzeug.contrib.fixers import ProxyFix
 from sample_application import create_app

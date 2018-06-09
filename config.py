@@ -4,7 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class BaseConfig:
-    SECRET_KEY = os.urandom(24)
+    SECRET_KEY = os.getenv('SECRET_KEY')
     CKEDITOR_PKG_TYPE = 'full'
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     UPLOADED_PHOTOS_DEST = os.getcwd()
