@@ -37,6 +37,9 @@ class MyIndexView(AdminIndexView):
             user = form.get_user()
             login_user(user)
             redirect(url_for('.index'))
+        else:
+            redirect(url_for('blog.index'))
+
 
         self._template_args['form'] = form
 
