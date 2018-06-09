@@ -37,7 +37,7 @@ def register_database(app):
 def create_app():
 
     app = Flask(__name__)
-    app.config.from_object(config.config['TestingConfig'])
+    app.config.from_object(config.config['testing'])
     register_babel(app)
     #register_upload(app)
     register_jinjia_filters(app)
