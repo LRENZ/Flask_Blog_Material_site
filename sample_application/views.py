@@ -80,6 +80,12 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
+@bp.route('/googleb3b40b13d6a8150f.html')
+def google_console():
+    return render_template('googleb3b40b13d6a8150f .html')
+
+
+
 
 
 
