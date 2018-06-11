@@ -234,12 +234,7 @@ class FileView(ModelView):
             'allow_overwrite': False
         }
     }
-    def is_accessible(self):
-        return current_user.is_authenticated
 
-    def inaccessible_callback(self, name, **kwargs):
-        # redirect to login page if user doesn't have access
-        return redirect(url_for('admin.login', next=request.url))
 
 
 
@@ -279,12 +274,7 @@ class ImageView(ModelView):
     }
 
     """
-    def is_accessible(self):
-        return current_user.is_authenticated
 
-    def inaccessible_callback(self, name, **kwargs):
-        # redirect to login page if user doesn't have access
-        return redirect(url_for('admin.login', next=request.url))
 
 
 
