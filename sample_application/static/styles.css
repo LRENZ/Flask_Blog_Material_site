@@ -28,6 +28,7 @@ body::before {
        (max-width: 1024px) and (max-resolution: 1.5dppx) {
   body::before {
     background-image: url('images/bl_1024.jpg');
+	background-size:cover;
 	    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
@@ -39,7 +40,7 @@ body::before {
        (min-width: 1025px) and (max-width: 2048px) and (max-resolution: 1.5dppx)  {
   body::before {
     background-image: url('images/bl_2048.jpg');
-	    
+	background-size:cover;
 	    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
@@ -51,6 +52,7 @@ body::before {
        (min-width: 2049px) and (max-resolution: 1.5dppx) {
   body::before {
     background-image: url('images/bl_2880.jpg');
+	background-size:cover;
 		    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 

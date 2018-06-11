@@ -1,10 +1,10 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-
+key = '\xeew\xe4\xc0\xee\xb1]\x9b\xa0\x9e)\x15Qhem\xe5\xf17\xd6\xceB\xb7\xb4'
 
 
 class BaseConfig:
-    SECRET_KEY = os.getenv('SECRET_KEY')
+    SECRET_KEY = os.getenv('SECRET_KEY',key)
     CKEDITOR_PKG_TYPE = 'full'
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     UPLOADED_PHOTOS_DEST = os.getcwd()
