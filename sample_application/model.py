@@ -8,14 +8,14 @@ from datetime import datetime
 db = MongoEngine()
 c = [('Post','Post'), ('Reviews','Reviews'), ('News','News')]
 class Image(db.Document):
-    name = db.StringField(default='Things Can Be Done')
+    name = db.StringField(default='You Know Nothing Jon Snow')
     cata =  db.StringField(choices=c)
     image = db.ImageField(thumbnail_size=(100, 100, True))
     path =  db.StringField()
     to_pub =  db.BooleanField(default=False)
     url = db.StringField(default = 'https://a468ba3fc2be117c5560-f9a6225d634730495a59b91d1543c5a4.ssl.cf5.rackcdn.com/Fly-share-card.jpg')
     time = db.DateTimeField(default=datetime.now)
-    des =  db.StringField(default='学习是我生命中最美好的两个字')
+    des =  db.StringField(default='Tell Me, Do You Bleed')
     meta = {
         'ordering': ['-time'],
         'strict': False,
@@ -50,7 +50,7 @@ class Code(db.Document):
     des = db.StringField()
     published = db.BooleanField(default=False)
     pub_date = db.DateTimeField(default=datetime.now)
-    category = db.StringField()
+    category = db.StringField(default = 'google_customs_search_js')
 
 
 
