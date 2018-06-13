@@ -60,8 +60,8 @@ def create_app():
     app.config['MAIL_SERVER'] = 'smtp.qq.com'
     app.config['MAIL_PORT'] = 465
     app.config['MAIL_USE_TLS'] = True
-    app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME', '778450014@qq.com')
-    app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'LIURENZHONGQQ!0')
+    app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+    app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD',)
     app.config['MAIL_DEFAULT_SENDER'] = '778450014@qq.com'
 
     # Celery configuration

@@ -1,16 +1,11 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [dev-packages]
 
-
-
 [packages]
-
 flask-script = "==2.0.6"
 flask-material = "==0.1.1"
 werkzeug = "==0.14.1"
@@ -26,3 +21,6 @@ wtforms = "==2.1"
 flask-babel = "==0.11.2"
 flask-disqus = "==0.0.1"
 pillow = "*"
+celery = "==3.1.17"
+redis = "==2.10.3"
+flask-mail = "==0.9.1"
