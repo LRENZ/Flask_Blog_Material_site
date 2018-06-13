@@ -1,22 +1,27 @@
-from flask_material import Material
-from . import  views
+
+#from . import  views
 from flask import Flask, render_template, request, Markup, url_for, send_from_directory
-from .views import bp
-import flask_login as login
+
+
 import os.path as op
 import os
 from .model import *
-from flask_login import LoginManager
+
 from .admin import create_admin
 from flask_mongoengine import MongoEngineSessionInterface
-from flask_disqus import Disqus
+#from flask_disqus import Disqus
 from flask_ckeditor import CKEditor
 #from flask_wtf.csrf import CSRFProtect
 from  .utils import  babel,my_format_datetime,format_meta_keywords,get_slug,get_rate,get_clean_tag,get_header_title,remove_slash
 #from flask_thumbnails import Thumbnail
 import os
-from .reviews import rv
-from .news import news
+
+from celery import Celery
+from flask_mail import Mail
+from flask_material import Material
+celery = Celery(__name__, broker='redis://localhost:6379/0')
+mail = Mail()
+
 from mongoengine.queryset.visitor import Q
 import config
 #from flask_uploads import UploadSet, configure_uploads,patch_request_class
@@ -46,10 +51,29 @@ def create_app():
     register_database(app)
     create_admin(app)
     Material(app)
-    disq = Disqus(app)
+    #disq = Disqus(app)
     ckeditor = CKEditor(app)
     #thumb = Thumbnail(app)
     #csrf.init_app(app)
+
+    # Flask-Mail configuration
+    app.config['MAIL_SERVER'] = 'smtp.qq.com'
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USE_TLS'] = True
+    app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME', '778450014@qq.com')
+    app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'LIURENZHONGQQ!0')
+    app.config['MAIL_DEFAULT_SENDER'] = '778450014@qq.com'
+
+    # Celery configuration
+    app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
+    app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
+    mail.init_app(app)
+
+    # Initialize extensions
+
+    celery.conf.update(app.config)
+
+
 
     @app.route('/files/<filename>')
     def uploaded_files(filename):
@@ -63,12 +87,18 @@ def create_app():
 
 
 def register_blueprints(app):
+    from .reviews import rv
+    from .news import news
+    from .views import bp
+    from.celery_work import ap
     app.register_blueprint(bp)
     app.register_blueprint(rv)
     app.register_blueprint(news)
+    app.register_blueprint(ap)
 
 # Initialize flask-login
 def init_login(app):
+    from flask_login import LoginManager
     login_manager = LoginManager()
     login_manager.init_app(app)
 

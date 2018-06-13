@@ -6,11 +6,13 @@
 # ln -s /usr/local/python3/bin/virtualenv /usr/bin/virtualenv
 #virtualenv --no-site-packages --python=/usr/local/python3 venv3
 # virtualenv --python=python3 --no-site-packages venv
-#source venv/bin/activate
+#source venv3/bin/activate
 #gunicorn -w 4 wsgi:app -b 0.0.0.0:80
 #pip install -r requirement
 # set SECRET_KEY
 # export SECRET_KEY
+# gunicorn wsgi:app -c deploy/gunicorn.conf.py
+#vi /etc/nginx/conf.d/flask_project.conf
 
 from werkzeug.contrib.fixers import ProxyFix
 from sample_application import create_app
