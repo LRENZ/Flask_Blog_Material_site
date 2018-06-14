@@ -62,6 +62,7 @@ body::before {
 
 img{  max-width: 100%; 
            display:block; 
+		   margin:auto;
              height: auto;}
 
 

@@ -72,7 +72,7 @@ def get_header_title(title):
         ti = [x  for x in t if len(x) > 4]
         return ti[0]
     except:
-        return "LRENZ"
+        return "LRENZ-Linpiner.com"
 
 def remove_slash(title):
     try:
