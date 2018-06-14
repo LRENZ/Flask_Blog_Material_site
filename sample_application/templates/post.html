@@ -18,22 +18,20 @@
 
   <script type="text/javascript">
   $(document).ready(function(){
-	$('.slider').slider({
-        full_width: true,
-        interval: 3000, // 轮播间隔
-        transition: 2000, // 效果转换时长
-        height: 900, // 轮播高度
-        indicators: true // 是否显示小圆点
-    });
-	$('#image').materialbox();
-		$("input.vmail.vinput").attr("placeholder", "邮箱（可选）")
-	$("input.vlink.vinput").attr("placeholder", "网址[http://](可选）")
+	$('img').materialbox();
+	$("input.vmail.vinput").attr("placeholder", "邮箱（可选）");
+	$("input.vlink.vinput").attr("placeholder", "网址[http://](可选）");
+	$("img").addClass("materialboxed");
+	$("img").addClass("responsive-img");
   });
+
+
+
   
-  $('#image').click(function(){
+  //$('.materialboxed').click(function(){
     //Some code
-	$('#image').materialbox('open');
-});
+	//$('.materialboxed').materialbox('open');
+//});
 
   </script>
   <style type="text/css">

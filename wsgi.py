@@ -11,8 +11,23 @@
 #pip install -r requirement
 # set SECRET_KEY
 # export SECRET_KEY
+# export C_FORCE_ROOT=true
 # gunicorn wsgi:app -c deploy/gunicorn.conf.py
 #vi /etc/nginx/conf.d/flask_project.conf
+# vi  /etc/supervisord.d/gunicorn.ini
+#1. 增加配置文件后，更新
+# supervisorctl reread
+# supervisorctl update
+
+#2. 查看状态
+# supervisorctl status
+
+#3. 启动/停止
+# supervisorctl start gunicorn
+# supervisorctl stop gunicorn
+# supervisorctl restart gunicorn
+
+
 
 from werkzeug.contrib.fixers import ProxyFix
 from sample_application import create_app

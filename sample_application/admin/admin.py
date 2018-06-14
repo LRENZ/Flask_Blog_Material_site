@@ -246,9 +246,9 @@ class ImageView(ModelView):
         return Markup('<img src="%s">' % url_for('static',
                                                  filename=form.thumbgen_filename(model.path)))
 
-    #column_formatters = {
-        #'path': _list_thumbnail
-    #}
+    column_formatters = {
+        'path': _list_thumbnail
+    }
     #form_columns = ('name', 'Image', 'Url')
     column_searchable_list = ( 'name',)
     column_exclude_list = ('path', 'Path')
