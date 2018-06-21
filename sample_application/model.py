@@ -142,6 +142,11 @@ class File(db.Document):
     name = db.StringField(max_length=20)
     data = db.FileField()
     path =  db.StringField(max_length=20)
+    time = db.DateTimeField(default=datetime.now)
+    meta = {
+        'ordering': ['-time'],
+        'strict': False,
+    }
 
 
 
