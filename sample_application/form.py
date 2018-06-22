@@ -3,13 +3,16 @@ from wtforms import StringField, SubmitField, DateTimeField,IntegerField,Passwor
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired
 from wtforms import form, fields, validators
-from wtforms import form
+from flask_wtf.file import FileField, FileRequired, FileAllowed
+from wtforms import SubmitField
 from .model import User
 from flask_ckeditor import CKEditorField
 #from flask_uploads import UploadSet,IMAGES
 #from flask_wtf.file import FileField, FileRequired, FileAllowed
 #from app.models import User
 from werkzeug.security import check_password_hash
+from sample_application import photos
+
 
 class testForm(FlaskForm):
     name = StringField(u'what is their name', validators= [DataRequired()])
@@ -67,4 +70,9 @@ class ContactForm(FlaskForm):
     #time = DateTimeField(u'When ?')
     email = EmailField(u'What is Your Email?  Help Me Get You Back', [validators.Email()])
     submit = SubmitField(u'Confirm')
+
+
+class UploadForm(FlaskForm):
+    photo = FileField(validators=[FileAllowed(photos, u'Image Only!'), FileRequired(u'Choose a file!')])
+    submit = SubmitField(u'Upload')
 
