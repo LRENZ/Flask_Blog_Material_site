@@ -28,6 +28,7 @@
 
 {% include 'nav.html' %}
 
+
   <script type="text/javascript">
   $(document).ready(function(){
     $('.modal').modal();
@@ -46,6 +47,7 @@
 }); 
 
   </script>
+{% include 'no_script.html' %}
 	
 	{% block content %}
             <div class="section">
@@ -170,6 +172,7 @@
   {{ enddiv() }}
 
 {% endblock %}
+
 {% include 'footer.html' %}
 {% endblock %}
 
