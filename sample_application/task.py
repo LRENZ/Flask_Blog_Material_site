@@ -8,6 +8,7 @@ from sample_application import celery,mail
 #import celery
 from flask import current_app,Flask
 from flask_mail import Mail, Message
+import requests
 
 
 
@@ -39,3 +40,13 @@ def long_task(self):
         time.sleep(1)
     return {'current': 100, 'total': 100, 'status': 'Task completed!',
             'result': 42}
+
+
+@celery.task(bind=True)
+def get_image_tag(url):
+    api_key = 'acc_a6fc62ea0ee4c8c'
+    api_secret = '3ac6a388fbb443180b66b7f2f5c3420d'
+    image_url = url
+    response = requests.get('https://api.imagga.com/v1/tagging?url=%s' % image_url,
+                            auth=(api_key, api_secret))
+    return response.json()

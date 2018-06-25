@@ -10,6 +10,12 @@
 {%- endblock scripts %}
 
 {% include 'nav.html' %}
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
 
   <div class="section white-text">
 	{{ container() }}
@@ -17,8 +23,8 @@
 				{{ col(['s12', 'm6','l6']) }}
 
 <h1>Upload File</h1>
-<a href="{{ url_for('upload.upload_file') }}">Upload</a> /
-<a href="{{ url_for('upload.manage_file') }}">Manage</a>
+<a href="{{ url_for('upload.upload_file') }}" class = "waves-effect waves-light btn">Upload</a> /
+<a href="{{ url_for('upload.manage_file') }}" class = "waves-effect waves-light btn">Manage</a>
 <hr>
 
 <form method="POST" enctype="multipart/form-data">
