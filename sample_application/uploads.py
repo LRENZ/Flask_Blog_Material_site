@@ -1,7 +1,7 @@
 import os
 import time
 import hashlib
-from flask import Flask, render_template, redirect, url_for, request,Blueprint
+from flask import Flask, render_template, redirect, url_for, request,Blueprint,flash,jsonify
 from sample_application import photos
 from .form import  UploadForm
 from flask_login import login_required
@@ -28,9 +28,10 @@ def upload_file():
 
 
 @up.route('/manage')
+@up.route('/manage/<int:page>')
 @login_required
-def manage_file():
-    pic = picture.objects.all()
+def manage_file(page=1):
+    pic = picture.objects.paginate(page=page, per_page=12)
     #files_list = os.listdir(os.getcwd() + '/uploads')
     #file_url = [photos.url(name) for name in files_list ]
     #image_url = zip(files_list,file_url)
@@ -47,8 +48,31 @@ def open_file(filename):
 @up.route('/delete/<filename>')
 @login_required
 def delete_file(filename):
-    file_path = photos.path(filename)
-    picture.objects(file_name=filename).delete()
-    os.remove(file_path)
+    try:
+        file_path = photos.path(filename)
+        picture.objects(file_name=filename).delete()
+        os.remove(file_path)
+        flash("Pic Have Been Removed")
+    except:
+        flash("Something  Wrong When Deleted Picture")
+
     return redirect(url_for('upload.manage_file'))
+
+
+@up.route('/update/tag/<id>', methods = ['POST'])
+def update_tag():
+    pic = picture.objects(id=id).first()
+    if request.method == 'POST':
+        data = request.json
+        #access your data
+        #for key, value in data.items():
+            #key = id
+            #value = id
+
+        # run your query
+        res = {
+            'pic':pic.file_name,
+        }
+        #tags = ...
+        return jsonify(res)
 

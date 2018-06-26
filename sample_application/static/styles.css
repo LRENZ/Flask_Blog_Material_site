@@ -97,3 +97,11 @@ header, main, footer {
 
     left: 0px !important;
 }
+
+.modal {
+  display: flex;
+}
+ .modal {
+  position: relative;
+ width: auto;
+}

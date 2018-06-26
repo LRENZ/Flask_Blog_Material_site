@@ -194,8 +194,8 @@ class Contact(db.Document):
 
 
 class picture(db.Document):
-    file_name = db.StringField(max_length=64)
-    file_url = db.StringField(max_length=128)
+    file_name = db.StringField()
+    file_url = db.StringField()
     des =  db.StringField(max_length=128)
     time = db.DateTimeField(default=datetime.now)
     tag = db.ListField(db.StringField(max_length=20),reverse_delete_rule=mongoengine.PULL)
