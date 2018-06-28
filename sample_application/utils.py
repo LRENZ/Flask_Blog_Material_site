@@ -14,16 +14,16 @@ def  get_slug(text):
 def get_rate(rate):
 
     rate_dict={
-        '10':"SO SO... Amazing",
-        "9" : "早看早享受",
-        "8" : "年度良心剧集",
-        "7":   "Enjoy，非常有特点",
-        "6" : "应该还有的救",
-        "5" : "尽早跳坑",
-        "4" :"跳坑",
-        "3" : "跳坑",
-        "2" : "跳坑",
-        "1" : "跳坑",
+        '10':"Stunning Groundbreaking & Incredible,Masterpiece",
+        "9" : "Everyone Bow Down, Can Not Be Better",
+        "8" : "Amazing,Fantastic,Enjoyable Experience",
+        "7":   "Funny & Interesting",
+        "6" : "Wasn't Hoping For Much",
+        "5" : "Got Better Choice",
+        "4" :"Wasting Time",
+        "3" : "Disaster",
+        "2" : "Disaster",
+        "1" : "Disaster",
     }
     try:
         r = str(rate)

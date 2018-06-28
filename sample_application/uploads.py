@@ -59,20 +59,27 @@ def delete_file(filename):
     return redirect(url_for('upload.manage_file'))
 
 
-@up.route('/update/tag/<id>', methods = ['POST'])
-def update_tag():
-    pic = picture.objects(id=id).first()
-    if request.method == 'POST':
-        data = request.json
-        #access your data
-        #for key, value in data.items():
-            #key = id
-            #value = id
+@up.route('/update/tag/<id>', methods = ['POST','GET'])
+def update_tag(id):
+    try:
+        pic = picture.objects(id=id).first()
+        if request.method == 'POST':
+            data = request.get_json()
+            tag = [x['tag'] for x in data]
+            #access your data
+            #for key, value in data.items():
+                #key = id
+                #value = id
 
-        # run your query
-        res = {
-            'pic':pic.file_name,
-        }
-        #tags = ...
-        return jsonify(res)
+            # run your query
+            res = {
+                'pic':pic.file_name,
+                'tag': tag
+            }
+            #tags = ...
+            return jsonify(res)
+        else:
+            return "No Pic"
+    except:
+        return "Error"
 

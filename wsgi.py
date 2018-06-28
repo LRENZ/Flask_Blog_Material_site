@@ -27,6 +27,10 @@
 # supervisorctl stop gunicorn
 # supervisorctl restart gunicorn
 
+#/usr/bin/certbot renew
+
+
+
 
 
 from werkzeug.contrib.fixers import ProxyFix

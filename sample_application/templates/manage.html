@@ -57,7 +57,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
              <img  src="{{ photo.file_url }}" data-caption= {{ photo.file_name }} style="position: relative;">
                  </div>
 
-                                <div class="card-content black-text"><span>{{ photo.file_name }}</span>
+                                <div class="card-content black-text truncate"><span>{{ photo.file_name }}</span>
                                     </div>
                                 <div class="card-tabs" >
                                   <ul class="tabs tabs-fixed-width">
@@ -69,11 +69,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <div class="card-content grey lighten-4 black-text" style="overflow: auto;height:120px">
                                   <div id="{{ photo.id }}1"><span>{{ photo.file_name }}</span>
                                   </div>
-                                  <div id="{{ photo.id }}2">{{ photo.file_url }}<br>{{ photo.file_url }}<br>{{ photo.file_url }}
-                                      <br>{{ photo.file_url }}
-                                      <br>{{ photo.file_url }}
-                                      <br>{{ photo.file_url }}
-                                      <br>{{ photo.file_url }}
+                                  <div id="{{ photo.id }}2">{{ photo.file_url }}
+
                                   </div>
                                   <div id="{{ photo.id }}3">Test 3</div>
                                 </div>
@@ -101,8 +98,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 function get_chip_{{ photo.id }}a(){
                                                 try{
                                                 var da = $( "#{{ photo.id }}a").material_chip('data');
-                                                alert(da[0].tag);
-                                                return da
+                                                //alert(da[0].tag);
+                                                //return da
+                                                $.ajax({
+                                                            url: '/update/tag/{{ photo.id }}',
+                                                            type: 'POST',
+                                                            dataType: 'json',
+                                                            contentType: 'application/json; charset=utf-8',
+                                                            data: JSON.stringify(da),
+                                                            success: function(response){
+                                                                Materialize.toast('We Change That Pic:'+response.pic, 8000,'rounded');
+                                                            },
+                                                            error: function() {
+                                                                            $(this).html("error!");
+                                                                        }
+                                                        });
                                                 }
                                                 catch(err) {
                                                 }
