@@ -6,6 +6,9 @@ from sample_application import photos
 from .form import  UploadForm
 from flask_login import login_required
 from .model import picture
+from .task import detect_text_uri,detect_web_uri
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 
 up = Blueprint('upload', __name__)
@@ -21,6 +24,8 @@ def upload_file():
             #photos.save(filename, name= name+'.')
             photos.save(filename)
             picture(file_name = filename.filename,file_url = photos.url(filename.filename)).save()
+        #url = 'https://linpiner.com/_uploads/photos/6l0dknr8e8nlze1npbkv43tp9.jpg'
+        #detect_web_uri.delay(url)
         success = True
     else:
         success = False
@@ -61,25 +66,53 @@ def delete_file(filename):
 
 @up.route('/update/tag/<id>', methods = ['POST','GET'])
 def update_tag(id):
-    try:
-        pic = picture.objects(id=id).first()
-        if request.method == 'POST':
-            data = request.get_json()
-            tag = [x['tag'] for x in data]
+
+    pic = picture.objects(id=id).first()
+    if request.method == 'POST':
+        data = request.get_json()
+        tag = [ x['tag']  for x in data]
+        tag_res = [{ 'tag': x['tag'] } for x in data]
+        if pic.tag:
+            pic.tag = tag
+            pic.save()
+            mes = 'You Have Changed  Tags'
             #access your data
             #for key, value in data.items():
                 #key = id
                 #value = id
+        else:
+            pic.tag = tag
+            pic.save()
+            mes = 'You Have Added New Tags'
+
 
             # run your query
-            res = {
+        res = {
                 'pic':pic.file_name,
-                'tag': tag
+                'tag': tag_res,
+                'mes':mes
             }
             #tags = ...
-            return jsonify(res)
-        else:
-            return "No Pic"
+        return jsonify(res)
+    else:
+        return jsonify(
+            {
+                    'pic': pic.file_name,
+                    'tag': tag_res,
+                    'mes': "Post Error"
+                }
+            )
+
+
+
+
+@up.route('/get/tag/<id>', methods = ['POST','GET'])
+def get_tag(id):
+    try:
+        pic = picture.objects(id=id).first()
+        tag = pic.tag
+        tag = [{'tag':x} for x in tag]
+        return jsonify({'data':tag})
     except:
-        return "Error"
+        return jsonify({'data':'error'})
 

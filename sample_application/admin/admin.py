@@ -84,6 +84,7 @@ class UserView(ModelView):
 
 class CodeView(ModelView):
     can_create = True
+    can_export = True
     can_delete = True
     column_filters = ('published', 'category')
 
@@ -186,6 +187,7 @@ class TodoView(ModelView):
     column_filters = ['done']
     can_export = True
     export_types = ['xls','csv']
+    column_searchable_list = ('title', 'text')
     create_template = 'admin/create_post.html'
     edit_template = 'admin/edit_post.html'
     column_filters = ('title', 'text', 'pub_date')
@@ -205,7 +207,9 @@ class TodoView(ModelView):
 class TagView(ModelView):
     column_filters = ['cata']
     column_filters = ('cata', 'name')
+    column_searchable_list = ('name',)
     column_sortable_list = ('cata', )
+    can_export = True
     column_choices = {
         'cata': [('Post','Post'), ('Reviews','Reviews'), ('Todo','Todo')]
     }
@@ -225,6 +229,7 @@ class FileView(ModelView):
         'path': form.FileUploadField
     }
     column_filters = ('name',)
+    column_searchable_list = ('name', )
 
     # Pass additional parameters to 'path' to FileUploadField constructor
     form_args = {
@@ -298,6 +303,7 @@ class ReviewsView(ModelView):
     can_export = True
     export_types = ['xls','csv']
 
+
     form_overrides = dict(content=CKEditorField)
     create_template = 'admin/create_post.html'
     edit_template = 'admin/edit_post.html'
@@ -369,6 +375,7 @@ class ContactView(ModelView):
         can_delete = True
         column_display_pk = True
         column_filters = ('Author','Content', 'Email')
+        column_searchable_list = ('Author','Content', 'Email')
 
         edit_template = 'admin/edit_user.html'
         form_overrides = dict(Content=CKEditorField)

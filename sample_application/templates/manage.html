@@ -107,7 +107,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                             contentType: 'application/json; charset=utf-8',
                                                             data: JSON.stringify(da),
                                                             success: function(response){
-                                                                Materialize.toast('We Change That Pic:'+response.pic, 8000,'rounded');
+                                                             var json = JSON.stringify(response['tag'])
+
+
+
+                                                            //$("#{{ photo.id }}a").material_chip({
+                                                                  //data: json
+                                                                  //});
+
+
+
+
+                                                                  console.log(json);
+                                                                  //location.reload();
+
+                                                                Materialize.toast("You Have Changed Tag", 8000,'rounded');
                                                             },
                                                             error: function() {
                                                                             $(this).html("error!");
@@ -119,12 +133,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 }
 
                                                 </script>
+
                                             <script type="text/javascript">
 
+                                                function test{
+
+
+
+                                                //$.ajax({
+                                                            //url: '/get/tag/{{ photo.id }}',
+                                                            //type: 'GET',
+                                                            //dataType: 'json',
+                                                            //contentType: 'application/json; charset=utf-8',
+
+                                                            //success: function(response){
+
+                                                                //var obj = JSON.stringify(response['data'])
+                                                                //alert(obj)
+                                                                //var data = obj
+                                                                     //$("#{{ photo.id }}a").material_chip({
+                                                                  //data: obj.toString()
+                                                                  //});
+                                                                  //Materialize.toast("fetch the tag", 8000,'rounded');
+                                                            //},
+                                                           // error: function() {
+                                                                            //alert("error!");
+                                                                        //}
+                                                        //});
+                                                }
+
+                                            </script>
+
+
+                                                  <script type="text/javascript">
                                                 function get_chipdata_{{ photo.id }}a(){
                                                 try{
                                                                   $("#{{ photo.id }}a").material_chip({
-
                                                                   {% if photo.tag %}
                                                                   data: [
                                                                   {% for tag in photo.tag %}
@@ -148,7 +192,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 catch(err) {
                                                 }
                                                 }
-
                                             </script>
 
 

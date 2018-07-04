@@ -66,3 +66,5 @@ def taskstatus(task_id):
             'status': str(task.info),  # this is the exception raised
         }
     return jsonify(response)
+
+

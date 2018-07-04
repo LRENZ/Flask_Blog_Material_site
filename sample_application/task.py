@@ -9,6 +9,8 @@ from sample_application import celery,mail
 from flask import current_app,Flask
 from flask_mail import Mail, Message
 import requests
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 
 
@@ -50,3 +52,108 @@ def get_image_tag(url):
     response = requests.get('https://api.imagga.com/v1/tagging?url=%s' % image_url,
                             auth=(api_key, api_secret))
     return response.json()
+
+
+
+import io
+import os
+from pprint import pprint
+# Imports the Google Cloud client library
+from google.cloud import vision
+from google.cloud.vision import types
+
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "E:\google\My Project-eea7a58f17ce.json"
+
+@celery.task
+def detect_web_uri(uri):
+    """Detects web annotations in the file located in Google Cloud Storage."""
+    client = vision.ImageAnnotatorClient()
+    image = vision.types.Image()
+    image.source.image_uri = uri
+
+    response = client.web_detection(image=image)
+    annotations = response.web_detection
+
+    if annotations.best_guess_labels:
+        for label in annotations.best_guess_labels:
+            print('\nBest guess label: {}'.format(label.label))
+
+    if annotations.pages_with_matching_images:
+        print('\n{} Pages with matching images found:'.format(
+            len(annotations.pages_with_matching_images)))
+
+        for page in annotations.pages_with_matching_images:
+            print('\n\tPage url   : {}'.format(page.url))
+
+            if page.full_matching_images:
+                print('\t{} Full Matches found: '.format(
+                    len(page.full_matching_images)))
+
+                for image in page.full_matching_images:
+                    print('\t\tImage url  : {}'.format(image.url))
+
+            if page.partial_matching_images:
+                print('\t{} Partial Matches found: '.format(
+                    len(page.partial_matching_images)))
+
+                for image in page.partial_matching_images:
+                    print('\t\tImage url  : {}'.format(image.url))
+
+    if annotations.web_entities:
+        print('\n{} Web entities found: '.format(
+            len(annotations.web_entities)))
+
+        for entity in annotations.web_entities:
+            print('\n\tScore      : {}'.format(entity.score))
+            print(u'\tDescription: {}'.format(entity.description))
+
+    if annotations.visually_similar_images:
+        print('\n{} visually similar images found:\n'.format(
+            len(annotations.visually_similar_images)))
+
+        for image in annotations.visually_similar_images:
+            print('\tImage url    : {}'.format(image.url))
+
+@celery.task
+def detect_labels_uri(uri):
+    """Detects labels in the file located in Google Cloud Storage or on the
+    Web."""
+    client = vision.ImageAnnotatorClient()
+    image = types.Image()
+    image.source.image_uri = uri
+
+    response = client.label_detection(image=image)
+    labels = response.label_annotations
+    print('Labels:')
+
+    for label in labels:
+        print(label.description)
+
+
+
+@celery.task
+def detect_text_uri(uri):
+    """Detects text in the file located in Google Cloud Storage or on the Web.
+    """
+    print(uri)
+    client = vision.ImageAnnotatorClient()
+    image = types.Image()
+    image.source.image_uri = uri
+
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
+    print('Texts:')
+
+    for text in texts:
+        print('\n"{}"'.format(text.description))
+
+        vertices = (['({},{})'.format(vertex.x, vertex.y)
+                    for vertex in text.bounding_poly.vertices])
+
+        print('bounds: {}'.format(','.join(vertices)))
+
+
+
+
+
