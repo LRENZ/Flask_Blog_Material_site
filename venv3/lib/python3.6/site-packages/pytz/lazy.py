@@ -1,4 +1,5 @@
 from threading import RLock
+
 try:
     from collections.abc import Mapping as DictMixin
 except ImportError:  # Python < 3.3
@@ -6,7 +7,6 @@ except ImportError:  # Python < 3.3
         from UserDict import DictMixin  # Python 2
     except ImportError:  # Python 3.0-3.3
         from collections import Mapping as DictMixin
-
 
 # With lazy loading, we might end up with multiple threads triggering
 # it at the same time. We need a lock.
@@ -104,6 +104,7 @@ class LazyList(list):
                 finally:
                     _fill_lock.release()
                 return getattr(list, name)(self, *args, **kw)
+
             return _lazy
 
         for name in cls._props:
@@ -111,6 +112,7 @@ class LazyList(list):
 
         new_list = LazyList()
         return new_list
+
 
 # Not all versions of Python declare the same magic methods.
 # Filter out properties that don't exist in this version of Python
@@ -158,6 +160,7 @@ class LazySet(set):
                 finally:
                     _fill_lock.release()
                 return getattr(set, name)(self, *args, **kw)
+
             return _lazy
 
         for name in cls._props:
@@ -165,6 +168,7 @@ class LazySet(set):
 
         new_set = LazySet()
         return new_set
+
 
 # Not all versions of Python declare the same magic methods.
 # Filter out properties that don't exist in this version of Python

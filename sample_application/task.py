@@ -1,19 +1,17 @@
+import logging
 import os
 import random
 import time
+
+import requests
 from flask import Flask, request, render_template, session, flash, redirect, \
     url_for, jsonify
-#from  import celery,mail
-from sample_application import celery,mail
-#import celery
-from flask import current_app,Flask
+from flask import current_app, Flask
 from flask_mail import Mail, Message
-import requests
-import logging
+
+from sample_application import celery, mail
+
 logging.basicConfig(level=logging.DEBUG)
-
-
-
 
 
 @celery.task
@@ -21,7 +19,8 @@ def send_async_email(msg):
     """Background task to send an email with Flask-Mail."""
 
     with current_app.app_context():
-         mail.send(msg)
+        mail.send(msg)
+
 
 @celery.task(bind=True)
 def long_task(self):
@@ -54,7 +53,6 @@ def get_image_tag(url):
     return response.json()
 
 
-
 import io
 import os
 from pprint import pprint
@@ -62,8 +60,8 @@ from pprint import pprint
 from google.cloud import vision
 from google.cloud.vision import types
 
-
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "E:\google\My Project-eea7a58f17ce.json"
+
 
 @celery.task
 def detect_web_uri(uri):
@@ -115,6 +113,7 @@ def detect_web_uri(uri):
         for image in annotations.visually_similar_images:
             print('\tImage url    : {}'.format(image.url))
 
+
 @celery.task
 def detect_labels_uri(uri):
     """Detects labels in the file located in Google Cloud Storage or on the
@@ -129,7 +128,6 @@ def detect_labels_uri(uri):
 
     for label in labels:
         print(label.description)
-
 
 
 @celery.task
@@ -149,11 +147,6 @@ def detect_text_uri(uri):
         print('\n"{}"'.format(text.description))
 
         vertices = (['({},{})'.format(vertex.x, vertex.y)
-                    for vertex in text.bounding_poly.vertices])
+                     for vertex in text.bounding_poly.vertices])
 
         print('bounds: {}'.format(','.join(vertices)))
-
-
-
-
-

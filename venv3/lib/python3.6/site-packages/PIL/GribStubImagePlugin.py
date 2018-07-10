@@ -33,7 +33,6 @@ def _accept(prefix):
 
 
 class GribStubImageFile(ImageFile.StubImageFile):
-
     format = "GRIB"
     format_description = "GRIB"
 

@@ -5,14 +5,14 @@
 {% block body %}
 {% block scripts %}
 <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <!-- Compiled and minified JavaScript -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 {%- endblock scripts %}
 
 {% include 'nav.html' %}
 
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
 	$('img').materialbox();
 	$("img").addClass("materialboxed");
@@ -32,69 +32,71 @@
   });
 
 
-  </script>
 
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 
-  <div class="section white-text">
-	{{ container() }}
-        {{ row() }}
+<div class="section white-text">
+    {{ container() }}
+    {{ row() }}
 
-<h4>File Manager</h4>
-<a href="{{ url_for('upload.upload_file') }}" class = "waves-effect waves-light btn">Upload</a> /
-<a href="{{ url_for('upload.manage_file') }}"  class = "waves-effect waves-light btn">Manage</a>
-<hr>
-       {{ utils.flashed_messages(default_category = 'info') }}
+    <h4>File Manager</h4>
+    <a href="{{ url_for('upload.upload_file') }}" class="waves-effect waves-light btn">Upload</a> /
+    <a href="{{ url_for('upload.manage_file') }}" class="waves-effect waves-light btn">Manage</a>
+    <hr>
+    {{ utils.flashed_messages(default_category = 'info') }}
 
-{% for photo in pic.items %}
-      {{ col(['s12', 'm12','l4']) }}
-        <div class="card">
-               <div class="card-image" style="position: relative;max-height:100%; height:200px;">
-             <img  src="{{ photo.file_url }}" data-caption= {{ photo.file_name }} style="position: relative;">
-                 </div>
+    {% for photo in pic.items %}
+    {{ col(['s12', 'm12','l4']) }}
+    <div class="card">
+        <div class="card-image" style="position: relative;max-height:100%; height:200px;">
+            <img src="{{ photo.file_url }}" data-caption={{ photo.file_name }} style="position: relative;">
+        </div>
 
-                                <div class="card-content black-text truncate"><span>{{ photo.file_name }}</span>
-                                    </div>
-                                <div class="card-tabs" >
-                                  <ul class="tabs tabs-fixed-width">
-                                    <li class="tab black-text"><a href="#{{ photo.id }}1" class="active">Tab 1</a></li>
-                                    <li class="tab black-text"><a  href="#{{ photo.id }}2">Tab 2</a></li>
-                                    <li class="tab black-text"><a href="#{{ photo.id }}3">Tab 3</a></li>
-                                  </ul>
-                                </div>
-                                <div class="card-content grey lighten-4 black-text" style="overflow: auto;height:120px">
-                                  <div id="{{ photo.id }}1"><span>{{ photo.file_name }}</span>
-                                  </div>
-                                  <div id="{{ photo.id }}2">{{ photo.file_url }}
+        <div class="card-content black-text truncate"><span>{{ photo.file_name }}</span>
+        </div>
+        <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab black-text"><a href="#{{ photo.id }}1" class="active">Tab 1</a></li>
+                <li class="tab black-text"><a href="#{{ photo.id }}2">Tab 2</a></li>
+                <li class="tab black-text"><a href="#{{ photo.id }}3">Tab 3</a></li>
+            </ul>
+        </div>
+        <div class="card-content grey lighten-4 black-text" style="overflow: auto;height:120px">
+            <div id="{{ photo.id }}1"><span>{{ photo.file_name }}</span>
+            </div>
+            <div id="{{ photo.id }}2">{{ photo.file_url }}
 
-                                  </div>
-                                  <div id="{{ photo.id }}3">Test 3</div>
-                                </div>
-
-
+            </div>
+            <div id="{{ photo.id }}3">Test 3</div>
+        </div>
 
 
+        <div class="card-action center">
+            <a href="{{ url_for('upload.delete_file', filename=photo.file_name ) }}"
+               class="waves-effect waves-light btn">del</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#{{ photo.id }}" id='{{ photo.id }}id'
+               onclick="get_chipdata_{{ photo.id }}a()">Edit</a>
+        </div>
+        <!-- Modal Structure -->
 
-                      <div class="card-action center">
-                       <a href="{{ url_for('upload.delete_file', filename=photo.file_name ) }}" class = "waves-effect waves-light btn">del</a>
-                          <a class="waves-effect waves-light btn modal-trigger" href="#{{ photo.id }}" onclick="get_chipdata_{{ photo.id }}a()">Edit</a>
-                          </div>
-                                                  <!-- Modal Structure -->
-
-                                      <div id="{{ photo.id }}" class="modal modal-fixed-footer">
-                                        <div class="modal-content black-text flow-text">
-                                          <p>{{ photo.file_url }} </p>
-                                          <p>A bunch of text</p>
-
-
-                                              <div class="chips chips-placeholder chips-initial" id = '{{ photo.id }}a'></div>
+        <div id="{{ photo.id }}" class="modal modal-fixed-footer">
+            <div class="modal-content black-text flow-text">
+                <p>{{ photo.file_url }} </p>
+                <p>A bunch of text</p>
 
 
-                                            <script type="text/javascript">
+                <div class="chips chips-placeholder chips-initial" id='{{ photo.id }}a'></div>
+
+
+                <script type="text/javascript">
                                                 function get_chip_{{ photo.id }}a(){
                                                 try{
                                                 var da = $( "#{{ photo.id }}a").material_chip('data');
@@ -132,9 +134,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 }
                                                 }
 
-                                                </script>
 
-                                            <script type="text/javascript">
+                </script>
+
+                <script type="text/javascript">
 
                                                 function test{
 
@@ -162,12 +165,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                         //});
                                                 }
 
-                                            </script>
+
+                </script>
 
 
-                                                  <script type="text/javascript">
+                <script type="text/javascript">
                                                 function get_chipdata_{{ photo.id }}a(){
                                                 try{
+
+                                                                   dataLayer.push({ 'pic_name' : '{{ photo.file_name }}'});
                                                                   $("#{{ photo.id }}a").material_chip({
                                                                   {% if photo.tag %}
                                                                   data: [
@@ -192,33 +198,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 catch(err) {
                                                 }
                                                 }
-                                            </script>
 
+                </script>
 
-
-
-
-
-
-
-                                        </div>
-                                        <div class="modal-footer">
-                                          <a  class="modal-close waves-effect waves-green btn-flat" onclick="get_chip_{{ photo.id }}a()" >Submit</a>
-                                        </div>
-                                      </div>
-
-
-
-</div>
-       </div>
-                  {% endfor %}
 
             </div>
+            <div class="modal-footer">
+                <a class="modal-close waves-effect waves-green btn-flat" onclick="get_chip_{{ photo.id }}a()">Submit</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endfor %}
+
+</div>
 {{ut.render_pagination(pic,"upload.manage_file") }}
-                </div>
-                       </div>
-
-
+</div>
+</div>
 
 
 {% include 'footer.html' %}

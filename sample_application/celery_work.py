@@ -1,10 +1,12 @@
 from flask import Flask, request, render_template, session, flash, redirect, \
-    url_for, jsonify,Blueprint
-ap =  Blueprint('ap', __name__)
-from flask_mail import  Message
+    url_for, jsonify, Blueprint
 
-#import  app.task as at
-from .task import long_task,send_async_email
+ap = Blueprint('ap', __name__)
+from flask_mail import Message
+
+# import  app.task as at
+from .task import long_task, send_async_email
+
 
 @ap.route('/celery', methods=['GET', 'POST'])
 def celery_index():
@@ -31,7 +33,7 @@ def celery_index():
 
 @ap.route('/longtask', methods=['POST'])
 def longtask():
-    #from app.task import long_task
+    # from app.task import long_task
     task = long_task.apply_async()
     return jsonify({}), 202, {'Location': url_for('.taskstatus',
                                                   task_id=task.id)}
@@ -39,7 +41,7 @@ def longtask():
 
 @ap.route('/status/<task_id>')
 def taskstatus(task_id):
-    #from app.task import long_task
+    # from app.task import long_task
     task = long_task.AsyncResult(task_id)
     if task.state == 'PENDING':
         response = {
@@ -66,5 +68,3 @@ def taskstatus(task_id):
             'status': str(task.info),  # this is the exception raised
         }
     return jsonify(response)
-
-

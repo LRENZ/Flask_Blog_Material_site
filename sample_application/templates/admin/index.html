@@ -53,60 +53,56 @@ input[type="password"] {
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
+
 </style>
-<div class = "container">
+<div class="container">
     <div class="wrapper">
-	<div class="row-fluid">
-		<div>
-        {% if current_user.is_authenticated %}
-        <h1>LRENZ</h1>
-        <p>This is the backend of Sited.</p>
-        <p>You can operate all Models here</p>
-        {% else %}
-      <form action="" method="post" name="Login_Form" class="form-signin">       
-		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
-			  <hr class="colorgraph"><br>
-            {{ form.hidden_tag() if form.hidden_tag }}
-            {% for f in form if f.type != 'CSRFTokenField' %}
-                <div>
-                    {{ f.label }}
-                    <span> {{ f }} </span>
-                    {% if f.errors %}
-                    <ul>
-                        {% for e in f.errors %}
-                        <li>{{ e }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
+        <div class="row-fluid">
+            <div>
+                {% if current_user.is_authenticated %}
+                <h1>LRENZ</h1>
+                <p>This is the backend of Sited.</p>
+                <p>You can operate all Models here</p>
+                {% else %}
+                <form action="" method="post" name="Login_Form" class="form-signin">
+                    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+                    <hr class="colorgraph">
+                    <br>
+                    {{ form.hidden_tag() if form.hidden_tag }}
+                    {% for f in form if f.type != 'CSRFTokenField' %}
+                    <div>
+                        {{ f.label }}
+                        <span> {{ f }} </span>
+                        {% if f.errors %}
+                        <ul>
+                            {% for e in f.errors %}
+                            <li>{{ e }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+
+
+                </form>
+                {{ link | safe }}
+                {% endif %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-center">
+                            <a class="btn btn-primary" href="/" role="button">Back To Index</a>
+                            <a class="btn btn-primary" href="{{ url_for('admin.logout_view') }}">Log out</a>
+                        </div>
+                    </div>
                 </div>
-            {% endfor %}
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 
 
+            </div>
 
 
-
-			
-        </form>
-        {{ link | safe }}
-        {% endif %}
-<div class="row">
-  <div class="col-sm-12">
-    <div class="text-center">
-      <a class="btn btn-primary" href="/" role="button">Back To Index</a>
-        <a class="btn btn-primary" href="{{ url_for('admin.logout_view') }}">Log out</a>
+        </div>
     </div>
-  </div>
-</div>
-
-
-
-    </div>
-
-
-    
-   </div>
-   </div>
 </div>
 
 

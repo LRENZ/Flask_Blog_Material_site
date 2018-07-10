@@ -1,1 +1,2 @@
-/usr/local/python3/lib/python3.6/stat.py
+/ usr / local / python3 / lib / python3
+.6 / stat.py

@@ -7,30 +7,23 @@
 {% import "utils.html" as ut %}
 
 
-
 {% include 'header.html' %}
-
-
-
-
-
-
 
 
 {% block body %}
 
 {% block scripts %}
 <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <!-- Compiled and minified JavaScript -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 
 {%- endblock scripts %}
 
 {% include 'nav.html' %}
 
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
     $('.modal').modal();
 	$('.slider').slider({
@@ -71,90 +64,87 @@
   });
 
 
-  </script>
 
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-	
-	{% block content %}
 
-    <div class="section">
+{% block content %}
 
-            {{ container() }}
-	        {{ row() }}
-                <ul class="collapsible expandable z-depth-5 hoverable">
-                     <li class  = "active">
-                      <div class="collapsible-header "><i class="material-icons">details</i>The News & Info</div>
-                      <div class="collapsible-body white-text "><span>Interesting Info & Breaking News & Some translations From me</span></div>
-                    </li>
-                    
-                 
-                  </ul>
-        {{ row() }}
-				{{ col(['s12', 'm12','l6','offset-l3']) }}
-	<div class="search_bar">
+<div class="section">
+
+    {{ container() }}
+    {{ row() }}
+    <ul class="collapsible expandable z-depth-5 hoverable">
+        <li class="active">
+            <div class="collapsible-header "><i class="material-icons">details</i>The News & Info</div>
+            <div class="collapsible-body white-text ">
+                <span>Interesting Info & Breaking News & Some translations From me</span></div>
+        </li>
 
 
+    </ul>
+    {{ row() }}
+    {{ col(['s12', 'm12','l6','offset-l3']) }}
+    <div class="search_bar">
 
 
-
-</div>
+    </div>
 </div>
 </div>
 
 </div>
 
-        {{ enddiv() }}
-        {{ enddiv() }}
+{{ enddiv() }}
+{{ enddiv() }}
 
 {{ enddiv() }}
 
 
-
-	
-	
-  <div class="section">
-	{{ container() }}
-      <div class="center white-text"><span class="card-title"><h4><strong>Archive : News</strong></h4></span></div>
-        {{ row() }}
-                {% if post %}
-                     {% for p in post.items %}
-                                {{ col(['s12', 'm6','l6','scrollspy']) }}
-                                    {{ ut.card_with_image_news(title =p.title,
-									content = p.content,
-									image = p.image,
-									tags =p.tags,
-                                    rate = p.rate,
-									actions = [p.title]
-									)}}
-                                {{ enddiv() }}
-                     {% endfor %}
-                {% else %}
-                                {{ col(['s12', 'm12','l12']) }}
-                                {{ utils.card('Not Post','not post',[['/','index']]) }}
-                                {{ enddiv }}
-                {% endif %}
-      {{ enddiv() }}
-	  
+<div class="section">
+    {{ container() }}
+    <div class="center white-text"><span class="card-title"><h4><strong>Archive : News</strong></h4></span></div>
+    {{ row() }}
+    {% if post %}
+    {% for p in post.items %}
+    {{ col(['s12', 'm6','l6','scrollspy']) }}
+    {{ ut.card_with_image_news(title =p.title,
+    content = p.content,
+    image = p.image,
+    tags =p.tags,
+    rate = p.rate,
+    actions = [p.title]
+    )}}
+    {{ enddiv() }}
+    {% endfor %}
+    {% else %}
+    {{ col(['s12', 'm12','l12']) }}
+    {{ utils.card('Not Post','not post',[['/','index']]) }}
+    {{ enddiv }}
+    {% endif %}
+    {{ enddiv() }}
 
 
-      	{{ container() }}
-        {{ row() }}
+    {{ container() }}
+    {{ row() }}
 
-      {{ut.render_pagination(post,"reviews.review_list") }}
+    {{ut.render_pagination(post,"reviews.review_list") }}
 
-        {{ enddiv() }}
-  {{ enddiv() }}
-	 
-  {{ enddiv() }}
-  {{ enddiv() }}
+    {{ enddiv() }}
+    {{ enddiv() }}
 
-{% endblock %}
-{% include 'footer.html' %}
-{% endblock %}
+    {{ enddiv() }}
+    {{ enddiv() }}
+
+    {% endblock %}
+    {% include 'footer.html' %}
+    {% endblock %}
 
 
 

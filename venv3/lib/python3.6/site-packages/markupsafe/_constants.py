@@ -9,7 +9,6 @@
     :license: BSD, see LICENSE for more details.
 """
 
-
 HTML_ENTITIES = {
     'AElig': 198,
     'Aacute': 193,

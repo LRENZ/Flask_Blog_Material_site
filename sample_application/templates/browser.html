@@ -6,32 +6,34 @@
 {% block body %}
 {% block scripts %}
 <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <!-- Compiled and minified JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 {%- endblock scripts %}
 
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 {% include 'nav.html' %}
 
-  <div class="section">
-	{{ container() }}
-        {{ row() }}
-				{{ col(['s12', 'm6','l6']) }}
-                                <h1 class="'white-text">File Browser</h1>
-                                <a href="{{ url_for('upload.upload_file') }}">Upload</a> /
-                                <a href="{{ url_for('upload.manage_file') }}">Manage</a>
-                                <hr>
+<div class="section">
+    {{ container() }}
+    {{ row() }}
+    {{ col(['s12', 'm6','l6']) }}
+    <h1 class="'white-text">File Browser</h1>
+    <a href="{{ url_for('upload.upload_file') }}">Upload</a> /
+    <a href="{{ url_for('upload.manage_file') }}">Manage</a>
+    <hr>
 
-                                <p>URL: {{ file_url }}</p>
-                                <img src="{{ file_url }}">
-      </div>
-               </div>
-                       </div>
-                                </div>
+    <p>URL: {{ file_url }}</p>
+    <img src="{{ file_url }}">
+</div>
+</div>
+</div>
+</div>
 {% include 'footer.html' %}
 {% endblock %}

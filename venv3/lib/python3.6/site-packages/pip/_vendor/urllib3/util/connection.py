@@ -1,7 +1,9 @@
 from __future__ import absolute_import
+
 import socket
-from .wait import wait_for_read
+
 from .selectors import HAS_SELECT, SelectorError
+from .wait import wait_for_read
 
 
 def is_connection_dropped(conn):  # Platform-specific

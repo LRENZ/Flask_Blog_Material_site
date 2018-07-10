@@ -1,6 +1,7 @@
-from sample_application import create_app,celery
-
 from celery import Celery
+
+from sample_application import create_app, celery
+
 
 def make_celery(app):
     celery = Celery(

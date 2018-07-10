@@ -1,46 +1,54 @@
 <head>
     {% if post %}
-        {% if post.title %}
-         <title> {{ post.title | upper }} </title>
-        {% else %}
-        <title>{{ request.path | remove_slash | upper }}</title>
-        {% endif %}
+    {% if post.title %}
+    <title> {{ post.title | upper }} </title>
+    {% else %}
+    <title>{{ request.path | remove_slash | upper }}</title>
+    {% endif %}
     {% else %}
     <title>{{ request.path |get_header_title | upper}}</title>
     {% endif %}
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='code.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='code.css') }}">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
 
-	<script>hljs.initHighlightingOnLoad();</script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta charset="UTF-8">  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-  <meta name="description" content="Linpiner.com-LRENZ Personal Site,Share Infomation and Resource,Writing Reviews For Game.Music,Movies,TV Series,Post,And News,">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+          content="Linpiner.com-LRENZ Personal Site,Share Infomation and Resource,Writing Reviews For Game.Music,Movies,TV Series,Post,And News,">
     <!-- Add to homescreen for Chrome on Android -->
-    <meta name="keywords" content="Linpiner.com,LRENZ,Infomation,Resource,Game.Music,Movies,TV Series,Post,And News,linpiner">
-  <meta name="mobile-web-app-capable" content="yes">  
-  
-    <!-- Add to homescreen for Safari on iOS -->  
-   <meta name="apple-mobile-web-app-capable" content="yes">  
-   <meta name="apple-mobile-web-app-status-bar-style" content="black">  
-   <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <meta name="keywords"
+          content="Linpiner.com,LRENZ,Infomation,Resource,Game.Music,Movies,TV Series,Post,And News,linpiner">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <script>
+  dataLayer = [];
+
+    </script>
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WKWF77X');</script>
-<!-- End Google Tag Manager -->
-   
-       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-	
+})(window,document,'script','dataLayer','GTM-WKWF77X');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+
 </head>
