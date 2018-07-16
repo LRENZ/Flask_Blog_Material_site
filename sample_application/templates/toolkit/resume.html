@@ -11,20 +11,43 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+          <script>
+  dataLayer = [];
+
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WKWF77X');
+    </script>
+    <!-- End Google Tag Manager -->
+
     </head>
 
     <body>
+
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-      <div class="container">
+      <div class="container animated  swing">
 
      <div class="row">
 
-      <div class="col s12 l4 left_content">
+      <div class="col s12 l4 left_content ">
 
         <div class="collection card-panel" style="padding: 0px">
           <div class="collection-header about_me_header">
@@ -41,17 +64,25 @@
           </div>
 
           <div class="divider"></div>
+            <a href="#"  class="collection-item avatar">
+            <i class="material-icons prefix icon">location_city</i>
+            <span class="title">GuangZhou</span>
+            Live In
+          </a>
 
-          <a href="mailto:stan.kocken+cv@gmail.com" target="_blank" class="collection-item avatar">
+          <div class="divider"></div>
+
+          <a href="#" target="_blank" class="collection-item avatar">
             <img src="{{ url_for('static', filename='img/ico_email.svg') }}" class="icon">
             <span class="title">lrenz1116@gmail.com</span>
-            Personal
+            Personal Email
           </a>
+
            <div class="divider"></div>
           <a href="https://www.linpiner.com/post" target="_blank" class="collection-item avatar">
             <img src="/static/img/ico_web.svg" class="icon">
             <span class="title">Linpiner.com</span>
-            Personal
+            Personal Website
           </a>
 
           <div class="divider"></div>
@@ -59,7 +90,7 @@
           <a href="https://github.com/LRENZ" target="_blank" class="collection-item avatar">
             <img src="/static/img/ico_github.svg" class="icon">
             <span class="title">LRENZ</span>
-            GitHub
+            My GitHub
           </a>
 
           <div class="divider"></div>
@@ -70,6 +101,7 @@
           </a>
 
 
+
           <ul class="collapsible z-depth-0" data-collapsible="accordion">
             <li>
           <a class="collection-item avatar collapsible-header">
@@ -77,44 +109,42 @@
             <span class="title">@lrezhong</span>
             WeChat
           </a>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            <div class="collapsible-body center">
+              <img src="{{ url_for('static', filename='images/bl_1024.jpg') }}" alt="wechat qcode" class="responsive-img">
+            </div>
             </li>
             </ul>
 
 
 
 
+
         </div>
 
-        <div class="card-panel cv_card">
+        <div class="card-panel cv_card hoverable">
           <img src="/static/img/ico_interest.svg" class="icon">
           <span class="title">Interests</span>
 
           <div class="skills">
 
-              <span class="title">Aviation</span>
-              Private Pilot Licence (PPL) in France<br />
-              Commercial Pilot Licence (CPL) in Canada
+              <span class="title">Musics</span>
+              Radiohead Coldplay & Lorde Fans<br />
+              By the way, I Can Play Guitar
+              <span class="title">Movies</span>
+            Also Like to Watching Movies<br />
+              My Faveritor :Blade Runner 2049
 
-              <span class="title">Photography</span>
-              <a href="https://www.flickr.com/photos/stankoc?utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="at">#Flickr</a> stankoc
 
           </div>
 
         </div>
 
-        <div class="card-panel cv_card">
+        <div class="card-panel cv_card hoverable">
           <img src="/static/img/ico_language.svg" class="icon">
           <span class="title">Language</span>
           <div class="skills">
-
-              <span class="title">French</span>
-              Native Language
-
               <span class="title">English</span>
-              Good skills, both written and oral.<br />
-              <a href="https://www.ets.org/toeic?utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="at">#TOEIC</a> (2010): 835/990<br />
-              Daily usage since November 2012
+              CET-6<br /> Good Skills, Always Hanging Around Twitter, Pitchfork, Reddit, etc.
 
           </div>
         </div>
@@ -122,47 +152,65 @@
       </div>
 
 
-      <div class="col s12 l8">
+      <div class="col s12 l8 ">
 
-        <span class="cv_title">Android Developer</span>
+        <span class="cv_title center">PPC Marketing & Data Analystic</span>
 
-        <div class="card-panel cv_card">
+        <div class="card-panel cv_card hoverable">
           <img src="/static/img/ico_work.svg" class="icon">
           <span class="title">Work Experience</span>
 
-          <div class="date_container">
+          <div class="date_container "">
 
-            <span class="date"><div class="round_mark"></div>Nov 2012 - Present</span>
+            <span class="date"><div class="round_mark"></div>Nov 2017 - Present  &nbsp &nbsp GuangZhou</span>
             <div class="date_entry left_border">
-              <span class="title">Android Lead Developer <a href="http://www.preplaysports.com?utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="at">@PrePlay</a></span>
-              <span class="location"><img src="/static/img/ico_map.svg">Paris, France and New York City, USA</span>
+              <span class="title">PPC 广告投放 <a href="" target="_blank" class="at"> @Qpidnetwork </a></span>
+
+              <span class="location"><i class="material-icons icon">work</i>
+                <span class="loc" style="margin-left:50px">QN</span>
+              </span>
 
               <div class="app_container">
-                <a href="https://play.google.com/store/apps/details?id=com.preplay.android.mlb&utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="app_entry">
-                  <img src="/static/img/ico_app_preplay_mlb.png">
-                  <span class="title">MLB Preplay</span>
-                  50k+ downloads
+                <ul>
+                   <li><a href="#" target="_blank" class="app_entry">
+                  <img src="https://image.flaticon.com/icons/png/128/732/732202.png">
+                  <span class="title">优化Adwords Ads </span>
+                  管理优化 Seach & Display Compaign，分析日常数据
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.preplay.android.nhl&utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="app_entry">
-                  <img src="/static/img/ico_app_preplay_nhl.png">
-                  <span class="title">NHL Preplay</span>
-                  10k+ downloads
+                     </li>
+
+                <li><a href="#" target="_blank" class="app_entry">
+                  <img src="https://index.tnwcdn.com/images/4381a3c63c19f7b673667aee324cca61d8e6d5b4.png">
+                  <span class="title">优化 Facebook Ads</span>
+                  管理优化 Image Ads，分析日常数据
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.preplay.android.football&utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="app_entry">
-                  <img src="/static/img/ico_app_preplay_football.png">
-                  <span class="title">Preplay Football</span>
-                  5k+ downloads
+                  </li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.preplay.android.football&utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="app_entry">
+                  <img src="data:image/png;base64,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">
+                  <span class="title">优化 Bing Ads</span>
+                  管理优化 Search Ads，分析日常数据
                 </a>
+                  </li>
+
+                    <li><a href="https://play.google.com/store/apps/details?id=com.preplay.android.football&utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="app_entry">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAeFBMVEX////FxcXbRDfw8PBChfSKioqoqKjm5ua7u7uPj4/d4uh8qfCsrKzi4uLWeHDv5eTgZVrGvbzJraq40fv43NlfedBMi/Nlm/bn8P5xo/fYTULkcmjcV0z5+fnPlpHkhX3On5vz9/7HX2fV1dXs0M366ObmfnXQXlQbTFmJAAACBklEQVR4nO3Y63KCMBAFYAIoiFrr/VZ7v7z/G1ZRUWJSy+5mtx33/MqM45zPJMgkUaTRaDQajUZTZbxMA2c5/qF+MQ9dv8t84e2fcfSn6cwnYPn9u8w968/Vn6bufRB8/52ydAKqj7tFlhXdyzFhXP0vVX9WpmuP2QDFvrSwx6EBxyWYZYdY49sBiC+B2CYUfwyj619TwLVMX+MmWU+IAdNVo/44Xk1IAY37t3NACQD0x3ENkKDyDuknBAweIP10gME9qJ8MAO2nAoD7iQDwfjfANMwQ3k8DQPSTAO4Q/RQAVD8BANePByD70QBsPxaA7kcCHtH9OMAzvh8HgL2ACQEE/f8cIL4E4ptQ/DGU/yOS/yuWfxmFeR03y5M0ACegACRraQDiWPBHDyacAvxjuA/4cEQFAAvIAGZIeEEBApgR6Irmgw4AExDOAEiwJgU0F1gXlWiAGX016v+0rmrxAJN3Wu0yLU/ah0SuEAC2AmGAyXvCANPvCQOSUiAJKAWigJ1AFrAVCAOSfkcYkOQeARvAeAR8AI+AEeAWcAKcAlaAS8ALcAiYAZcCbsCFgB1gC/gBlkAAUBdIAGoCEcC5QAZwJhACnARSgEogBjgK5AAHwa8AgbI/sQgCagIRwJkgdwI2fII3JyD8FBwF7gngE/Q2PgCPIPf3c+yDzLP+Go1Go9Fobjvfm1N00E/nxIAAAAAASUVORK5CYII=">
+                  <span class="title">负责追踪代码部署</span>
+                  部署再营销代码，部署转化追踪代码，部署FB Pixel代码，熟悉Google Tag Manager 和 Google Analytics
+                </a>
+                  </li>
+
+                </ul>
+
               </div>
 
             </div>
 
-            <span class="date"><div class="round_mark"></div>Jan 2011 - Nov 2012</span>
+            <span class="date">
             <div class="date_entry left_border">
-              <span class="title">Android Lead Developer <a href="http://www.backelite.com?utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="at">@Backelite</a></span>
-              <span class="location"><img src="/static/img/ico_map.svg">Paris, France</span>
+              <span class="title">具体工作内容</span>
 
-              <div class="app_container">
+
+              <div class="app_container ">
                 <a href="https://play.google.com/store/apps/details?id=com.dailymotion.dailymotion&utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="app_entry">
                   <img src="/static/img/ico_app_dailymotion.png">
                   <span class="title">Dailymotion</span>
@@ -188,27 +236,62 @@
                   <span class="title">Eurostar</span>
                   100k+ downloads<br />(until v1)
                 </a>
-                <span class="app_entry">… and more</span>
+
               </div>
 
             </div>
 
-            <span class="date"><div class="round_mark"></div>Jun 2010 - Jan 2011</span>
-            <div class="date_entry">
-              <span class="title">Android / Windows Mobile / J2EE Developer <a href="http://www.chronolink.fr?utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="at">@Chronolink</a></span>
-              <span class="location"><img src="/static/img/ico_map.svg">Nantes, France</span>
+            <span class="date"><div class="round_mark"></div>Jun 2017 - Sep 2017</span>
+            <div class="date_entry ">
+              <span class="title">产品实习生 <a href="" target="_blank" class="at">@乔韵文化</a></span>
+              <span class="location"><img src="/static/img/ico_map.svg">广州</span>
+                   <a href="" target="_blank" class="app_entry">
+                  <img src="/static/img/ico_app_eurostar.png">
+                  <span class="title">C果果直播产品优化</span>
+                  负责产品优化调研，用户体验报告，用户体验调研，商业需求文档跟进
+                </a>
             </div>
 
           </div>
         </div>
 
-        <div class="card-panel cv_card">
+          <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_skills.svg" class="icon">
+          <span class="title">Professional Skills</span>
+          <div class="skills">
+
+              <span class="title">PPC</span>
+              接触和管理过Google Adwords广告，Facebook 广告，Bing 广告,熟悉相关的广告优化知识
+
+               <span class="title">营销代码部署，流量追踪</span>
+
+              熟悉掌握营销代码的部署，包括Google Adwords Tag，Google analysitc，Facebook Pixel等代码的部署
+               熟悉掌握Google Tag Manager
+
+            </ul>
+
+
+              <span class="title">Python</span>
+              熟悉掌握Python并运用到Web实践（flask, javascript），数据分析（pandas，mongodb），管理广告（Api请求，脚本处理）
+
+              <span class="title">数据分析</span>
+              熟练使用Excel和Pandas处理和分析数据，接触过相关的数据库知识（MYSQL，Mongodb）
+              了解R和matlab，学习过统计知识
+
+
+
+
+
+          </div>
+        </div>
+
+        <div class="card-panel cv_card hoverable">
           <img src="/static/img/ico_education.svg" class="icon">
           <span class="title">Education</span>
 
-          <div class="date_container">
+          <div class="date_container ">
 
-            <span class="date"><div class="round_mark"></div>2008 - 2011</span>
+            <span class="date"><div class="round_mark"></div>2013 - 2017</span>
             <div class="date_entry left_border">
               <span class="title">Master of Science in Engineering <a href="http://web.polytech.univ-nantes.fr?utm_source=stankocken_cv&utm_medium=cv&utm_campaign=stankocken_cv" target="_blank" class="at">@Polytech’Nantes</a></span>
               <span class="location"><img src="/static/img/ico_map.svg">Nantes, France</span>
@@ -226,7 +309,7 @@
 
         </div>
 
-        <div class="card-panel cv_card">
+        <div class="card-panel cv_card hoverable">
           <img src="/static/img/ico_personnal_project.svg" class="icon">
           <span class="title">Personal Projects</span>
 
@@ -255,22 +338,7 @@
 
         </div>
 
-        <div class="card-panel cv_card">
-          <img src="/static/img/ico_skills.svg" class="icon">
-          <span class="title">Professional Skills</span>
-          <div class="skills">
 
-              <span class="title">Mobile</span>
-              Android (Java), Windows Phone (C#), Windows Mobile (C#), J2ME (Java)
-
-              <span class="title">Web / Server</span>
-              PHP, HTML, Javascript (CoffeeScript, AngularJS, NodeJS), Ruby
-
-              <span class="title">Other</span>
-              WebService (REST, JSON, XML), WebSocket, CouchBase
-
-          </div>
-        </div>
       </div>
 
 

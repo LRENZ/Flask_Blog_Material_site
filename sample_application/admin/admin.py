@@ -218,20 +218,30 @@ class TagView(ModelView):
 # Administrative views
 class FileView(ModelView):
     # Override form field to use Flask-Admin FileUploadField
-    form_overrides = {
-        'path': form.FileUploadField
+    def _list_thumbnail(view, context, model, name):
+        if not model.path:
+            return ''
+        return Markup('<img src="%s">' % url_for('static',
+                                                 filename=form.thumbgen_filename(model.path)))
+
+    column_formatters = {
+        'path': _list_thumbnail
     }
+
+    #form_overrides = {
+        #'path': form.FileUploadField
+    #}
     column_filters = ('name',)
     column_searchable_list = ('name',)
 
     # Pass additional parameters to 'path' to FileUploadField constructor
-    form_args = {
-        'path': {
-            'label': 'File',
-            'base_path': file_path,
-            'allow_overwrite': False
-        }
-    }
+    #form_args = {
+        #'path': {
+            #'label': 'File',
+            #'base_path': file_path,
+            #'allow_overwrite': False
+        #}
+   # }
 
 
 class ImageView(ModelView):
