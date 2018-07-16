@@ -51,54 +51,11 @@
 
 {% block content %}
 
-
+{{ container() }}
 {{ row() }}
-{{ col(['s12', 'm12','l12']) }}
 
-<div class="slider hide-on-small-only">
-    <ul class="slides">
-        {% for i in image %}
-        {% if i %}
-        <li>
-            <img src=" {{ i.url }} "> <!-- random image -->
-            <div class="caption center-align">
-                <h3>{{ i.name }}</h3>
-                <h5 class="light grey-text text-lighten-3">{{ i.des }}</h5>
-            </div>
-        <li>
-            {% else %}
-        <li>
-            <img src=" {{ url_for('static', filename= 'images/blade-runner.jpg') }} "> <!-- random image -->
-            <div class="caption center-align">
-                <h3>First Page </h3>
-                <h5 class="light grey-text text-lighten-3">Blade - Runner</h5>
-            </div>
-        </li>
-        <li>
-            <img src=" {{ url_for('static', filename= 'images/home.jpg') }} "> <!-- random image -->
-            <div class="caption left-align">
-                <h3>Second Switch</h3>
-                <h5 class="light grey-text text-lighten-3">The End Of the Fucking World</h5>
-            </div>
-        </li>
-        <li>
-            <img src=" {{ url_for('static', filename= 'images/Batman.jpg') }} "> <!-- random image -->
-            <div class="caption right-align">
-                <h3>Three</h3>
-                <h5 class="light grey-text text-lighten-3">Template</h5>
-            </div>
-        </li>
-        <li>
-            <img src=" {{ url_for('static', filename= 'images/blade-runner-2049.jpg' ) }} "> <!-- random image -->
-            <div class="caption center-align">
-                <h3>Four</h3>
-                <h5 class="light grey-text text-lighten-3">Also Test</h5>
-            </div>
-        </li>
-        {% endif %}
-        {% endfor %}
-    </ul>
-</div>
+
+
 
 
 {{ enddiv() }}

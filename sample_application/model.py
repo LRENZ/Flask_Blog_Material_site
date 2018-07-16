@@ -15,8 +15,7 @@ class Image(db.Document):
     image = db.ImageField(thumbnail_size=(100, 100, True))
     path = db.StringField()
     to_pub = db.BooleanField(default=False)
-    url = db.StringField(
-        default='https://a468ba3fc2be117c5560-f9a6225d634730495a59b91d1543c5a4.ssl.cf5.rackcdn.com/Fly-share-card.jpg')
+    url = db.StringField()
     time = db.DateTimeField(default=datetime.now)
     des = db.StringField()
     meta = {
