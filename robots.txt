@@ -1,0 +1,6 @@
+# robots.txt generated at http://tool.chinaz.com/robots/ 
+User-agent: *
+Disallow: 
+Disallow: /resume
+Disallow: /admin
+Sitemap: https://www.linpiner.com/sitemap.xml
