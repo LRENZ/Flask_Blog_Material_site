@@ -193,7 +193,7 @@ args={}
 <div class="chip_tag">
     <ul class="list-unstyled list-inline center-align">
         {% for tag in tags %}
-        <div class="chip">
+        <div class="chip truncate">
             {% if tag.name %}
             <a href="/news_tag/{{ tag.id }}"><i class="material-icons left">bookmark</i>{{ tag.name | get_clean_tag
                 }}</a>

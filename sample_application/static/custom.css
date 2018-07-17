@@ -3,6 +3,27 @@ body {
   color: #999999;
 }
 
+//body::before {
+    //background-size: cover;
+    //background-attachment: fixed;
+    //content: '';
+    //will-change: transform;
+    //z-index: -1;
+    //left: 0;
+    //right: 0;
+    //bottom: 0;
+    //top: 0;
+    //position: fixed;
+	//background-image: url('images/resume_1200.jpg');
+	//display: flex;
+    //min-height: 100vh;
+    //flex-direction: column;
+    //background-repeat: no-repeat;
+    //background-attachment: fixed;
+    //background-position: center;
+
+//}
+
 .title {
   color: #737373;
   font-size: 1.2rem;
@@ -39,7 +60,7 @@ a {
 .about_me_header {
   height: 148px;
   width: 400px;
-  background-image: url(img/header.jpg);
+  background-image: url(img/header_1.jpg);
 
   background-position: bottom center;
   background-size: cover;

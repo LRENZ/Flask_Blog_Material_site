@@ -36,7 +36,7 @@ def upload_file():
         success = True
     else:
         success = False
-    return render_template('upload.html', form=form, success=success,searchform = searchform)
+    return render_template('toolkit/upload.html', form=form, success=success,searchform = searchform)
 
 
 @up.route('/manage')
@@ -47,14 +47,14 @@ def manage_file(page=1):
     # files_list = os.listdir(os.getcwd() + '/uploads')
     # file_url = [photos.url(name) for name in files_list ]
     # image_url = zip(files_list,file_url)
-    return render_template('manage.html', pic=pic)
+    return render_template('toolkit/manage.html', pic=pic)
 
 
 @up.route('/open/<filename>')
 @login_required
 def open_file(filename):
     file_url = photos.url(filename)
-    return render_template('browser.html', file_url=file_url)
+    return render_template('toolkit/browser.html', file_url=file_url)
 
 
 @up.route('/delete/<filename>')

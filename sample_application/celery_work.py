@@ -11,7 +11,7 @@ from .task import long_task, send_async_email
 @ap.route('/celery', methods=['GET', 'POST'])
 def celery_index():
     if request.method == 'GET':
-        return render_template('celery.html', email=session.get('email', ''))
+        return render_template('toolkit/celery.html', email=session.get('email', ''))
     email = request.form['email']
     session['email'] = email
 

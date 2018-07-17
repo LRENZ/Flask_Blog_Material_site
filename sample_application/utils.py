@@ -25,7 +25,7 @@ def get_rate(rate):
         r = str(rate)
     except:
         r = "1"
-    return Markup("<h4 > <strong>{} </strong>: <span class = 'blue-text'>{} </span></h4> ".format(rate, rate_dict[r]))
+    return Markup("<h4 > <strong>{} </strong>: <span class = 'blue-text flow-text'><strong>{} </strong></span></h4> ".format(rate, rate_dict[r]))
 
 
 def resize(url):
