@@ -8,7 +8,7 @@
 # virtualenv --python=python3 --no-site-packages venv
 # source venv3/bin/activate
 # gunicorn -w 4 wsgi:app -b 0.0.0.0:80
-# pip install -r requirement
+# pip install -r requirements.txt
 # set SECRET_KEY
 # export SECRET_KEY
 # export C_FORCE_ROOT=true
