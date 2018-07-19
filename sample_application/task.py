@@ -66,7 +66,7 @@ from pprint import pprint
 """
 @celery.task
 def detect_web_uri(uri):
-    """Detects web annotations in the file located in Google Cloud Storage."""
+
     client = vision.ImageAnnotatorClient()
     image = vision.types.Image()
     image.source.image_uri = uri
@@ -117,8 +117,7 @@ def detect_web_uri(uri):
 
 @celery.task
 def detect_labels_uri(uri):
-    """Detects labels in the file located in Google Cloud Storage or on the
-    Web."""
+
     client = vision.ImageAnnotatorClient()
     image = types.Image()
     image.source.image_uri = uri
@@ -133,8 +132,7 @@ def detect_labels_uri(uri):
 
 @celery.task
 def detect_text_uri(uri):
-    """Detects text in the file located in Google Cloud Storage or on the Web.
-    """
+
     print(uri)
     client = vision.ImageAnnotatorClient()
     image = types.Image()
