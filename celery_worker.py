@@ -2,6 +2,10 @@ from celery import Celery
 
 from sample_application import create_app, celery
 
+from celery import Celery, platforms
+
+platforms.C_FORCE_ROOT = True
+
 
 def make_celery(app):
     celery = Celery(

@@ -4,7 +4,7 @@ config set stop-writes-on-bgsave-error no
 celery worker -A celery_worker.celery --loglevel=info
 vi  /etc/supervisord.d/celery.ini
 celery 配置文件
-
+#export C_FORCE_ROOT="true"
 [program:celery.worker] 
 directory=/home/www/flask_project/Flask_Blog_Material_site
 command=/home/www/flask_project/Flask_Blog_Material_site/venv3/bin/celery worker -A celery_worker.celery --loglevel=info
