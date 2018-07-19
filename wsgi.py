@@ -28,7 +28,7 @@
 # supervisorctl restart gunicorn
 # supervisorctl status
 
-# pipreqs . --encoding=utf-8
+# pipreqs . --encoding=
 
 # /usr/bin/certbot renew
 

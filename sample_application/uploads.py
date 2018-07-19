@@ -10,7 +10,7 @@ from flask_login import login_required
 from sample_application import photos
 from .form import UploadForm,SearchForm
 from .model import picture
-from .task import detect_text_uri, detect_web_uri
+
 
 logging.basicConfig(level=logging.DEBUG)
 
