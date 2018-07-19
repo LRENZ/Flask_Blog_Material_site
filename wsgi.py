@@ -25,7 +25,7 @@
 # 3. 启动/停止
 # supervisorctl start gunicorn
 # supervisorctl stop gunicorn
-# supervisorctl restart gunicorn
+# e
 # supervisorctl status
 
 # pipreqs . --encoding=utf-8

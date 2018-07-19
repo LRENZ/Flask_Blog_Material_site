@@ -57,12 +57,13 @@ import io
 import os
 from pprint import pprint
 # Imports the Google Cloud client library
-from google.cloud import vision
-from google.cloud.vision import types
+#from google.cloud import vision
+#from google.cloud.vision import types
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "E:\google\My Project-eea7a58f17ce.json"
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "E:\google\My Project-eea7a58f17ce.json"
 
 
+"""
 @celery.task
 def detect_web_uri(uri):
     """Detects web annotations in the file located in Google Cloud Storage."""
@@ -150,3 +151,6 @@ def detect_text_uri(uri):
                      for vertex in text.bounding_poly.vertices])
 
         print('bounds: {}'.format(','.join(vertices)))
+
+"""
+
