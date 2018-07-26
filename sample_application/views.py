@@ -88,9 +88,21 @@ def page_not_found(e):
 def google_console():
     return render_template('googleb3b40b13d6a8150f .html')
 
+@bp.route('/zh/resume')
+def resume_zh():
+    return render_template('/toolkit/resume_ZH.html')
+
 @bp.route('/resume')
 def resume():
-    return render_template('/toolkit/resume.html')
+    return redirect(url_for('.resume_zh'))
+
+@bp.route('/en/resume')
+def resume_en():
+    return render_template('/toolkit/resume_EN.html')
+
+@bp.route('/robots.txt')
+def robots():
+    return render_template('/toolkit/robots.txt')
 
 
 #################################################################3
