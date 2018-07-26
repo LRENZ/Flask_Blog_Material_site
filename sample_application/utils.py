@@ -1,35 +1,32 @@
+from flask import Markup, url_for, request
 from flask_babel import Babel
 from flask_babel import format_datetime
-from flask import Markup,url_for,request
 
 
-
-
-
-
-def  get_slug(text):
-    slug = str(text)[:200]+'<br />......And More'
+def get_slug(text):
+    slug = str(text)[:200] + '<br />......And More'
     return slug
 
-def get_rate(rate):
 
-    rate_dict={
-        '10':"SO SO... Amazing",
-        "9" : "早看早享受",
-        "8" : "年度良心剧集",
-        "7":   "Enjoy，非常有特点",
-        "6" : "应该还有的救",
-        "5" : "尽早跳坑",
-        "4" :"跳坑",
-        "3" : "跳坑",
-        "2" : "跳坑",
-        "1" : "跳坑",
+def get_rate(rate):
+    rate_dict = {
+        '10': "Stunning Groundbreaking & Incredible,Masterpiece",
+        "9": "Everyone Bow Down, Can Not Be Better",
+        "8": "Amazing,Fantastic,Enjoyable Experience",
+        "7": "Funny & Interesting",
+        "6": "Wasn't Hoping For Much",
+        "5": "Got Better Choice",
+        "4": "Wasting Time",
+        "3": "Disaster",
+        "2": "Disaster",
+        "1": "Disaster",
     }
     try:
         r = str(rate)
     except:
         r = "1"
-    return  Markup("<h4 > <strong>{} </strong>: <span class = 'blue-text'>{} </span></h4> ".format(rate,rate_dict[r]))
+    return Markup("<h4 > <strong>{} </strong>: <span class = 'blue-text flow-text'><strong>{} </strong></span></h4> ".format(rate, rate_dict[r]))
+
 
 def resize(url):
     r = requests.get(url)
@@ -45,9 +42,9 @@ babel = Babel()
 
 def my_format_datetime(value, format='medium'):
     if format == 'full':
-        format="EEEE, d. MMMM y 'at' HH:mm"
+        format = "EEEE, d. MMMM y 'at' HH:mm"
     elif format == 'medium':
-        format="EE dd.MM.y HH:mm"
+        format = "EE dd.MM.y HH:mm"
     return format_datetime(value, format)
 
 
@@ -66,17 +63,19 @@ def get_clean_tag(tag):
     except:
         pass
 
+
 def get_header_title(title):
     try:
         t = str(title).strip().split(r'/')
-        ti = [x  for x in t if len(x) > 4]
+        ti = [x for x in t if len(x) > 4]
         return ti[0]
     except:
         return "LRENZ-Linpiner.com"
 
+
 def remove_slash(title):
     try:
-        t = str(title).strip().replace('/','')
+        t = str(title).strip().replace('/', '')
         if t:
             return t
         else:

@@ -1,0 +1,21 @@
+<form method="POST" action="{{ url_for('blog.contact') }}" class="center white-text">
+              {{ form.csrf_token }}
+            <div class="form-group s12 m4 l4 ">
+                    <div class='input-field'>
+                    <input value = '' type="text" name ='test'>
+                        </div>
+                </div>
+        <div class="form-group s12 m4 l4">
+        <input value = 'testing1' type="checkbox" name ='test1' id ='test1'>
+                        <label for = 'test1'>red1</label>
+            <input value = 'testing2' type="checkbox" name ='test2' id ='test2'>
+                        <label for = 'test2'>red2</label>
+            <input value = 'testing3' type="checkbox" name ='test3' id ='test3'>
+                        <label for = 'test3'>red3</label>
+            </div>
+                <div class="form-group s12 m4 l4">
+                    <i class="material-icons prefix">mode_edit</i>
+                    {{ wtf.form_field(searchform.search) }}
+                </div>
+         <div class="center ">{{ wtf.form_field(searchform.submit) }}</div>
+</form>

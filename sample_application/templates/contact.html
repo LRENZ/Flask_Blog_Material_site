@@ -7,22 +7,15 @@
 {% import "utils.html" as ut %}
 
 
-
 {% include 'header.html' %}
-
-
-
-
-
-
 
 
 {% block body %}
 
 {% block scripts %}
 <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <!-- Compiled and minified JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
 {{ ckeditor.load(custom_url=url_for('static', filename='lib/ckeditor/ckeditor.js')) }}
@@ -31,7 +24,7 @@
 
 {% include 'nav.html' %}
 
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
     $('.modal').modal();
 	$('.slider').slider({
@@ -65,36 +58,48 @@
 	
 });
 
+<<<<<<< HEAD
   </script>
 
 {% include 'no_script.html' %}
 	
 	{% block content %}
 
+=======
 
 
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
 
 
+{% block content %}
 
-	
-	
-  <div class="section">
-	{{ container() }}
-        {{ row() }}
 
-                {% if form %}
-                              {% if mes == 'Things Done' -%}
-                                            <!-- begin message block -->
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-md-14">
-                                                    <script>
+<div class="section">
+    {{ container() }}
+    {{ row() }}
+
+    {% if form %}
+    {% if mes == 'Things Done' -%}
+    <!-- begin message block -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-14">
+                <script>
                                                         $(document).ready(function(){
                                                Materialize.toast('I Got Your Message,Thanks', 8000,'rounded');
                                                setTimeout(function(){
                                                Materialize.toast('I Will Email You When I Saw Messages', 8000,'rounded');}
                                                , 3000);
                                             });
+<<<<<<< HEAD
                                                     </script>
                                                 </div>
                                               </div>
@@ -136,6 +141,48 @@
 
       {% include 'footer.html' %}
 {% endblock %}
+=======
+
+                </script>
+            </div>
+        </div>
+    </div>
+    {% endif -%}
+
+    {{ col(['s12', 'm12','l10','offset-l1']) }}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title black-text">AnyThing Contact With Me, Please</span>
+            <form method="POST" action="/contact">
+                <div><i class="material-icons prefix">account_circle</i> {{ wtf.form_field(form.name) }}</div>
+                {{ form.csrf_token }}
+                <div>
+                    <i class="material-icons prefix">mode_edit</i>
+                    {{ wtf.form_field(form.content) }}
+                </div>
+                <div><i class="material-icons prefix">email</i> {{ wtf.form_field(form.email) }}</div>
+                <div class="center "><i class="material-icons right">send</i>{{ wtf.form_field(form.submit) }}</div>
+            </form>
+        </div>
+    </div>
+
+
+    {{ enddiv() }}
+
+    {% else %}
+    {{ col(['s12', 'm12','l12']) }}
+    {{ util.card('Not Post','not post',[['/','index']]) }}
+    {{ enddiv }}
+    {% endif %}
+    {{ enddiv() }}
+    {{ enddiv() }}
+    {{ enddiv() }}
+
+
+    {% endblock %}
+    {% include 'footer.html' %}
+    {% endblock %}
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
 
 
 

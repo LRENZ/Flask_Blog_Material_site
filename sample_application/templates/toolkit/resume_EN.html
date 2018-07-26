@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="http://schema.org/Article">
+    <head>
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen,projection">
+      <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}"  media="screen,projection"/>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+          <script>
+  dataLayer = [];
+
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WKWF77X');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    </head>
+
+    <body>
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+      <div class="container animated  swing">
+
+     <div class="row">
+
+      <div class="col s12 l4 left_content ">
+
+        <div class="collection card-panel" style="padding: 0px">
+          <div class="collection-header about_me_header">
+            <div class="center-align" >
+            <img src="{{ url_for('static', filename='img/personal.jpg') }}" alt="" class="circle responsive-img" style="max-width: 35%;height: auto;padding: 0px;margin:5px">
+            </div>
+            <span class="name">Garry Lau</span>
+          </div>
+          <div class="divider"></div>
+          <div class="collection-item avatar">
+            <img src="{{ url_for('static', filename='img/ico_date.svg') }}" class="icon">
+            <span class="title">1995-11-16</span>
+            Brithday
+          </div>
+
+          <div class="divider"></div>
+            <a href="#"  class="collection-item avatar">
+            <i class="material-icons prefix icon">location_city</i>
+            <span class="title">GuangZhou</span>
+            Live In
+          </a>
+
+          <div class="divider"></div>
+
+          <a href="#" target="_blank" class="collection-item avatar">
+            <img src="{{ url_for('static', filename='img/ico_email.svg') }}" class="icon">
+            <span class="title">lrenz1116@gmail.com</span>
+            Personal Email
+          </a>
+
+           <div class="divider"></div>
+          <a href="https://www.linpiner.com/post" target="_blank" class="collection-item avatar">
+            <img src="/static/img/ico_web.svg" class="icon">
+            <span class="title">Linpiner.com</span>
+            Personal Website
+          </a>
+
+          <div class="divider"></div>
+
+          <a href="https://github.com/LRENZ" target="_blank" class="collection-item avatar">
+            <img src="/static/img/ico_github.svg" class="icon">
+            <span class="title">LRENZ</span>
+            My GitHub
+          </a>
+
+          <div class="divider"></div>
+            <a href="#"  class="collection-item avatar">
+            <i class="material-icons prefix icon">contact_phone</i>
+            <span class="title">137-1901-6410</span>
+            Mobile Phone
+          </a>
+
+
+
+          <ul class="collapsible z-depth-0" data-collapsible="accordion">
+            <li>
+          <a class="collection-item avatar collapsible-header">
+            <i class="material-icons prefix icon">chat</i>
+            <span class="title">@lrenzhong</span>
+            WeChat
+          </a>
+            <div class="collapsible-body center">
+              <img src="{{ url_for('static', filename='img/wechat.png') }}" alt="wechat qcode" class="responsive-img">
+            </div>
+            </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_interest.svg" class="icon">
+          <span class="title">Interests</span>
+
+          <div class="skills">
+
+              <span class="title">Musics</span>
+              Radiohead Coldplay & Lorde Fans<br />
+              By the way, I Play Guitar
+              <span class="title">Movies</span>
+            Also Like to Watching Movies<br />
+              My Favorite Movies: Blade Runner 2049
+
+
+          </div>
+
+        </div>
+
+        <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_language.svg" class="icon">
+          <span class="title">Language</span>
+          <div class="skills">
+              <span class="title">English</span>
+              CET-6<br /> Good Skills, Always Hanging Around Twitter, Pitchfork, Youtube, etc.
+
+          </div>
+        </div>
+
+          <div class="card-panel cv_card hoverable">
+             <i class="material-icons prefix icon">details</i>
+
+          <span class="title">More About Me</span>
+          <div class="skills">
+              <span class="title">You Can Visit My Personal Website to Know More About Me</span>
+              <br /> <a href="https://www.linpiner.com/post" target="_blank" class="waves-effect waves-teal btn-flat" >
+            <span>Linpiner.com</span>
+          </a>
+
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="col s12 l8 ">
+
+        <span class="cv_title center">PPC Marketing & Data Analystic</span>
+
+        <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_work.svg" class="icon">
+          <span class="title">Work Experience</span>
+
+          <div class="date_container "">
+
+            <span class="date"><div class="round_mark"></div>Nov 2016 - Present  &nbsp  GuangZhou</span>
+            <div class="date_entry left_border">
+              <span class="title">PPC Manager <a href="http://www.qpidnetwork.com/" target="_blank" class="at"> @Qpidnetwork </a></span>
+              </span>
+
+              <div class="app_container">
+
+                <ul>
+                   <li><a href="#"  class="app_entry">
+                  <img src="https://image.flaticon.com/icons/png/128/732/732202.png">
+                  <span class="title">optimize Adwords Ads </span>
+                  Manage and optimize Google Adwords Marketing and Analyze Marketing Data
+                </a>
+                     </li>
+
+                <li><a href="#"  class="app_entry">
+                  <img src="https://index.tnwcdn.com/images/4381a3c63c19f7b673667aee324cca61d8e6d5b4.png">
+                  <span class="title">optimize Facebook Ads</span>
+                  Manage and optimize Facebook Ads Marketing and Analyze Marketing Data
+                </a>
+                  </li>
+                <li><a href="#"  class="app_entry">
+                  <img src="/static/img/bingads.png">
+                  <span class="title">optimize Bing Ads</span>
+                  Manage and optimize Bing Ads Marketing and Analyze Marketing Data
+                </a>
+                  </li>
+
+                    <li><a href="#"  class="app_entry">
+                 <img src="/static/img/gtm.png">
+                  <span class="title">Tracking Code Setting Up</span>
+                  Responsible for the deployment of tracking codes related to the company's business promotion, including Adwords Tracking Code, Facebook Pixel, etc.
+                </a>
+                  </li>
+
+                </ul>
+
+              </div>
+
+            </div>
+
+            <span class="date">
+            <div class="date_entry left_border">
+              <span class="title">Work Projects</span>
+
+
+
+              <div class="app_container ">
+                <ul>
+
+                  <li>
+                <a href="#"  class="app_entry">
+                  <img src="/static/img/appsflyer.jpg">
+                  <span class="title">Mobile Promotion SDK Research</span>
+                  Investigate mobile promotion SDK information, to learn and use Appsflyer and Google Analytics to promote my company's business app<br />
+                </a></li>
+
+                     <li>
+                <a href="#"  class="app_entry">
+                  <img src="/static/img/Remarketing-adwords.jpg">
+                  <span class="title">Adwords Remarketing & offline Conversion Upload</span>
+                  Working With Adwords Remarketing and Upload Offline Conversion
+                </a></li>
+
+                        <li>
+                <a href="#"  class="app_entry">
+                  <img src="/static/img/gtm.png">
+                  <span class="title">Marketing Code Setting Up & Traffic attribution</span>
+                  Using Google Tag Manager to Setting Marketing Code, and Using Google Analytics to Analyze Marketing Data <br />
+                </a></li>
+
+                               <li>
+                <a href="#"  class="app_entry">
+                  <img src="https://image.flaticon.com/icons/png/128/732/732202.png">
+                  <span class="title"> Manage and Optimize Marketing Account</span>
+                   Manage and Optimize Marketing Account for optimizing the company's  ROI<br />
+                </a></li>
+
+                  </ul>
+
+              </div>
+
+            </div>
+
+            <span class="date"><div class="round_mark"></div>Jun 2016 - Sep 2016 &nbsp  GuangZhou</span>
+            <div class="date_entry ">
+              <span class="title">Product Intern <a href="#"  class="at">@QiaoYun Culture</a></span>
+
+              <ul>
+                   <li>
+                     <a href="#"  class="app_entry">
+                  <img src="/static/img/c.jpg">
+                  <span class="title">Optimize Cguoguo Live Streaming Product </span>
+                  Responsible for Product Optimization Research and User Experience Reports.Optimize User Experience.
+                </a>
+                </li>
+                </ul>
+            </div>
+
+          </div>
+        </div>
+
+          <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_skills.svg" class="icon">
+          <span class="title">Professional Skills</span>
+          <div class="skills">
+
+              <span class="title">PPC Marketing</span>
+              Manage and optimize the Adwords, Facebook Ads and Bing Ads accounts
+
+               <span class="title"> the Deployment of Tracking Codes and Traffic Track</span>
+
+             Using Google Tag Manager to Setting Marketing Code( like Google Adwords Tag，Google analysitc，Facebook Pixel,and etc.), and Using Google Analytics to Analyze Marketing Data
+
+            </ul>
+
+
+              <span class="title">Python</span>
+              Good Skill to Use Python With Optimizing Marketing Activity. And I Use Flask To Write My Personal Website
+
+              <span class="title">Data Analysis</span>
+              using Excel and Pandas to process and analyze data, and have relevant database knowledge Like Mysql and Mongodb. Have
+              Learned R, Matlab and Statistical Knowledge in College
+
+          </div>
+        </div>
+
+        <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_education.svg" class="icon">
+          <span class="title">Education</span>
+
+          <div class="date_container ">
+
+            <span class="date"><div class="round_mark"></div>2013 - 2017 &nbsp  GuangZhou</span>
+            <div class="date_entry left_border">
+              <span class="title">BA Degree <a href="http://www.gdufe.edu.cn/" target="_blank" class="at">@ Guangdong University Of Finance & Economics</a></span>
+              <span class="description">Chinese Language for International Education</span>
+            </div>
+
+            <span class="date"><div class="round_mark"></div>2015 - 2017 &nbsp  GuangZhou</span>
+            <div class="date_entry">
+              <span class="title">BS Degree <a href="http://www.gdufe.edu.cn/" target="_blank" class="at">@ Guangdong University Of Finance & Economics</a></span>
+              <span class="description">Mathematics and Application Mathematics (Second Bachelor's Degree ）</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+</div>
+
+    </body>
+</html>

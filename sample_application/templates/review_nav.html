@@ -7,30 +7,23 @@
 {% import "utils.html" as ut %}
 
 
-
 {% include 'header.html' %}
-
-
-
-
-
-
 
 
 {% block body %}
 
 {% block scripts %}
 <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 
 {%- endblock scripts %}
 
 {% include 'nav.html' %}
 
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
     $('.modal').modal();
 	$('.slider').slider({
@@ -63,14 +56,30 @@
     $(".modal").modal('open'); 
 	
 });
-M.AutoInit();
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.scrollspy');
-    var instances = M.ScrollSpy.init(elems);
+
+
+
+</script>
+
+<script>
+$(document).ready(function(){
+(function(){
+$("td.gsc-search-button").click(function(){
+
+var bla = $('#gsc-i-id1').val();
+//alert(bla);
+dataLayer.push({
+"search_word":bla
+})
+  });
+})
+
   });
 
+</script>
 
+<<<<<<< HEAD
   </script>
 
 {% include 'no_script.html' %}
@@ -89,49 +98,73 @@ M.AutoInit();
                     <li>
                       <div class="collapsible-header "><i class="material-icons">details</i> 使用：下方搜索框输入关键词回车</div>
                       <div class="collapsible-body white-text"><span>
+=======
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+{% block content %}
+
+<div class="section">
+
+    {{ container() }}
+    {{ row() }}
+    <ul class="collapsible expandable z-depth-5 hoverable">
+        <li class="active">
+            <div class="collapsible-header truncate"><i class="material-icons">details</i>资源：Search Resources Online</div>
+            <div class="collapsible-body white-text "><span>整合Google搜索资源下载的链接</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header truncate"><i class="material-icons">details</i> 使用：下方搜索框输入关键词回车</div>
+            <div class="collapsible-body white-text"><span>
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
                                           <ul>
                                               <li><a class="grey-text text-lighten-3 " href="/">The Link Comes The Following Site</a></li>
                                               <li><a class="grey-text text-lighten-3 " href="/">zimumu.tv</a></li>
                 </ul>
                       </span></div>
-                    </li>
-                    <li>
-                      <div class="collapsible-header "><i class="material-icons">details</i>前提：能够正常使用Google服务</div>
-                      <div class="collapsible-body white-text "><span>只有能够正常访问Google服务时，功能才能正常实现；如果不能正常访问Google，则搜索框不会在页面上出现</span></div>
-                    </li>
-                    <li>
-                      <div class="collapsible-header "><i class="material-icons">details</i>提示：Search Tip</div>
-                      <div class="collapsible-body white-text "><span>如果没有相应结果，可能的原因有：
+        </li>
+        <li>
+            <div class="collapsible-header truncate"><i class="material-icons">details</i>前提：能够正常使用Google服务</div>
+            <div class="collapsible-body white-text ">
+                <span>只有能够正常访问Google服务时，功能才能正常实现；如果不能正常访问Google，则搜索框不会在页面上出现</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header truncate"><i class="material-icons">details</i>提示：Search Tip</div>
+            <div class="collapsible-body white-text "><span>如果没有相应结果，可能的原因有：
                     <ul>
                     <li>Google没有收录相应结果</li>
                     <li>搜索方式不对，换词或者换英文名搜索</li>
                     <li>这个资源暂时没有</li>
                       </ul></span>
-                    </div>
-                    </li>
-                  </ul>
-        {{ row() }}
-				{{ col(['s12', 'm12','l6','offset-l3']) }}
-                <h5 class="flow-text white-text center">Search With KeyWords(ONLY FOR FUN)</h5>
-	<div class="search_bar">
+            </div>
+        </li>
+    </ul>
+    {{ row() }}
+    {{ col(['s12', 'm12','l6','offset-l3']) }}
+    <h5 class="flow-text white-text center">Search With KeyWords(ONLY FOR FUN)</h5>
+    <div class="search_bar">
 
-    {{ get_js() | safe }}
+        {{ get_js() | safe }}
 
 
-
+    </div>
 </div>
 </div>
-</div>
 
 </div>
 
-        {{ enddiv() }}
-        {{ enddiv() }}
+{{ enddiv() }}
+{{ enddiv() }}
 
 {{ enddiv() }}
 
 
-
+<<<<<<< HEAD
 	
 	
   <div class="section">
@@ -175,6 +208,47 @@ M.AutoInit();
 
 {% include 'footer.html' %}
 {% endblock %}
+=======
+<div class="section">
+    {{ container() }}
+    <div class="center white-text"><span class="card-title"><h4><strong>Archive : Reviews</strong></h4></span></div>
+    {{ row() }}
+
+    {% if post %}
+    {% for p in post.items %}
+    {{ col(['s12', 'm6','l6','scrollspy']) }}
+    {{ ut.card_with_image_reviews_v2(title =p.title,
+    content = p.content,
+    image = p.image,
+    tags =p.tags,
+    rate = p.rate,
+    actions = [p.title]
+    )}}
+    {{ enddiv() }}
+    {% endfor %}
+    {% else %}
+    {{ col(['s12', 'm12','l12']) }}
+    {{ utils.card('Not Post','not post',[['/','index']]) }}
+    {{ enddiv }}
+    {% endif %}
+    {{ enddiv() }}
+
+
+    {{ container() }}
+    {{ row() }}
+
+    {{ut.render_pagination(post,"reviews.review_list") }}
+
+    {{ enddiv() }}
+    {{ enddiv() }}
+
+    {{ enddiv() }}
+    {{ enddiv() }}
+
+    {% endblock %}
+    {% include 'footer.html' %}
+    {% endblock %}
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
 
 
 

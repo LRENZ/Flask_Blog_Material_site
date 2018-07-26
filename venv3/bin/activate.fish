@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/www/flask_project/Flask_Blog_Material_site/venv3"
+set -gx VIRTUAL_ENV "/home/www/flask_project/venv3"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

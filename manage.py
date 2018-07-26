@@ -9,9 +9,9 @@ if os.path.exists('.env'):
 
 from flask_script import Manager, Server
 from sample_application import create_app
-from sample_application.model import Post,User
+from sample_application.model import Post, User
 from werkzeug.security import generate_password_hash
-from pprint import  pprint
+from pprint import pprint
 from werkzeug.contrib.fixers import ProxyFix
 
 app = create_app()
@@ -46,13 +46,11 @@ def add_post():
                 status=1)
     post.save()
 
+
 @manager.option('-s', '--search', dest='search', default='test')
 def search(search):
     objects = Post.objects.search_text(search).order_by('$text_score')
     pprint(objects)
-
-
-
 
 
 if __name__ == '__main__':

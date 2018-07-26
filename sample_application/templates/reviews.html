@@ -6,22 +6,21 @@
 {% block body %}
 
 
-
 {% block scripts %}
 
 <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-      <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
 
 {%- endblock scripts %}
 {% include 'nav.html' %}
 
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
   $('img').materialbox();
   	$("input.vmail.vinput").attr("placeholder", "邮箱（可选）");
@@ -32,6 +31,7 @@
 
 
 
+<<<<<<< HEAD
   </script>
 {% include 'no_script.html' %}
   <style type="text/css">
@@ -51,61 +51,93 @@
 		  <img src="{{ url_for('static', filename= 'images/coffee.jpg') }}">
 		   {% endif %}
           <span class="card-title flow-text orange darken-1-text"><h5>{{ post.title }}</h5></span>
+=======
+
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<style type="text/css">
+</style>
+
+{% block content %}
+<div class="section">
+    {{ container() }}
+    {{ row() }}
+    {{ col(['s12', 'm12','l12']) }}
+    <div class="post-preview">
+        <div class="card">
+            <div class="card-image">
+                {% if post.image %}
+                <img src="{{ post.image }}">
+                {% else %}
+                <img src="{{ url_for('static', filename= 'images/coffee.jpg') }}">
+                {% endif %}
+                <span class="card-title flow-text orange darken-1-text"><h5>{{ post.title }}</h5></span>
+            </div>
+            <div class="card-content">
+
+                {% if post.tags %}
+                <ul class="list-unstyled list-inline">
+                    {% for t in post.tags %}
+
+
+                    <div class="chip">
+                        <a href="/tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag
+                            }}</a>
+                    </div>
+
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if post.name %}
+                <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">{{ post.name }}</a> on {{
+                    post.create_time | my_format_datetime}}
+                    {% else %}
+                <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">Admin</a> on {{ post.create_time |
+                    my_format_datetime}}
+                    {% endif %}
+
+                    {% if post.rate %}
+
+
+                    {{ post.rate | get_rate | safe }}
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
         </div>
-        <div class="card-content">
-		
-	 {% if post.tags %}
-            <ul class="list-unstyled list-inline">
-                {% for t in post.tags %}
 
+        <hr>
 
-                      <div class="chip">
-                          <a href="/tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag }}</a>
-                      </div>
+        <hr>
 
-                {% endfor %}
-            </ul>
-          {% endif %}
-            {% if post.name %}
-        <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">{{ post.name }}</a> on {{ post.create_time | my_format_datetime}}
-            {% else %}
-            <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">Admin</a> on {{ post.create_time | my_format_datetime}}
-            {% endif %}
-
-                                     {% if post.rate %}
-
-
-
-                                         {{ post.rate | get_rate | safe }}
-
-                                     {% endif %}
-
-            </p>
-
-    </div>
-      </div>
-
-                  <hr>
-
-    <hr>
-	
-	{{ col(['s12', 'm12','l12']) }}
-    <div>
-	    <div class="card-content white-text lighten-5">
-        {% autoescape false %}
-            {% if post.content %}
-            {{ post.content }}
-            {% else %}
-            {{ post.html }}
-            {% endif %}
-        {% endautoescape %}
-		</div>
-    </div>
-              <hr>
-          <div class="section z-depth-4 hoverable">
-          <h5 class="white-text"> Comments:</h5>
-          <div class="comment  white"></div>
-    <script>
+        {{ col(['s12', 'm12','l12']) }}
+        <div>
+            <div class="card-content white-text lighten-5">
+                {% autoescape false %}
+                {% if post.content %}
+                {{ post.content }}
+                {% else %}
+                {{ post.html }}
+                {% endif %}
+                {% endautoescape %}
+            </div>
+        </div>
+        <hr>
+        <div class="section z-depth-4 hoverable">
+            <h5 class="white-text"> Comments:</h5>
+            <div class="comment  white"></div>
+            <script>
         new Valine({
             // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
             av: AV,
@@ -116,19 +148,21 @@
             app_key: 'tlGbmo4f53nLPl1sfbvgBbFG', // 这里填写上面得到的APP KEY
             placeholder:'评论支持Markdown语法，点击preview可预览' // [v1.0.7 new]留言框占位提示文字
         });
-    </script>
-              </div>
+
+            </script>
+        </div>
 
         {{ enddiv() }}
-		{{ enddiv() }}
-		
-
-{{ enddiv() }}
-{{ enddiv() }}
-{{ enddiv() }}
+        {{ enddiv() }}
 
 
-{% endblock content %}
+        {{ enddiv() }}
 
-{% include 'footer.html' %}
-{% endblock body %}
+        {{ enddiv() }}
+        {{ enddiv() }}
+
+
+        {% endblock content %}
+
+        {% include 'footer.html' %}
+        {% endblock body %}

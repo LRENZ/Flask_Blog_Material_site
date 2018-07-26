@@ -1,0 +1,70 @@
+{% extends "material/base.html" %}
+{% import "material/wtf.html" as wtf %}
+{% include 'header.html' %}
+{% block body %}
+{% block scripts %}
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+{%- endblock scripts %}
+
+{% include 'nav.html' %}
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <script>
+
+
+                   $(document).ready(function(){
+                          $('select').material_select();
+                                      });
+
+    </script>
+
+
+
+<div class="section white-text">
+    {{ container() }}
+    {{ row() }}
+    {{ col(['s12', 'm6','l6']) }}
+
+
+
+    <h1>Upload File</h1>
+
+
+    <a href="{{ url_for('upload.upload_file') }}" class="waves-effect waves-light btn">Upload</a> /
+    <a href="{{ url_for('upload.manage_file') }}" class="waves-effect waves-light btn">Manage</a>
+    <hr>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.photo(multiple="multiple")}}
+
+        {% for error in form.photo.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        {{ form.submit }}
+    </form>
+
+    {% if success %}
+    <br>
+    <script>
+                            $(document).ready(function(){
+                                               Materialize.toast('Files Have Been Uploaded', 8000,'rounded');
+
+                                            });
+
+    </script>
+    {% endif %}
+</div>
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock body %}

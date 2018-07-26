@@ -1,32 +1,33 @@
 {% import "material/wtf.html" as wtf %}
- <nav>
+<nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo center">Linpiner</a>
-      <a class='dropdown-button button-collapse' href='#' data-activates='dropdown1' data-beloworigin="true"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
+        <a href="/" class="brand-logo center">Linpiner</a>
+        <a class='dropdown-button button-collapse' href='#' data-activates='dropdown1' data-beloworigin="true"><i
+                class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
 
-        <li class=" white-text waves-effect waves-block waves-orange"><a href="/">Index</a></li>
-          <li class=" white-text waves-effect waves-block waves-orange"><a href="/post">Post</a></li>
-        <li class=" white-text waves-effect waves-block waves-orange"><a href="/reviews">Reviews</a></li>
-          <li class=" white-text waves-effect waves-block waves-orange"><a href="/news">News</a></li>
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/">Index</a></li>
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/post">Post</a></li>
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/reviews">Reviews</a></li>
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/news">News</a></li>
 
-          {% if current_user.is_authenticated %}
-          <li class=" white-text waves-effect waves-block waves-orange"><a href="/admin">Admin</a></li>
-          <li class=" white-text waves-effect waves-block waves-orange" onclick="Materialize.toast('The User Now Is :{{ user.name }}', 2000,'rounded');"><i class="large material-icons prefix"">person_pin</i></li>
-          {% endif %}
-      </ul>
-       <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content left'>
-      <li class=" white-text waves-effect waves-block waves-orange"><a href="/">Index</a></li>
-      {% if current_user.is_authenticated %}
-        <li class=" white-text waves-effect waves-block waves-orange"><a href="/admin">Admin</a></li>
-      {% endif %}
-      <li class=" white-text waves-effect waves-block waves-orange"><a href="/post">Post</a></li>
-        <li class=" white-text waves-effect waves-block waves-orange"><a href="/reviews">Reviews</a></li>
-      <li class=" white-text waves-effect waves-block waves-orange"><a href="/news">News</a></li>
-  </ul>
-
+            {% if current_user.is_authenticated %}
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/admin">Admin</a></li>
+            <li class=" white-text waves-effect waves-block waves-orange"><i class="large material-icons prefix"">person_pin</i>
+            </li>
+            {% endif %}
+        </ul>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content left'>
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/">Index</a></li>
+            {% if current_user.is_authenticated %}
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/admin">Admin</a></li>
+            {% endif %}
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/post">Post</a></li>
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/reviews">Reviews</a></li>
+            <li class=" white-text waves-effect waves-block waves-orange"><a href="/news">News</a></li>
+        </ul>
 
 
     </div>
- </nav>
+</nav>

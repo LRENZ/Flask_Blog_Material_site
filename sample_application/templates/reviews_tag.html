@@ -7,29 +7,26 @@
 {% import "utils.html" as ut %}
 
 
-
 {% include 'header.html' %}
-
-
-
-
-
-
 
 
 {% block body %}
 
 {% block scripts %}
 <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 {%- endblock scripts %}
 
 {% include 'nav.html' %}
 
+<<<<<<< HEAD
 
   <script type="text/javascript">
+=======
+<script type="text/javascript">
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
   $(document).ready(function(){
     $('.modal').modal();
 	$('.slider').slider({
@@ -46,6 +43,7 @@
 	
 }); 
 
+<<<<<<< HEAD
   </script>
 {% include 'no_script.html' %}
 	
@@ -110,26 +108,94 @@
       </div>
    </li>
   </ul>
+=======
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
 
-        {{ enddiv() }}
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 
+{% block content %}
+<div class="section">
+
+    {{ container() }}
+
+    {{ row() }}
+    {{ col(['s12', 'm12','l10','offset-l1 ']) }}
 
 
+    <ul class="collapsible popout" data-collapsible="accordion">
+        <li>
+            <div class="collapsible-header"><i class="material-icons">assignment</i>Archive : Post Tag</div>
+            <div class="collapsible-body">
+                {% for t in tags_post %}
+                {% if t %}
 
-{{ enddiv() }}
-{{ enddiv() }}
-                {{ enddiv() }}
+                <div class="chip">
+                    <a href="/tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag
+                        }}</a>
+                </div>
+                {% else %}
+                <div> Not Tag Right Now</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </li>
 
 
+        <li>
+            <div class="collapsible-header"><i class="material-icons">assignment</i>Archive : Reviews Tag</div>
+            <div class="collapsible-body">
+                {% for t in tags_reviews %}
+                {% if t %}
+                <div class="chip">
+                    <a href="/review_tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name |
+                        get_clean_tag }}</a>
+                </div>
+                {% else %}
+                <div> Not Tag Right Now</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </li>
 
-	
-	
-  <div class="section">
-	{{ container() }}
+
+        <li>
+            <div class="collapsible-header"><i class="material-icons">assignment</i>Archive : News Tag</div>
+            <div class="collapsible-body">
+                {% for t in tags_news %}
+                {% if t %}
+                <div class="chip">
+                    <a href="/news_tag/{{ t.id }}"><i class="material-icons left">bookmark</i>{{ t.name | get_clean_tag
+                        }}</a>
+                </div>
+                {% else %}
+                <div> Not Tag Right Now</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </li>
+    </ul>
+
+    {{ enddiv() }}
+
+
+    {{ enddiv() }}
+    {{ enddiv() }}
+    {{ enddiv() }}
+
+
+    <div class="section">
+        {{ container() }}
         {{ row() }}
-                       <h4 class="center"><strong><span class="white-text">
+        <h4 class="center"><strong><span class="white-text">
                      Archive : {{ tag | get_clean_tag}}</span>
+<<<<<<< HEAD
                  </strong></h4>
                 {% if paginated_tags %}
                      {% for p in paginated_tags %}
@@ -175,6 +241,52 @@
 
 {% include 'footer.html' %}
 {% endblock %}
+=======
+        </strong></h4>
+        {% if paginated_tags %}
+        {% for p in paginated_tags %}
+        {{ col(['s12', 'm6','l6']) }}
+        {{ ut.card_with_image_reviews_v2(title =p.title,
+        content = p.content,
+        image = p.image,
+        tags =p.tags,
+        actions = [p.title]
+        )}}
+        {{ enddiv() }}
+        {% endfor %}
+        {% else %}
+        {{ col(['s12', 'm12','l12']) }}
+        {{ util.card('Not Post','not post',[['/','index']]) }}
+        {{ enddiv }}
+        {% endif %}
+        {{ enddiv() }}
+
+
+        {# Macro for creating navigation links #}
+        {% macro render_navigation(pagination, endpoint) %}
+        <div class=pagination>
+            {% for page in pagination.iter_pages() %}
+            {% if page %}
+            {% if page != pagination.page %}
+            <a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
+            {% else %}
+            <strong>{{ page }}</strong>
+            {% endif %}
+            {% else %}
+            <span class=ellipsis>…</span>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endmacro %}
+
+
+        {{ enddiv() }}
+        {{ enddiv() }}
+
+        {% endblock %}
+        {% include 'footer.html' %}
+        {% endblock %}
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
 
 
 

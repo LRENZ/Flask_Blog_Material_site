@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="http://schema.org/Article">
+    <head>
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen,projection">
+      <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}"  media="screen,projection"/>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+          <script>
+  dataLayer = [];
+
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WKWF77X');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    </head>
+
+    <body>
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+      <div class="container animated  swing">
+
+     <div class="row">
+
+      <div class="col s12 l4 left_content ">
+
+        <div class="collection card-panel" style="padding: 0px">
+          <div class="collection-header about_me_header">
+            <div class="center-align" >
+            <img src="{{ url_for('static', filename='img/personal.jpg') }}" alt="" class="circle responsive-img" style="max-width: 35%;height: auto;padding: 0px;margin:5px">
+            </div>
+            <span class="name">刘任重</span>
+          </div>
+          <div class="divider"></div>
+          <div class="collection-item avatar">
+            <img src="{{ url_for('static', filename='img/ico_date.svg') }}" class="icon">
+            <span class="title">1995-11-16</span>
+            Brithday
+          </div>
+
+          <div class="divider"></div>
+            <a href="#"  class="collection-item avatar">
+            <i class="material-icons prefix icon">location_city</i>
+            <span class="title">GuangZhou</span>
+            Live In
+          </a>
+
+          <div class="divider"></div>
+
+          <a href="#" target="_blank" class="collection-item avatar">
+            <img src="{{ url_for('static', filename='img/ico_email.svg') }}" class="icon">
+            <span class="title">lrenz1116@gmail.com</span>
+            Personal Email
+          </a>
+
+           <div class="divider"></div>
+          <a href="https://www.linpiner.com/post" target="_blank" class="collection-item avatar">
+            <img src="/static/img/ico_web.svg" class="icon">
+            <span class="title">Linpiner.com</span>
+            Personal Website
+          </a>
+
+          <div class="divider"></div>
+
+          <a href="https://github.com/LRENZ" target="_blank" class="collection-item avatar">
+            <img src="/static/img/ico_github.svg" class="icon">
+            <span class="title">LRENZ</span>
+            My GitHub
+          </a>
+
+          <div class="divider"></div>
+            <a href="#"  class="collection-item avatar">
+            <i class="material-icons prefix icon">contact_phone</i>
+            <span class="title">137-1901-6410</span>
+            Mobile Phone
+          </a>
+
+
+
+          <ul class="collapsible z-depth-0" data-collapsible="accordion">
+            <li>
+          <a class="collection-item avatar collapsible-header">
+            <i class="material-icons prefix icon">chat</i>
+            <span class="title">@lrenzhong</span>
+            WeChat
+          </a>
+            <div class="collapsible-body center">
+              <img src="{{ url_for('static', filename='img/wechat.png') }}" alt="wechat qcode" class="responsive-img">
+            </div>
+            </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_interest.svg" class="icon">
+          <span class="title">Interests</span>
+
+          <div class="skills">
+
+              <span class="title">Musics</span>
+              Radiohead Coldplay & Lorde Fans<br />
+              By the way, I Play Guitar
+              <span class="title">Movies</span>
+            Also Like to Watching Movies<br />
+              My Favorite Movies: Blade Runner 2049
+
+
+          </div>
+
+        </div>
+
+        <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_language.svg" class="icon">
+          <span class="title">Language</span>
+          <div class="skills">
+              <span class="title">English</span>
+              CET-6<br /> Good Skills, Always Hanging Around Twitter, Pitchfork, Youtube, etc.
+
+          </div>
+        </div>
+
+          <div class="card-panel cv_card hoverable">
+             <i class="material-icons prefix icon">details</i>
+
+          <span class="title">More About Me</span>
+          <div class="skills">
+              <span class="title">You Can Visit My Personal Website to Know More About Me</span>
+              <br /> <a href="https://www.linpiner.com/post" target="_blank" class="waves-effect waves-teal btn-flat" >
+            <span>Linpiner.com</span>
+          </a>
+
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="col s12 l8 ">
+
+        <span class="cv_title center">PPC Marketing & Data Analystic</span>
+
+        <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_work.svg" class="icon">
+          <span class="title">Work Experience</span>
+
+          <div class="date_container "">
+
+            <span class="date"><div class="round_mark"></div>Nov 2016 - Present  &nbsp  GuangZhou</span>
+            <div class="date_entry left_border">
+              <span class="title">PPC 广告投放 <a href="http://www.qpidnetwork.com/" target="_blank" class="at"> @Qpidnetwork </a></span>
+              </span>
+
+              <div class="app_container">
+
+                <ul>
+                   <li><a href="#"  class="app_entry">
+                  <img src="https://image.flaticon.com/icons/png/128/732/732202.png">
+                  <span class="title">优化Adwords Ads </span>
+                  管理优化 Google Adwords 账户，分析日常数据
+                </a>
+                     </li>
+
+                <li><a href="#"  class="app_entry">
+                  <img src="https://index.tnwcdn.com/images/4381a3c63c19f7b673667aee324cca61d8e6d5b4.png">
+                  <span class="title">优化 Facebook Ads</span>
+                  管理优化 Facebooks 广告账户，分析日常数据
+                </a>
+                  </li>
+                <li><a href="#"  class="app_entry">
+                  <img src="/static/img/bingads.png">
+                  <span class="title">优化 Bing Ads</span>
+                  管理优化 Bing Ads 账户，分析日常数据
+                </a>
+                  </li>
+
+                    <li><a href="#"  class="app_entry">
+                 <img src="/static/img/gtm.png">
+                  <span class="title">负责追踪代码部署</span>
+                  部署再营销代码，部署转化追踪代码，部署FB Pixel代码，掌握Google Tag Manager 和 Google Analytics
+                </a>
+                  </li>
+
+                </ul>
+
+              </div>
+
+            </div>
+
+            <span class="date">
+            <div class="date_entry left_border">
+              <span class="title">具体工作项目</span>
+
+
+
+              <div class="app_container ">
+                <ul>
+
+                  <li>
+                <a href="#"  class="app_entry">
+                  <img src="/static/img/appsflyer.jpg">
+                  <span class="title">App流量归因工具的调研，掌握了解Appsflyer使用</span>
+                  调研App流量归因工具（包括 tune，adjust，kochava，appsflyer 等，了解和掌握 Appsflyer 的使用<br />
+                </a></li>
+
+                     <li>
+                <a href="#"  class="app_entry">
+                  <img src="/static/img/Remarketing-adwords.jpg">
+                  <span class="title">Adwords Remarketing & offline Conversion Upload</span>
+                  通过上传离线转化的方式进行 adwords remarketing，并设置相应的 User_id 等参数
+                </a></li>
+
+                        <li>
+                <a href="#"  class="app_entry">
+                  <img src="/static/img/gtm.png">
+                  <span class="title">营销代码的部署和流量归因</span>
+                  部署 adwords 转化追踪代码，通过 Google Tag Manager 部署GA代码，Facebook Pixel，Google optimize等<br />
+                </a></li>
+
+                               <li>
+                <a href="#"  class="app_entry">
+                  <img src="https://image.flaticon.com/icons/png/128/732/732202.png">
+                  <span class="title">日常的账户操作和数据分析</span>
+                  接触和管理过 Adwords 账户，bing Ads 账户，Facebook 账户。监控账户效果，优化ROI<br />
+                </a></li>
+
+                  </ul>
+
+              </div>
+
+            </div>
+
+            <span class="date"><div class="round_mark"></div>Jun 2016 - Sep 2016 &nbsp  GuangZhou</span>
+            <div class="date_entry ">
+              <span class="title">产品实习生 <a href="#"  class="at">@乔韵文化</a></span>
+
+              <ul>
+                   <li>
+                     <a href="#"  class="app_entry">
+                  <img src="/static/img/c.jpg">
+                  <span class="title">C果果直播产品优化</span>
+                  负责产品优化调研，用户体验报告，用户体验调研，商业需求文档跟进
+                </a>
+                </li>
+                </ul>
+            </div>
+
+          </div>
+        </div>
+
+          <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_skills.svg" class="icon">
+          <span class="title">Professional Skills</span>
+          <div class="skills">
+
+              <span class="title">PPC</span>
+              接触和管理过 Google Adwords广告，Facebook 广告，Bing 广告，熟悉相关的广告优化知识
+
+               <span class="title">营销代码部署，流量追踪</span>
+
+              熟悉掌握营销代码的部署，包括 Google Adwords Tag，Google Analytics，Facebook Pixel 等代码的部署
+               熟悉掌握 Google Tag Manager
+
+            </ul>
+
+
+              <span class="title">Python</span>
+              熟悉掌握 Python 并结合到日常的营销活动和账户管理中。并且用Flask搭建了自己的个人网站
+
+              <span class="title">数据分析</span>
+              熟练使用 Excel 和 Pandas 处理和分析数据，接触过相关的数据库知识（MYSQL，Mongodb）
+              了解 R 和 Matlab ，大学学习过统计知识
+
+
+
+
+
+          </div>
+        </div>
+
+        <div class="card-panel cv_card hoverable">
+          <img src="/static/img/ico_education.svg" class="icon">
+          <span class="title">Education</span>
+
+          <div class="date_container ">
+
+            <span class="date"><div class="round_mark"></div>2013 - 2017 &nbsp  GuangZhou</span>
+            <div class="date_entry left_border">
+              <span class="title">文学学士 <a href="http://www.gdufe.edu.cn/" target="_blank" class="at">@广东财经大学</a></span>
+              <span class="description">汉语国际教育</span>
+            </div>
+
+            <span class="date"><div class="round_mark"></div>2015 - 2017 &nbsp  GuangZhou</span>
+            <div class="date_entry">
+              <span class="title">理学学士 <a href="http://www.gdufe.edu.cn/" target="_blank" class="at">@广东财经大学</a></span>
+              <span class="description">数学与应用数学 金融数学（第二学位）</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+</div>
+
+    </body>
+</html>

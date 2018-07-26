@@ -1,4 +1,4 @@
-#!/home/www/flask_project/Flask_Blog_Material_site/venv3/bin/python
+#!/home/www/flask_project/venv3/bin/python
 
 import sys
 import getopt

@@ -8,15 +8,15 @@
 
 {% block scripts %}
 <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 {%- endblock scripts %}
 
 {% include 'nav.html' %}
 
 
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
 	$('.slider').slider({
         full_width: true,
@@ -39,173 +39,186 @@
   });
 
 
+<<<<<<< HEAD
   </script>
 {% include 'no_script.html' %}
+=======
+>>>>>>> 6fa0ec48a85ab3dccf845c6769b0b457e79b608e
 
-	{% block content %}
+</script>
 
-	
-	        {{ row() }}
-				{{ col(['s12', 'm12','l12']) }}
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKWF77X"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 
-	<div class="slider hide-on-small-only">
+{% block content %}
+
+
+{{ row() }}
+{{ col(['s12', 'm12','l12']) }}
+
+
+<div class="slider hide-on-small-only">
     <ul class="slides">
         {% for i in image %}
-          {% if i %}
-                   <li>
-        <img src=" {{ i.url }} "> <!-- random image -->
-        <div class="caption center-align"><a href="/posts/Readme" class="white-text">
-            <h3>{{ i.name }}</h3>
-            <h5 class="light grey-text text-lighten-3">{{ i.des }}</h5></a>
-        </div>
-                       <li>
-        {% else %}
+        {% if i %}
         <li>
-        <img src=" {{ url_for('static', filename= 'images/blade-runner.jpg') }} "> <!-- random image -->
-        <div class="caption center-align">
-            <h3>First Page </h3>
-            <h5 class="light grey-text text-lighten-3">Blade - Runner</h5>
-        </div>
+            <img src=" {{ i.url }} "> <!-- random image -->
+            <div class="caption center-align"><a href="/posts/Readme" class="white-text">
+                <h3>{{ i.name }}</h3>
+                <h5 class="light grey-text text-lighten-3">{{ i.des }}</h5></a>
+            </div>
+        <li>
+            {% else %}
+        <li>
+            <img src=" {{ url_for('static', filename= 'images/blade-runner.jpg') }} "> <!-- random image -->
+            <div class="caption center-align">
+                <h3>First Page </h3>
+                <h5 class="light grey-text text-lighten-3">Blade - Runner</h5>
+            </div>
         </li>
         <li>
-        <img src=" {{ url_for('static', filename= 'images/home.jpg') }} "> <!-- random image -->
-        <div class="caption left-align">
-            <h3>Second Switch</h3>
-            <h5 class="light grey-text text-lighten-3">The End Of the Fucking World</h5>
-        </div>
+            <img src=" {{ url_for('static', filename= 'images/home.jpg') }} "> <!-- random image -->
+            <div class="caption left-align">
+                <h3>Second Switch</h3>
+                <h5 class="light grey-text text-lighten-3">The End Of the Fucking World</h5>
+            </div>
         </li>
         <li>
-        <img src=" {{ url_for('static', filename= 'images/Batman.jpg') }} "> <!-- random image -->
-        <div class="caption right-align">
-            <h3>Three</h3>
-            <h5 class="light grey-text text-lighten-3">Template</h5>
-        </div>
+            <img src=" {{ url_for('static', filename= 'images/Batman.jpg') }} "> <!-- random image -->
+            <div class="caption right-align">
+                <h3>Three</h3>
+                <h5 class="light grey-text text-lighten-3">Template</h5>
+            </div>
         </li>
         <li>
-        <img src=" {{ url_for('static', filename= 'images/blade-runner-2049.jpg' ) }} "> <!-- random image -->
-        <div class="caption center-align">
-            <h3>Four</h3>
-            <h5 class="light grey-text text-lighten-3">Also Test</h5>
-        </div>
+            <img src=" {{ url_for('static', filename= 'images/blade-runner-2049.jpg' ) }} "> <!-- random image -->
+            <div class="caption center-align">
+                <h3>Four</h3>
+                <h5 class="light grey-text text-lighten-3">Also Test</h5>
+            </div>
         </li>
         {% endif %}
         {% endfor %}
     </ul>
 </div>
 
-        {{ enddiv() }}
+{{ enddiv() }}
 
 {{ enddiv() }}
 
 
-  <div class="section">
-	{{ container() }}
-        {{ row() }}
-				{{ col(['s12', 'm6','l4']) }}
-                         <div class="white-text center"">
-        <!-- Promo Content 1 goes here -->
-          The Post, The Articles,The Documents
-      </div>
+<div class="section">
+    {{ container() }}
+    {{ row() }}
+    {{ col(['s12', 'm6','l4']) }}
+    <div class="white-text center"
+    ">
+    <!-- Promo Content 1 goes here -->
+    The Post, The Articles,The Documents
+</div>
 
-                    <a href="/post" class="white-text text-darken-2 center"> <div class="card-panel  pink darken-2 hoverable z-depth-5 waves-effect waves-block waves-orange">
-                         <span class="white-text text-darken-2">The Lastest Post</span>
-                          </div></a>
+<a href="/post" class="white-text text-darken-2 center">
+    <div class="card-panel  pink darken-2 hoverable z-depth-5 waves-effect waves-block waves-orange">
+        <span class="white-text text-darken-2">The Lastest Post</span>
+    </div>
+</a>
 
-                          {% for p in post %}
-                           {% if p %}
+{% for p in post %}
+{% if p %}
 
-                                {{ col(['s12', 'm12','l12']) }}
-                                    {{ cwi.card_with_image(title =p.title,
-									content = p.content,
-									image = p.image,
-									tags =p.tags,
-									actions = [p.title]
-									)}}
-                                {{ enddiv() }}
-
-
-
-                {% else %}
-                                {{ col(['s12', 'm12','l12']) }}
-                                {{ utils.card('Not Post','not post',[['/','index']]) }}
-                                {{ enddiv }}
-                {% endif %}
-                {% endfor %}
-				{{ enddiv() }}
-
-                				{{ col(['s12', 'm6','l4']) }}
-
-                               <div class="white-text center">
-        <!-- Promo Content 1 goes here -->
-          Music, Movies, TV Series & Game
-      </div>
-
-                    <a href="/reviews" class="white-text text-darken-2 center"> <div class="card-panel red darken-3 hoverable z-depth-5 waves-effect waves-block waves-orange">
-                         <span class="white-text text-darken-2">The Lastest Reviews</span>
-                          </div></a>
-
-                          {% for p in reviews %}
-                           {% if p %}
-
-                                {{ col(['s12', 'm12','l12']) }}
-                                    {{ ut.card_with_image_reviews_v2(title =p.title,
-									content = p.content,
-									image = p.image,
-									tags =p.tags,
-									actions = [p.title]
-									)}}
-                                {{ enddiv() }}
+{{ col(['s12', 'm12','l12']) }}
+{{ cwi.card_with_image(title =p.title,
+content = p.content,
+image = p.image,
+tags =p.tags,
+actions = [p.title]
+)}}
+{{ enddiv() }}
 
 
+{% else %}
+{{ col(['s12', 'm12','l12']) }}
+{{ utils.card('Not Post','not post',[['/','index']]) }}
+{{ enddiv }}
+{% endif %}
+{% endfor %}
+{{ enddiv() }}
 
-                {% else %}
-                                {{ col(['s12', 'm12','l12']) }}
-                                {{ utils.card('Not Post','not post',[['/','index']]) }}
-                                {{ enddiv }}
-                {% endif %}
-                {% endfor %}
-				{{ enddiv() }}
+{{ col(['s12', 'm6','l4']) }}
 
-                                 				{{ col(['s12', 'm6','l4']) }}
-                               <div class="white-text center"">
-        <!-- Promo Content 1 goes here -->
-          The Interesting News & Info
-      </div>
+<div class="white-text center">
+    <!-- Promo Content 1 goes here -->
+    Music, Movies, TV Series & Game
+</div>
 
-                     <a href="/news" class="white-text text-darken-2 center">
-                         <div class="card-panel light-green darken-1 hoverable z-depth-5 waves-effect waves-block waves-orange">
-                         <span class="white-text text-darken-2">The Lastest News</span>
+<a href="/reviews" class="white-text text-darken-2 center">
+    <div class="card-panel red darken-3 hoverable z-depth-5 waves-effect waves-block waves-orange">
+        <span class="white-text text-darken-2">The Lastest Reviews</span>
+    </div>
+</a>
 
-                          </div>
-                         </a>
+{% for p in reviews %}
+{% if p %}
 
-                          {% for p in todo %}
-                           {% if p %}
-
-                                {{ col(['s12', 'm12','l12']) }}
-                                    {{ ut.card_with_image_news(title =p.title,
-									content = p.text,
-									image = p.image,
-									tags =p.tags,
-									actions = [p.title]
-									)}}
-                                {{ enddiv() }}
-
+{{ col(['s12', 'm12','l12']) }}
+{{ ut.card_with_image_reviews_v2(title =p.title,
+content = p.content,
+image = p.image,
+tags =p.tags,
+actions = [p.title]
+)}}
+{{ enddiv() }}
 
 
-                {% else %}
-                                {{ col(['s12', 'm12','l12']) }}
-                                {{ utils.card('Not Post','not post',[['/','index']]) }}
-                                {{ enddiv }}
-                {% endif %}
-                {% endfor %}
-				{{ enddiv() }}
-				
-        {{ enddiv() }}
+{% else %}
+{{ col(['s12', 'm12','l12']) }}
+{{ utils.card('Not Post','not post',[['/','index']]) }}
+{{ enddiv }}
+{% endif %}
+{% endfor %}
+{{ enddiv() }}
 
-          
-		
+{{ col(['s12', 'm6','l4']) }}
+<div class="white-text center"">
+<!-- Promo Content 1 goes here -->
+The Interesting News & Info
+</div>
+
+<a href="/news" class="white-text text-darken-2 center">
+    <div class="card-panel light-green darken-1 hoverable z-depth-5 waves-effect waves-block waves-orange">
+        <span class="white-text text-darken-2">The Lastest News</span>
+
+    </div>
+</a>
+
+{% for p in todo %}
+{% if p %}
+
+{{ col(['s12', 'm12','l12']) }}
+{{ ut.card_with_image_news(title =p.title,
+content = p.text,
+image = p.image,
+tags =p.tags,
+actions = [p.title]
+)}}
+{{ enddiv() }}
+
+
+{% else %}
+{{ col(['s12', 'm12','l12']) }}
+{{ utils.card('Not Post','not post',[['/','index']]) }}
+{{ enddiv }}
+{% endif %}
+{% endfor %}
+{{ enddiv() }}
+
+{{ enddiv() }}
+
 
 {{ enddiv() }}
 
