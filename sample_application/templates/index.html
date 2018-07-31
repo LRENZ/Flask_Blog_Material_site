@@ -62,7 +62,8 @@
         {% for i in image %}
         {% if i %}
         <li>
-            <img src=" {{ i.url }} "> <!-- random image -->
+            <img src="/img/{{ i.id }}" alt=""/>
+
             <div class="caption center-align"><a href="/posts/Readme" class="white-text">
                 <h3>{{ i.name }}</h3>
                 <h5 class="light grey-text text-lighten-3">{{ i.des }}</h5></a>

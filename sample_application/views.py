@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, session, make_response
+from flask import Blueprint, render_template, redirect, url_for, flash, session, make_response,Response
 
 from .form import ContactForm
 
@@ -103,6 +103,13 @@ def resume_en():
 @bp.route('/robots.txt')
 def robots():
     return render_template('/toolkit/robots.txt')
+
+
+@bp.route('/img/<id>')
+def img(id):
+    comic = Image.objects(id=id).first()
+    mime_type = comic.image.content_type
+    return Response(comic.image.read(),mimetype=mime_type,direct_passthrough=True)
 
 
 #################################################################3
