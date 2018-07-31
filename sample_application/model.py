@@ -10,12 +10,11 @@ c = [('Post', 'Post'), ('Reviews', 'Reviews'), ('News', 'News')]
 
 
 class Image(db.Document):
-    name = db.StringField(default='Linpiner.com')
-    cata = db.StringField(choices=c)
+    name = db.StringField()
     image = db.ImageField(thumbnail_size=(100, 100, True))
-    path = db.StringField()
+    #path = db.StringField()
     to_pub = db.BooleanField(default=False)
-    url = db.StringField()
+    #url = db.StringField()
     time = db.DateTimeField(default=datetime.now)
     des = db.StringField()
     meta = {
@@ -102,6 +101,19 @@ class Comment(db.EmbeddedDocument):
 
 post_status = ((0, 'draft'), (1, 'published'))
 
+class File(db.Document):
+    name = db.StringField(max_length=20)
+    cata = db.StringField(choices=c)
+    data = db.FileField()
+    post_title = db.ListField(db.ReferenceField('Post'), reverse_delete_rule=mongoengine.PULL)
+    path = db.StringField(max_length=20)
+    image = db.ImageField(thumbnail_size=(100, 100, True))
+    time = db.DateTimeField(default=datetime.now)
+    meta = {
+        'ordering': ['-time'],
+        'strict': False,
+    }
+
 
 class Post(db.Document):
     title = db.StringField(required=True, max_length=128)
@@ -114,6 +126,7 @@ class Post(db.Document):
     create_time = db.DateTimeField(default=datetime.now)
     modify_time = db.DateTimeField(default=datetime.now)
     inner = db.ListField(db.EmbeddedDocumentField(Comment))
+    #files = db.ListField(db.EmbeddedDocumentField('File'))
     name = db.StringField(max_length=64, default='LRENZ')
     # lols = db.ListField(db.StringField(max_length=20))
     image = db.StringField()
@@ -132,16 +145,7 @@ class Post(db.Document):
     }
 
 
-class File(db.Document):
-    name = db.StringField(max_length=20)
-    data = db.FileField()
-    path = db.StringField(max_length=20)
-    image = db.ImageField(thumbnail_size=(100, 100, True))
-    time = db.DateTimeField(default=datetime.now)
-    meta = {
-        'ordering': ['-time'],
-        'strict': False,
-    }
+
 
 
 class Review(db.Document):
