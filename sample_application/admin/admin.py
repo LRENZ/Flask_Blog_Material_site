@@ -218,7 +218,7 @@ class FileView(ModelView):
     create_modal = True
 
     def _list_thumbnail(view, context, model, name):
-        return Markup('<img src="/img_file/{}" class = "img-thumbnail img-responsive" style="height:100px">' .format(model.id))
+        return Markup('<img src="/img_file/{}" class = "img-thumbnail img-responsive" style="max-height: 100px; position: relative; max-height: 50px">' .format(model.id))
 
     column_formatters = {
         'path': _list_thumbnail
@@ -258,7 +258,7 @@ class ImageView(ModelView):
     """
 
     def _list_thumbnail(view, context, model, name):
-        return Markup('<img src="/img/{}" class = "img-thumbnail img-responsive" style="height:100px">' .format(model.id))
+        return Markup('<img src="/img/{}" class = "img-thumbnail img-responsive" style="max-height: 100px; position: relative; max-height: 50px">' .format(model.id))
 
     column_formatters = {
         'path': _list_thumbnail
