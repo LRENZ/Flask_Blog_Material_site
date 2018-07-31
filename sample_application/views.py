@@ -112,6 +112,13 @@ def img(id):
     return Response(comic.image.read(),mimetype=mime_type,direct_passthrough=True)
 
 
+@bp.route('/img_file/<id>')
+def img_file(id):
+    comic = File.objects(id=id).first()
+    mime_type = comic.data.content_type
+    return Response(comic.data.read(),mimetype=mime_type,direct_passthrough=True)
+
+
 #################################################################3
 ##############test router########################################
 ##################################################################

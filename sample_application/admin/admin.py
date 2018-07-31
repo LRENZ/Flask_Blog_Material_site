@@ -214,21 +214,16 @@ class TagView(ModelView):
 # Administrative views
 class FileView(ModelView):
     # Override form field to use Flask-Admin FileUploadField
-
     edit_modal = True
     create_modal = True
 
-    #def _list_thumbnail(view, context, model, name):
-        #if not model.path:
-            #return ''
-        #return Markup('<img src="%s">' % url_for('static',
-                                                 #filename=form.thumbgen_filename(model.path)))
+    def _list_thumbnail(view, context, model, name):
+        return Markup('<img src="/img_file/{}" class = "img-thumbnail img-responsive" style="height:100px">' .format(model.id))
 
-    #column_formatters = {
-        #'path': _list_thumbnail
-    #}
+    column_formatters = {
+        'path': _list_thumbnail
+    }
 
-    thumbnail_size = (100, 100, True)
 
     #form_overrides = {
         #'path': form.FileUploadField
@@ -262,18 +257,20 @@ class ImageView(ModelView):
 
     """
 
+    def _list_thumbnail(view, context, model, name):
+        return Markup('<img src="/img/{}" class = "img-thumbnail img-responsive" style="height:100px">' .format(model.id))
+
+    column_formatters = {
+        'path': _list_thumbnail
+    }
+
     # form_columns = ('name', 'Image', 'Url')
     column_searchable_list = ('name',)
-    column_exclude_list = ('path', 'Path')
+    #column_exclude_list = ('path', 'Path')
     edit_modal = True
     create_modal = True
     # Alternative way to contribute field is to override it completely.
     # In this case, Flask-Admin won't attempt to merge various parameters for the field.
-    form_extra_fields = {
-        'path': form.ImageUploadField('path',
-                                      base_path='static/images',
-                                      thumbnail_size=(100, 100, True))
-    }
 
     column_choices = {
         'cata': [('Post', 'Post'), ('Reviews', 'Reviews'), ('Todo', 'Todo')]

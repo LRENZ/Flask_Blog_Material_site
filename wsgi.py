@@ -31,7 +31,7 @@
 # pipreqs . --encoding=utf-8
 
 # /usr/bin/certbot renew
-
+# pip freeze > requirements.txt
 
 
 

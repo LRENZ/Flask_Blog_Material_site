@@ -11,7 +11,7 @@ c = [('Post', 'Post'), ('Reviews', 'Reviews'), ('News', 'News')]
 class Image(db.Document):
     name = db.StringField()
     image = db.ImageField(thumbnail_size=(100, 100, True))
-    #path = db.StringField()
+    path = db.StringField()
     to_pub = db.BooleanField(default=False)
     #url = db.StringField()
     time = db.DateTimeField(default=datetime.now)
@@ -107,7 +107,7 @@ class File(db.Document):
     data = db.FileField()
     post_title = db.ListField(db.ReferenceField('Post'), reverse_delete_rule=mongoengine.PULL)
     path = db.StringField(max_length=20)
-    image = db.ImageField(thumbnail_size=(100, 100, True))
+    #image = db.ImageField(thumbnail_size=(100, 100, True))
     time = db.DateTimeField(default=datetime.now)
 
     def clean(self):
