@@ -1,5 +1,4 @@
 from datetime import datetime
-
 import mongoengine
 from flask_mongoengine import MongoEngine
 from flask_mongoengine.wtf import model_form
@@ -102,13 +101,25 @@ class Comment(db.EmbeddedDocument):
 post_status = ((0, 'draft'), (1, 'published'))
 
 class File(db.Document):
-    name = db.StringField(max_length=20)
+    name = db.StringField()
+    search_name = db.StringField()
     cata = db.StringField(choices=c)
     data = db.FileField()
     post_title = db.ListField(db.ReferenceField('Post'), reverse_delete_rule=mongoengine.PULL)
     path = db.StringField(max_length=20)
     image = db.ImageField(thumbnail_size=(100, 100, True))
     time = db.DateTimeField(default=datetime.now)
+
+    def clean(self):
+        try:
+            if self.name:
+                self.search_name = str(self.post_title[0].title) +'__'+self.name
+            else:
+                self.name = str(self.post_title[0].title)
+        except:
+            pass
+
+
     meta = {
         'ordering': ['-time'],
         'strict': False,

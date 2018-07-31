@@ -23,7 +23,7 @@
 # supervisorctl status
 
 # 3. 启动/停止
-# supervisorctl start gunicorn
+# supervisorctl restart gunicorn
 # supervisorctl stop gunicorn
 # e
 # supervisorctl status

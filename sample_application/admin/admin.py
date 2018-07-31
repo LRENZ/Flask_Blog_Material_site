@@ -3,7 +3,7 @@
 
 import os
 import os.path as op
-
+import mongoengine
 from flask import redirect, url_for, request
 from flask_admin import AdminIndexView, expose, helpers, form
 from flask_admin.contrib.mongoengine import ModelView
@@ -214,21 +214,27 @@ class TagView(ModelView):
 # Administrative views
 class FileView(ModelView):
     # Override form field to use Flask-Admin FileUploadField
-    def _list_thumbnail(view, context, model, name):
-        if not model.path:
-            return ''
-        return Markup('<img src="%s">' % url_for('static',
-                                                 filename=form.thumbgen_filename(model.path)))
 
-    column_formatters = {
-        'path': _list_thumbnail
-    }
+    edit_modal = True
+    create_modal = True
+
+    #def _list_thumbnail(view, context, model, name):
+        #if not model.path:
+            #return ''
+        #return Markup('<img src="%s">' % url_for('static',
+                                                 #filename=form.thumbgen_filename(model.path)))
+
+    #column_formatters = {
+        #'path': _list_thumbnail
+    #}
+
+    thumbnail_size = (100, 100, True)
 
     #form_overrides = {
         #'path': form.FileUploadField
     #}
-    column_filters = ('name',)
-    column_searchable_list = ('name',)
+    column_filters = ('name','search_name','cata')
+    column_searchable_list = ('name','search_name')
 
     # Pass additional parameters to 'path' to FileUploadField constructor
     #form_args = {
@@ -241,7 +247,8 @@ class FileView(ModelView):
 
 
 class ImageView(ModelView):
-    def _list_thumbnail(view, context, model, name):
+    """
+        def _list_thumbnail(view, context, model, name):
         if not model.path:
             return ''
 
@@ -251,6 +258,10 @@ class ImageView(ModelView):
     column_formatters = {
         'path': _list_thumbnail
     }
+
+
+    """
+
     # form_columns = ('name', 'Image', 'Url')
     column_searchable_list = ('name',)
     column_exclude_list = ('path', 'Path')
