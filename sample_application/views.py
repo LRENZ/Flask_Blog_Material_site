@@ -60,9 +60,9 @@ def readme():
 @bp.route('/post/<int:page>')
 def post_list(page=1):
     # image = 'images/coffee.jpg'
-    i = Image.objects(cata='Post')[:3]
+    #i = Image.objects(cata='Post')[:3]
     post = Post.objects(status=True).paginate(page=page, per_page=8)
-    return render_template("post_nav.html", post=post, image=i, user=current_user)
+    return render_template("post_nav.html", post=post, user=current_user)
 
 
 @bp.route('/tag/<string:id>')
