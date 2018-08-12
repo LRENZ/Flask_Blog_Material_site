@@ -4,14 +4,10 @@ Flask application build with Material
 
 Undone Now
 
-TO do:
-  Finish All Template
-  Finish Movies & TV Series Template
-  Finish Pic Responsive
-  Finish Deploy
-  Finish Comments
-  add a new custom search engine (https://cse.google.com/cse/all)
- to do :
-     Finish Change log
-	 Ckeditor upload image
+TO Do:
+   * Complete Tookit module
+   * prettify the page
+   * rebuilt the admin page
+   * finish the Background task module
+   * find a way to backup database's data
 
