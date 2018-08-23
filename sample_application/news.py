@@ -17,7 +17,7 @@ def review_list(page=1):
 @news.route('/news/<string:post_title>')
 def get_post(post_title):
     post = Info.objects.get_or_404(title__contains=post_title)
-    return render_template("news.html", post=post, user=current_user)
+    return render_template("trans.html", post=post, user=current_user)
 
 
 @news.route('/news_tag/<string:id>')

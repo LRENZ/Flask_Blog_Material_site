@@ -77,6 +77,10 @@ def create_app():
             return "Nope"
             # return str(path)
 
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 404
+
     app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/uploads'
     configure_uploads(app, photos)
     patch_request_class(app)  # set maximum file size, default is 16MB

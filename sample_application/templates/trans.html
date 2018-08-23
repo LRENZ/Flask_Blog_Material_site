@@ -14,6 +14,19 @@
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 {%- endblock scripts %}
 
+       {% if current_user.is_authenticated %}
+        {{ col(['s4', 'm4','l2']) }}
+         <div id="fixed" class="fixed hide-on-med-and-down">
+      <form id="myForm" method="post" class="white-text">
+
+
+          <div class="center">
+        <a id="addVar" class="waves-effect waves-light btn">Mark The Word</a>
+        <a class="alignRight waves-effect waves-light btn" type="submit" value="提交">Submit</a>
+              </div>
+      </form>
+             </div>
+ {% endif %}
 {% include 'nav.html' %}
 
 <script type="text/javascript">
@@ -23,6 +36,7 @@
 	$("input.vlink.vinput").attr("placeholder", "网址[http://](可选）");
 	$("img").addClass("materialboxed");
 	$("img").addClass("responsive-img");
+	$("blockquote").addClass("blue-text");
 		 $('.modal').modal(
 	 {
       startingTop: '50%', // Starting top style attribute
@@ -30,9 +44,68 @@
     }
 	 );
   });
+$
+
+
+
+
+
+
+
+
+
+
+
 
 
 </script>
+
+<script>
+        //初始参数个数
+        var varCount = 0;
+        $(function () {
+          //新增按钮点击
+            $('#addVar').on('click', function(){
+                varCount++;
+                /*
+                $node = '<p><label for="var'+varCount+'">项目 '+varCount+': </label>'
+                  + '<input type="text" name="var'+varCount+'" id="var'+varCount+'">'
+                  + '<span class="removeVar">删除</span></p>'; */
+
+                  $node =  `
+                  <p>
+          <label for="var ${varCount}">Words ${varCount}: </label>
+          <input type="text" name="var${varCount}" id="var${varCount}">
+            <label for="textarea1">解释</label>
+            <input type="text" name="var${varCount}" id="var${varCount}">
+            <label for="textarea${varCount}">例句</label>
+            <textarea id="textarea${varCount}" class="materialize-textarea"></textarea>
+
+          <a class="removeVar waves-effect waves-light btn">删除</a>
+        </p>
+        `
+
+
+
+
+
+
+
+
+
+
+
+            //新表单项添加到“新增”按钮前面
+                $(this).parent().before($node);
+            });
+
+          //删除按钮点击
+          $('form').on('click', '.removeVar', function(){
+            $(this).parent().remove();
+            varCount--;
+          });
+        });
+    </script>
 
 <!-- Google Tag Manager (noscript) -->
 <noscript>
@@ -42,6 +115,17 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <style type="text/css">
+    .fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+}
+
+ form{
+            padding:5px;
+            font-size: 16px;
+        }
 </style>
 
 {% block content %}
@@ -49,8 +133,8 @@
     {{ container() }}
     {{ row() }}
     {{ col(['s12', 'm12','l12']) }}
-    <div class="post-preview">
-        <div class="card">
+    <div class="post-preview" style="">
+        <div class="card ">
             <div class="card-image">
                 {% if post.image %}
                 <img src="{{ post.image }}">
@@ -58,6 +142,7 @@
                 <img src="{{ url_for('static', filename= 'images/coffee.jpg') }}">
                 {% endif %}
                 <span class="card-title flow-text orange darken-1-text"><h5>{{ post.title }}</h5></span>
+
             </div>
             <div class="card-content">
 
@@ -81,7 +166,7 @@
                 <p class="post-meta">Posted by <a href="{{ url_for('blog.index') }}">Admin</a> on {{ post.pub_date |
                     my_format_datetime}}
                     {% endif %}
-
+                 <a class="waves-effect waves-teal btn-flat" onclick="$('blockquote').toggle()">阅读模式</a>
             </div>
         </div>
 
@@ -101,20 +186,14 @@
         </div>
         <hr>
 
-          <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
 
+
+
+
+
+
+    </div>
         <div class="section z-depth-4 hoverable">
             <h5 class="white-text"> Comments:</h5>
             <div class="comment  white"></div>
@@ -135,16 +214,36 @@
         </div>
         {{ enddiv() }}
         {{ enddiv() }}
+          <!-- Modal Trigger -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
 
         {{ enddiv() }}
 
         {{ enddiv() }}
         {{ enddiv() }}
-
+<div id="modal1" class="modal1">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
         {% endblock content %}
-        {% if current_user %}
+     {% if current_user.is_authenticated %}
          {% include 'fix_button.html' %}
         {% endif %}
         {% include 'footer.html' %}
