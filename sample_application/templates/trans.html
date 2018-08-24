@@ -55,10 +55,8 @@
    $('.tooltip').tooltipster({
     theme: 'tooltipster-noir'
 });
-    parse_js({{ word | tojson | safe }})
-
+    parse_js({{ word | tojson | safe }});
 	$('img').materialbox();
-
 	$("input.vmail.vinput").attr("placeholder", "邮箱（可选）");
 	$("input.vlink.vinput").attr("placeholder", "网址[http://](可选）");
 	$("img").addClass("materialboxed");
@@ -74,7 +72,7 @@
   function tool(word,content,id){
      var w = String(word)+String(id)
     $("body").mark(word,{"className":w});
-     $( "."+w ).mouseover(function(){
+     $( "."+w ).click(function(){
                $("."+w)
                .tooltipster({theme: 'tooltipster-Shadow',delay: 200,animation: 'fall',side: 'bottom',})
                .tooltipster('content', "Exp: "  + content)
