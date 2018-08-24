@@ -82,3 +82,13 @@ def remove_slash(title):
             return "LRENZ"
     except:
         return "LRENZ"
+
+
+def get_words(word):
+     lst = str(word).split('&')
+     b = [lst[i:i + 3] for i in range(0, len(lst), 3)]
+     return b
+
+def revword(word):
+    w = str(word).split('=')[1]
+    return w

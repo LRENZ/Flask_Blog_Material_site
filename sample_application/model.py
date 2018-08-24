@@ -22,6 +22,19 @@ class Image(db.Document):
     }
 
 
+class words(db.Document):
+    word = db.StringField()
+    exp = db.StringField()
+    des = db.StringField()
+    title =  db.StringField()
+    url = db.StringField()
+    time = db.DateTimeField(default=datetime.now)
+    meta = {
+        'ordering': ['-time'],
+        'strict': False,
+    }
+
+
 class User(db.Document):
     name = db.StringField(required=True, max_length=128)
     password = db.StringField(max_length=256)

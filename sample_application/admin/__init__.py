@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash
 
 from .admin import UserView, PostView, TodoView, ModelView, MyIndexView, FileView, ImageView, ReviewsView, TagView, \
     ContactView, CodeView
-from ..model import User, Post, Tag, Comment, Image, File, Review, Code, Info, Contact, picture
+from ..model import User, Post, Tag, Comment, Image, File, Review, Code, Info, Contact, picture,words
 
 # path = op.join(op.dirname(__file__), 'files')
 path = op.join(os.getcwd(), 'files')
@@ -26,4 +26,5 @@ def create_admin(app=None):
     admin.add_view(ImageView(Image, category='File'))
     admin.add_view(ReviewsView(Review))
     admin.add_view(ModelView(picture, category='File'))
+    admin.add_view(ModelView(words, category='File'))
     admin.add_view(FileAdmin(path, '/files/', name='Static Files', category='File'))

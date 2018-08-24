@@ -12,26 +12,53 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.js"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='tooltipster.bundle.min.js') }}"></script>
+
+
+
 {%- endblock scripts %}
 
-       {% if current_user.is_authenticated %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tooltipster.bundle.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tooltipster-sideTip-shadow.min.css') }}">
+
+{% if current_user.is_authenticated %}
         {{ col(['s4', 'm4','l2']) }}
          <div id="fixed" class="fixed hide-on-med-and-down">
-      <form id="myForm" method="post" class="white-text">
+      <form id="myForm"  class="white-text">
+        <p>
+          <label for="varword">Words: </label>
+          <input type="text" name="varword" id="varword" class="input-field>
+            <label for="textareaword">解释</label>
+            <input type="text" name="textareaword" id="textareaword" class="input-field>
+            <label for="textareasencent">例句</label>
+            <textarea id="textareasencent" name="textareasencent" class="materialize-textarea"></textarea>
 
+          <a class="removeVar waves-effect waves-light btn">删除</a>
+        </p>
 
           <div class="center">
-        <a id="addVar" class="waves-effect waves-light btn">Mark The Word</a>
-        <a class="alignRight waves-effect waves-light btn" type="submit" value="提交">Submit</a>
+        <a id="addVar" class="waves-effect waves-light btn">Add New Words</a>
+        <a class="alignRight waves-effect waves-light btn" onclick="submit()" value="提交">Submit</a>>
               </div>
       </form>
              </div>
  {% endif %}
 {% include 'nav.html' %}
 
+
+
 <script type="text/javascript">
   $(document).ready(function(){
+   $('.tooltip').tooltipster({
+    theme: 'tooltipster-noir'
+});
+    parse_js({{ word | tojson | safe }})
+
 	$('img').materialbox();
+
 	$("input.vmail.vinput").attr("placeholder", "邮箱（可选）");
 	$("input.vlink.vinput").attr("placeholder", "网址[http://](可选）");
 	$("img").addClass("materialboxed");
@@ -44,7 +71,31 @@
     }
 	 );
   });
-$
+  function tool(word,content,id){
+     var w = String(word)+String(id)
+    $("body").mark(word,{"className":w});
+     $( "."+w ).mouseover(function(){
+               $("."+w)
+               .tooltipster({theme: 'tooltipster-Shadow',delay: 200,animation: 'fall',side: 'bottom',})
+               .tooltipster('content', "Exp: "  + content)
+                .tooltipster('open');
+                setTimeout(function() {
+                  $("."+w).tooltipster('close');
+    }, 2000);
+
+               });
+    // console.log(  parse_js({{ word | tojson | safe }}));
+
+
+  }
+
+  function parse_js(js){
+  var json = $.parseJSON(js);
+      $(json).each(function(i,val){
+          //console.log(val);
+          tool(val.word,val.exp,val.id);
+});
+}
 
 
 
@@ -61,8 +112,28 @@ $
 </script>
 
 <script>
+
+function search_word(word){
+$("body").mark(word);
+}
+
+function submit(){
+$.ajax({
+        type: "POST",
+        data: JSON.stringify({'data':$('form').serialize(),'location':window.location.href,'title':'{{ post.title }}' }),
+        url: "/news/words",
+        contentType: 'application/json;charset=UTF-8',
+        success: function(data)
+        {
+           Materialize.toast('You Have Uploaded ' +data['num']+'words', 8000,'rounded');
+        }
+    });
+
+
+
+}
         //初始参数个数
-        var varCount = 0;
+        var varCount = 1;
         $(function () {
           //新增按钮点击
             $('#addVar').on('click', function(){
@@ -72,28 +143,15 @@ $
                   + '<input type="text" name="var'+varCount+'" id="var'+varCount+'">'
                   + '<span class="removeVar">删除</span></p>'; */
 
-                  $node =  `
-                  <p>
-          <label for="var ${varCount}">Words ${varCount}: </label>
-          <input type="text" name="var${varCount}" id="var${varCount}">
-            <label for="textarea1">解释</label>
-            <input type="text" name="var${varCount}" id="var${varCount}">
-            <label for="textarea${varCount}">例句</label>
-            <textarea id="textarea${varCount}" class="materialize-textarea"></textarea>
-
+                  $node =  `<p>
+          <label for="varword ${varCount}">Words ${varCount}: </label>
+          <input type="text" name="varword${varCount}" id="varword${varCount}">
+            <label for="textareaword">解释</label>
+            <input type="text" name="textareaword${varCount}" id="textareaword${varCount}">
+            <label for="textareasencent${varCount}">例句</label>
+            <textarea id="textareasencent${varCount}"  name="textareasencent" class="materialize-textarea"></textarea>
           <a class="removeVar waves-effect waves-light btn">删除</a>
-        </p>
-        `
-
-
-
-
-
-
-
-
-
-
+        </p>`
 
             //新表单项添加到“新增”按钮前面
                 $(this).parent().before($node);
@@ -119,7 +177,11 @@ $
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 250px;
+  width: 280px;
+}
+
+body{
+font-family: Lyon Text,Georgia,serif;
 }
 
  form{
@@ -232,19 +294,16 @@ $
 
         {{ enddiv() }}
         {{ enddiv() }}
-<div id="modal1" class="modal1">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+
+
+    <div class="tooltip_templates">
+    <span id="tooltip_content">
+        <strong>This is the content of my tooltip!</strong>
+    </span>
+</div>
 
         {% endblock content %}
      {% if current_user.is_authenticated %}
-         {% include 'fix_button.html' %}
         {% endif %}
         {% include 'footer.html' %}
         {% endblock body %}

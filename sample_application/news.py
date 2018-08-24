@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, redirect, url_for
-
+from flask import Blueprint, render_template, redirect, url_for,request,jsonify
+from .utils import get_words,revword
+import urllib.parse
 news = Blueprint('news', __name__)
 from .model import *
 from flask_login import current_user
@@ -17,7 +18,20 @@ def review_list(page=1):
 @news.route('/news/<string:post_title>')
 def get_post(post_title):
     post = Info.objects.get_or_404(title__contains=post_title)
-    return render_template("trans.html", post=post, user=current_user)
+    word = words.objects(title__contains=post_title).to_json()
+    return render_template("trans.html", post=post, user=current_user,word = word)
+
+@news.route('/news/words',methods=['GET', 'POST'])
+def save_word():
+    if request.method == "POST":
+        data = urllib.parse.unquote(request.json['data'])
+        loc = request.json['location']
+        title = request.json['title']
+        i_data = get_words(data)
+        for x in i_data:
+            words(word = revword(x[0]),exp = revword(x[1]),des = revword(x[2]),url = loc,title = title ).save()
+        return jsonify({'num':len(get_words(data)),'data':data})
+    return 'yeah'
 
 
 @news.route('/news_tag/<string:id>')
