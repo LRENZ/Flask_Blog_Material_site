@@ -102,10 +102,10 @@ def get_dict(word):
     return get_dict_format(requests.get(url,timeout = 3).json())
 
 def get_dict_format(word):
-    syno = word.get('syno')
-    try:
-        return dict(syno)
-    except:
+    if word.get('ec'):
+        syno = word['ec']
+    else:
         return {'mes':'error'}
+    return syno
 
 

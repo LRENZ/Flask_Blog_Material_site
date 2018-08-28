@@ -74,17 +74,27 @@
 
 function get_dict_data(json){
     var text = ''
-    var sy = json.synos
-    try{
-        for (let x of sy){
-           let  trans = x.syno.tran
-           let  pos = x.syno.pos
-           text =  text + `  ${ pos }: ${trans} \n  `
-        }
-        }catch(err){
-          console.log(err.message);
-          }
-
+   if (json.word){
+   var di = json.word;
+   for (var xx of di){
+      var xy = xx.trs;
+      //console.log(xy);
+      for (var xz of xy){
+          var xj = xz.tr
+          //console.log(xj);
+         for (var zb of xj){
+            var hb = zb.l.i;
+            //console.log(hb);
+             for (var xu of hb){
+             //console.log(xu);
+                text = text + ` ${xu} `
+             }
+            }
+      }
+   }
+   }
+    //console.log('text');
+    //console.log(text);
     return text
 
 }
@@ -146,8 +156,6 @@ function get_dict_data(json){
               }else{
               tool(val.word,val.exp,val._id.$oid);
               }
-
-
           } catch(err){
           console.log(err.message);
           }
