@@ -55,13 +55,14 @@
    $('.tooltip').tooltipster({
     theme: 'tooltipster-noir'
 });
-    parse_js({{ word | tojson | safe }});
+   var jsondata = {{ word | tojson | safe }}
+    parse_js( jsondata);
 	$('img').materialbox();
 	$("input.vmail.vinput").attr("placeholder", "邮箱（可选）");
 	$("input.vlink.vinput").attr("placeholder", "网址[http://](可选）");
 	$("img").addClass("materialboxed");
 	$("img").addClass("responsive-img");
-	$("blockquote").addClass("blue-text");
+	$("blockquote").addClass("amber-text");
 		 $('.modal').modal(
 	 {
       startingTop: '50%', // Starting top style attribute
@@ -69,43 +70,90 @@
     }
 	 );
   });
+
+
+function get_dict_data(json){
+    var text = ''
+    var sy = json.synos
+    try{
+        for (let x of sy){
+           let  trans = x.syno.tran
+           let  pos = x.syno.pos
+           text =  text + `  ${ pos }: ${trans} \n  `
+        }
+        }catch(err){
+          console.log(err.message);
+          }
+
+    return text
+
+}
+
   function tool(word,content,id){
-     var w = String(word)+String(id)
+     var w = String(id).slice(-5)
     $("body").mark(word,{"className":w});
      $( "."+w ).click(function(){
                $("."+w)
                .tooltipster({theme: 'tooltipster-Shadow',delay: 200,animation: 'fall',side: 'bottom',})
-               .tooltipster('content', "Exp: "  + content)
+               .tooltipster('content', "Exp : "  + content)
                 .tooltipster('open');
                 setTimeout(function() {
                   $("."+w).tooltipster('close');
     }, 2000);
-
                });
     // console.log(  parse_js({{ word | tojson | safe }}));
-
-
   }
+
+    function tool_dic(word,content,id,dic){
+     var w = String(id).slice(-5);
+     var dic_data = get_dict_data(dic);
+     var cont =  ` ${dic_data} \n;  Exp: ${ content }\n `
+     //console.log(cont);
+    $("body").mark(word,{"className":w});
+     $( "."+w ).click(function(){
+               $("."+w)
+               .tooltipster({theme: 'tooltipster-Shadow',delay: 200,animation: 'fall',side: 'bottom',})
+               .tooltipster('content',cont  )
+                .tooltipster('open');
+                setTimeout(function() {
+                  $("."+w).tooltipster('close');
+    }, 2000);
+               });
+    // console.log(  parse_js({{ word | tojson | safe }}));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   function parse_js(js){
   var json = $.parseJSON(js);
       $(json).each(function(i,val){
-          //console.log(val);
-          tool(val.word,val.exp,val.id);
+          try{
+            if (!val.dic.mes){
+               tool_dic(val.word,val.exp,val._id.$oid,val.dic);
+                get_dict_data(val.dic);
+              }else{
+              tool(val.word,val.exp,val._id.$oid);
+              }
+
+
+          } catch(err){
+          console.log(err.message);
+          }
 });
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 
@@ -123,7 +171,7 @@ $.ajax({
         contentType: 'application/json;charset=UTF-8',
         success: function(data)
         {
-           Materialize.toast('You Have Uploaded ' +data['num']+'words', 8000,'rounded');
+           Materialize.toast('You Have Uploaded ' +data +' words', 8000,'rounded');
         }
     });
 
@@ -294,11 +342,7 @@ font-family: Lyon Text,Georgia,serif;
         {{ enddiv() }}
 
 
-    <div class="tooltip_templates">
-    <span id="tooltip_content">
-        <strong>This is the content of my tooltip!</strong>
-    </span>
-</div>
+
 
         {% endblock content %}
      {% if current_user.is_authenticated %}

@@ -1,6 +1,7 @@
 from flask import Markup, url_for, request
 from flask_babel import Babel
 from flask_babel import format_datetime
+import requests
 
 
 def get_slug(text):
@@ -92,3 +93,19 @@ def get_words(word):
 def revword(word):
     w = str(word).split('=')[1]
     return w
+
+
+def get_dict(word):
+    url = """
+    http://dict.youdao.com/jsonapi?xmlVersion=5.1&client=&q={}&dicts=&keyfrom=&model=&mid=&imei=&vendor=&screen=&ssid=&network=5g&abtest=&jsonversion=2
+    """.format(word)
+    return get_dict_format(requests.get(url,timeout = 3).json())
+
+def get_dict_format(word):
+    syno = word.get('syno')
+    try:
+        return dict(syno)
+    except:
+        return {'mes':'error'}
+
+

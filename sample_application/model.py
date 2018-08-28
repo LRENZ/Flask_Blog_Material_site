@@ -25,6 +25,7 @@ class Image(db.Document):
 class words(db.Document):
     word = db.StringField()
     exp = db.StringField()
+    dic = db.DictField()
     des = db.StringField()
     title =  db.StringField()
     url = db.StringField()

@@ -4,6 +4,7 @@ import urllib.parse
 news = Blueprint('news', __name__)
 from .model import *
 from flask_login import current_user
+from .utils import get_dict
 
 
 @news.route('/news')
@@ -29,9 +30,10 @@ def save_word():
         title = request.json['title']
         i_data = get_words(data)
         for x in i_data:
-            words(word = revword(x[0]),exp = revword(x[1]),des = revword(x[2]),url = loc,title = title ).save()
-        return jsonify({'num':len(get_words(data)),'data':data})
-    return 'yeah'
+            dic = get_dict(revword(x[0]))
+            if dic:
+                words(word = revword(x[0]),exp = revword(x[1]),des = revword(x[2]),url = loc,title = title,dic =dic ).save()
+    return str(len(i_data))
 
 
 @news.route('/news_tag/<string:id>')
