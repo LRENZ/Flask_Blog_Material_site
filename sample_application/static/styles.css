@@ -22,6 +22,16 @@ body::before {
     flex: 1 0 auto;
   }
 
+
+body > div.section > div > div > div.col.s12.m12.l12 > div > div.col.s12.m12.l12{
+    padding: 30px;
+    margin-bottom: 80px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(0px);
+    transition: transform .3s ease-out 0s;
+  }
+
+
 @media (max-width: 512px)  and (-webkit-min-device-pixel-ratio: 1.5),
        (max-width: 512px)  and (min-resolution: 1.5dppx),
        (max-width: 1024px) and (-webkit-max-device-pixel-ratio: 1.5),
