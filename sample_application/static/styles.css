@@ -22,6 +22,11 @@ body::before {
     flex: 1 0 auto;
   }
 
+  .hljs {
+      font-family: Menlo,Monaco,Consolas,Courier New,monospace;
+    background-color: #2e192a;
+    }
+
 
 body > div.section > div > div > div.col.s12.m12.l12 > div > div.col.s12.m12.l12{
     padding: 30px;
