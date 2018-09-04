@@ -7,10 +7,10 @@ from sample_application import create_app
 
 # from flask_debugtoolbar import DebugToolbarExtension
 app = create_app()
-app.debug = True
+#app.debug = True
 # toolbar = DebugToolbarExtension()
 # toolbar.init_app(app)
 
 if __name__ == "__main__":
     # create_test_admin()
-    app.run(port=5000)
+    app.run(port=5000,debug=True,use_reloader=True)

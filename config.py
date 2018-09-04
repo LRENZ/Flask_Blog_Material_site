@@ -17,6 +17,7 @@ class BaseConfig:
     CKEDITOR_ENABLE_CODESNIPPET = True
     CKEDITOR_ENABLE_MARKDOWN = True
     CKEDITOR_FILE_UPLOADER = 'upload'
+    TEMPLATES_AUTO_RELOAD = True
     # UPLOADED_PATH = os.path.join(basedir, 'uploads')
 
 
@@ -39,7 +40,6 @@ class TestingConfig(BaseConfig):
 config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
-
     'default': DevelopmentConfig
 }
 
