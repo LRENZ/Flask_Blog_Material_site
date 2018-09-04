@@ -249,7 +249,7 @@ font-family: Lyon Text,Georgia,serif;
     {{ container() }}
     {{ row() }}
     {{ col(['s12', 'm12','l12']) }}
-    <div class="post-preview" style="">
+    <div class="post-preview animated fadeIn delay-1s" style="">
         <div class="card ">
             <div class="card-image">
                 {% if post.image %}
@@ -290,7 +290,7 @@ font-family: Lyon Text,Georgia,serif;
 
         {{ col(['s12', 'm12','l12']) }}
         <div>
-            <div class="card-content white-text lighten-5">
+            <div class="card-content white-text lighten-5 animated bounceInUp delay-2s">
                 {% autoescape false %}
                 {% if post.text %}
                 {{ post.text }}
