@@ -290,7 +290,12 @@ font-family: Lyon Text,Georgia,serif;
 
         {{ col(['s12', 'm12','l12']) }}
         <div>
-            <div class="card-content white-text lighten-5 ">
+            <div class="card-content white-text lighten-5 " style="
+               padding: 30px;
+              margin-bottom: 80px;
+             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+             transform: translateY(0px);
+            transition: transform .3s ease-out 0s;">
                 {% autoescape false %}
                 {% if post.text %}
                 {{ post.text }}
