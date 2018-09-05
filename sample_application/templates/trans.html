@@ -58,6 +58,7 @@
    var jsondata = {{ word | tojson | safe }}
     parse_js( jsondata);
 	$('img').materialbox();
+	//$("a").addClass("truncate");
 	$("input.vmail.vinput").attr("placeholder", "邮箱（可选）");
 	$("input.vlink.vinput").attr("placeholder", "网址[http://](可选）");
 	$("img").addClass("materialboxed");
