@@ -44,28 +44,4 @@ config = {
 }
 
 
-# app.debug = True
-# app.config.from_object('config')
-# app.config['SECRET_KEY'] = 'devkeytestibsvbdsvbsd'
-# app.config['DEBUG_TB_PANELS'] = ['flask_mongoengine.panels.MongoDebugPanel']
-# app.config['MONGODB_SETTINGS'] = {'db': 'testing'}
-# toolbar = DebugToolbarExtension(app)
-# toolbar.init_app(app)
-# app.config['DISQUS_SECRET_KEY']
-# app.config['DISQUS_PUBLIC_KEY']
-# app.config['CKEDITOR_HEIGHT'] = 400
-# app.config['CKEDITOR_FILE_UPLOADER'] = 'upload'
-# app.config['UPLOADED_PATH'] = basedir + '/uploads'
 
-# app.config['SECRET_KEY'] = os.urandom(24)
-
-# app.config['CKEDITOR_PKG_TYPE'] = 'full'
-# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-# app.config['THUMBNAIL_MEDIA_ROOT'] = '/home/www/media'
-# app.config['THUMBNAIL_MEDIA_URL'] = '/media/'
-
-
-# app.config['MONGODB_SETTINGS'] = {
-# 'db': 'testing',
-# 'connect': False,
-# }

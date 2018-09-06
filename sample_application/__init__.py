@@ -1,5 +1,4 @@
 import os
-import os
 import os.path as op
 
 from celery import Celery
@@ -8,10 +7,10 @@ from flask_ckeditor import CKEditor
 from flask_mail import Mail
 from flask_material import Material
 from flask_mongoengine import MongoEngineSessionInterface
-
 from .model import *
 from .utils import babel, my_format_datetime, format_meta_keywords, get_slug, get_rate, get_clean_tag, get_header_title, \
     remove_slash
+from flask_share import Share
 
 celery = Celery(__name__, broker='redis://localhost:6379/0')
 mail = Mail()
@@ -45,6 +44,7 @@ def create_app():
     Material(app)
     # disq = Disqus(app)
     ckeditor = CKEditor(app)
+    share = Share(app)
     # thumb = Thumbnail(app)
     # csrf.init_app(app)
     # Flask-Mail configuration
@@ -75,7 +75,7 @@ def create_app():
             return send_from_directory(path, filename)
         else:
             return "Nope"
-            # return str(path)
+
 
     @app.errorhandler(404)
     def page_not_found(e):
@@ -84,7 +84,6 @@ def create_app():
     app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/uploads'
     configure_uploads(app, photos)
     patch_request_class(app)  # set maximum file size, default is 16MB
-
     return app
 
 
