@@ -242,20 +242,7 @@ class FileView(ModelView):
 
 
 class ImageView(ModelView):
-    """
-        def _list_thumbnail(view, context, model, name):
-        if not model.path:
-            return ''
 
-        return Markup('<img src="%s">' % url_for('static',
-                                                 filename=form.thumbgen_filename(model.path)))
-
-    column_formatters = {
-        'path': _list_thumbnail
-    }
-
-
-    """
 
     def _list_thumbnail(view, context, model, name):
         return Markup('<img src="/img/{}" class = "img-thumbnail img-responsive" style="max-height: 100px; position: relative; max-height: 50px">' .format(model.id))
@@ -276,14 +263,6 @@ class ImageView(ModelView):
         'cata': [('Post', 'Post'), ('Reviews', 'Reviews'), ('Todo', 'Todo')]
     }
 
-    """
-        form_extra_fields = {
-        'path': form.ImageUploadField('Image',
-                                      base_path=file_path,
-                                      thumbnail_size=(100, 100, True))
-    }
-
-    """
 
 
 class ReviewsView(ModelView):

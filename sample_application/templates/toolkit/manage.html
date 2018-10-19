@@ -8,14 +8,18 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
 {%- endblock scripts %}
 
 {% include 'nav.html' %}
 
 <script type="text/javascript">
+
   $(document).ready(function(){
-	$('img').materialbox();
-	$("img").addClass("materialboxed");
+	//$('img').materialbox();
+	//$("img").addClass("materialboxed");
+
+
 	 $('.modal').modal(
 	 {
       startingTop: '50%', // Starting top style attribute
@@ -53,12 +57,13 @@
 
     {% for photo in pic.items %}
     {{ col(['s12', 'm12','l4']) }}
-    <div class="card">
-        <div class="card-image" style="position: relative;max-height:100%; height:200px;">
-            <img src="{{ photo.file_url }}" data-caption={{ photo.file_name }} style="position: relative;">
+    <div class="card" style="">
+        <div class="card-image" style="position: relative;">
+            <img src="{{ photo.file_url }}" data-caption={{ photo.file_name }} style="max-height:400px;">
         </div>
 
-        <div class="card-content black-text truncate"><span>{{ photo.file_name }}</span>
+
+        <div class="card-content black-text truncate"><h5>{{ photo.file_name }}</h5>
         </div>
         <div class="card-tabs">
             <ul class="tabs tabs-fixed-width">
@@ -72,18 +77,54 @@
             </div>
             <div id="{{ photo.id }}2">{{ photo.file_url }}
 
+
+                 <!-- 1. Define some markup -->
+
+
+    <!-- 2. Include library -->
+
+    <!-- 3. Instantiate clipboard -->
+    <script>
+    var clipboard = new ClipboardJS('.btn{{ photo.id }}', {
+        text: function() {
+            return '{{ photo.file_url }}';
+        }
+    });
+    clipboard.on('success', function(e) {
+        //console.log(e);
+         Materialize.toast('The Url Has Been Copied', 8000,'rounded');
+    });
+    clipboard.on('error', function(e) {
+        //console.log(e);
+        Materialize.toast('Something Wrong When Copied', 8000,'rounded');
+    });
+    </script>
+
             </div>
             <div id="{{ photo.id }}3">Test 3</div>
         </div>
 
 
         <div class="card-action center">
+            {% if current_user.is_authenticated %}
+            <div class="row">
             <a href="{{ url_for('upload.delete_file', filename=photo.file_name ) }}"
                class="waves-effect waves-light btn">del</a>
+
             <a class="waves-effect waves-light btn modal-trigger" href="#{{ photo.id }}" id='{{ photo.id }}id'
                onclick="get_chipdata_{{ photo.id }}a()">Edit</a>
+                </div>
+            {% endif %}
+
+               <div class="row">
+            <a class="waves-effect waves-light btn " href="{{ photo.file_url }}"
+               >View</a>
+
+            <a class="btn{{ photo.id }} waves-effect waves-light btn">Copy</a>
+                   </div>
         </div>
         <!-- Modal Structure -->
+
 
         <div id="{{ photo.id }}" class="modal modal-fixed-footer">
             <div class="modal-content black-text flow-text">
@@ -137,7 +178,7 @@
 
                 <script type="text/javascript">
 
-                                                function test{
+                                                /*function test{
 
 
 
@@ -161,7 +202,7 @@
                                                                             //alert("error!");
                                                                         //}
                                                         //});
-                                                }
+                                                }*/
 
 
                 </script>

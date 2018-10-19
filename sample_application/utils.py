@@ -5,7 +5,7 @@ import requests
 
 
 def get_slug(text):
-    slug = str(text)[:200] + '<br />......And More'
+    slug = str(text)[:200]
     return slug
 
 

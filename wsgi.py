@@ -6,7 +6,7 @@
 # ln -s /usr/local/python3/bin/virtualenv /usr/bin/virtualenv
 # virtualenv --no-site-packages --python=/usr/local/python3 venv3
 # virtualenv --python=python3 --no-site-packages venv
-# source venv3/bin/activate
+# kes
 # gunicorn -w 4 wsgi:app -b 0.0.0.0:80
 # pip install -r requirement
 # set SECRET_KEY

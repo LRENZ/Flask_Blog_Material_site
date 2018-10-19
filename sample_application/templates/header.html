@@ -1,13 +1,47 @@
 <head>
     {% if post %}
-    {% if post.title %}
-    <title> {{ post.title | upper }} </title>
+        {% if post.title %}
+            <title> {{ post.title | upper | title }} </title>
+                            {% if post.content %}
+                            <meta name="description"
+                              content=" {{ post.content  | get_slug |striptags| title }} ">
+                            <meta name="keywords"
+                              content="Linpiner.com,LRENZ,Infomation,Resource,Game.Music,Movies,TV Series,Post,And News,linpiner">
+
+                            {% else %}
+                                 <meta name="description"
+                              content=" More Detail in linpiner.com ">
+                            <meta name="keywords"
+                              content="Linpiner.com,LRENZ,Infomation,Resource,Game.Music,Movies,TV Series,Post,And News,linpiner">
+                            {% endif %}
+        {% else %}
+     <title>{{ request.path | remove_slash | upper }}</title>
+           <meta name="description"
+              content="Linpiner.com-LRENZ Personal Site,Share Infomation and Resource,Writing Reviews For Game.Music,Movies,TV Series,Post,And News,">
+
+            <meta name="keywords"
+              content="Linpiner.com,LRENZ,Infomation,Resource,Game.Music,Movies,TV Series,Post,And News,linpiner">
+        {% endif %}
+
+
     {% else %}
-    <title>{{ request.path | remove_slash | upper }}</title>
+        <title>{{ request.path | remove_slash | upper }}</title>
+           <meta name="description"
+              content="Linpiner.com-LRENZ Personal Site,Share Infomation and Resource,Writing Reviews For Game.Music,Movies,TV Series,Post,And News,">
+
+            <meta name="keywords"
+              content="Linpiner.com,LRENZ,Infomation,Resource,Game.Music,Movies,TV Series,Post,And News,linpiner">
     {% endif %}
-    {% else %}
-    <title>{{ request.path |get_header_title | upper}}</title>
-    {% endif %}
+
+
+
+
+
+
+
+
+
+
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -25,11 +59,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description"
-          content="Linpiner.com-LRENZ Personal Site,Share Infomation and Resource,Writing Reviews For Game.Music,Movies,TV Series,Post,And News,">
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="keywords"
-          content="Linpiner.com,LRENZ,Infomation,Resource,Game.Music,Movies,TV Series,Post,And News,linpiner">
+
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Add to homescreen for Safari on iOS -->

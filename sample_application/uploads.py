@@ -5,7 +5,7 @@ import time
 
 from flask import Flask, render_template, redirect, url_for, request, Blueprint, flash, jsonify
 from flask_login import login_required
-
+from flask_login import current_user, login_user, logout_user
 
 from sample_application import photos
 from .form import UploadForm,SearchForm
@@ -34,20 +34,22 @@ def upload_file():
         # url = 'https://linpiner.com/_uploads/photos/6l0dknr8e8nlze1npbkv43tp9.jpg'
         # detect_web_uri.delay(url)
         success = True
+        return redirect('/manage')
     else:
         success = False
     return render_template('toolkit/upload.html', form=form, success=success,searchform = searchform)
+    #return redirect('/manage')
 
 
 @up.route('/manage')
 @up.route('/manage/<int:page>')
-@login_required
+#@login_required
 def manage_file(page=1):
     pic = picture.objects.paginate(page=page, per_page=12)
     # files_list = os.listdir(os.getcwd() + '/uploads')
     # file_url = [photos.url(name) for name in files_list ]
     # image_url = zip(files_list,file_url)
-    return render_template('toolkit/manage.html', pic=pic)
+    return render_template('toolkit/manage.html', pic=pic,user=current_user)
 
 
 @up.route('/open/<filename>')
