@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 # star :  gunicorn -w 3 wsgi:app -b 0.0.0.0:80
 # stop : pkill gunicorn or  kill -9 `ps aux | grep gunicorn | awk '{print $2}'`
-#  bu/Flask_Blog_Material_site
+#  cd /home/www/flask_project/Flask_Blog_Material_site
 # ln -s /usr/local/python3/bin/virtualenv /usr/bin/virtualenv
 # virtualenv --no-site-packages --python=/usr/local/python3 venv3
 # virtualenv --python=python3 --no-site-packages venv
-# kes
+# source venv3/bin/activate
 # gunicorn -w 4 wsgi:app -b 0.0.0.0:80
 # pip install -r requirement
 # set SECRET_KEY
