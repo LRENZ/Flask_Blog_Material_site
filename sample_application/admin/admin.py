@@ -94,6 +94,32 @@ class CodeView(ModelView):
         # redirect to login page if user doesn't have access
         return redirect(url_for('admin.login', next=request.url))
 
+class dataLayerView(ModelView):
+    can_create = True
+    can_delete = True
+    edit_modal = True
+    column_filters = ('published', 'url')
+
+    form_widget_args = {
+        'description': {
+            'rows': 10,
+            'style': 'color: black'
+        },
+        'other_field': {
+            'disabled': True
+        }
+    }
+    def get_content(view, context, model, name):
+        if not model.datalayer:
+            return ''
+
+        return str(model.datalayer)[:300]
+
+    column_formatters = {
+        'datalayer': get_content,
+    }
+
+
 
 class PostView(ModelView):
     def get_content(view, context, model, name):

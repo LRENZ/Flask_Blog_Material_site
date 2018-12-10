@@ -1,4 +1,10 @@
 <head>
+    <script>
+  dataLayer = [];
+</script>
+    <script>
+  {{ get_dataLayer(request.path) | safe }}
+    </script>
     {% if post %}
         {% if post.title %}
             <title> {{ post.title | upper | title }} </title>
@@ -66,10 +72,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <script>
-  dataLayer = [];
 
-    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

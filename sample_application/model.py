@@ -69,6 +69,14 @@ class Code(db.Document):
     category = db.StringField(default='google_customs_search_js')
 
 
+class dataLayer(db.Document):
+    url = db.StringField()
+    datalayer = db.StringField(default = "dataLayer = [];")
+    published = db.BooleanField(default=True)
+    pub_date = db.DateTimeField(default=datetime.now)
+    des = db.StringField()
+
+
 class Info(db.Document):
     title = db.StringField(max_length=128)
     text = db.StringField()

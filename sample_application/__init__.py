@@ -1,6 +1,5 @@
 import os
 import os.path as op
-
 from celery import Celery
 from flask import Flask, render_template, request, Markup, url_for, send_from_directory, redirect
 from flask_ckeditor import CKEditor
@@ -19,10 +18,6 @@ from mongoengine.queryset.visitor import Q
 import config
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
-# def register_upload(app):
-
-# configure_uploads(app, photos)
-# patch_request_class(app)
 photos = UploadSet('photos', IMAGES)
 
 
@@ -137,8 +132,17 @@ def register_jinjia_filters(app):
     app.jinja_env.filters['remove_slash'] = remove_slash
     # app.jinja_env.filters['resize'] = resize
     app.add_template_global(get_js, 'get_js')
+    app.add_template_global(get_dataLayer, 'get_dataLayer')
 
 
 def get_js():
-    search_code = Code.objects(Q(published=True) & Q(category='google_customs_search_js')).first() or "something wrong"
-    return search_code.code
+    search_code = Code.objects(Q(published=True) & Q(category='google_customs_search_js')).first()
+    return search_code.code or "something wrong"
+
+def get_dataLayer(url):
+    dl = dataLayer.objects(Q(published=True) & Q(url__contains=str(url))).first()
+    print(url)
+    if not dl:
+        return "dataLayer = [];"
+    return dl.datalayer
+
