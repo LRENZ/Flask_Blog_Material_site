@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for,request,jsonify
 from .utils import get_words,revword
-import urllib.parse
+try:
+    from urllib.parse import urlparse
+except ImportError:
+     from urlparse import urlparse
 news = Blueprint('news', __name__)
 from .model import *
 from flask_login import current_user
@@ -25,7 +28,7 @@ def get_post(post_title):
 @news.route('/news/words',methods=['GET', 'POST'])
 def save_word():
     if request.method == "POST":
-        data = urllib.parse.unquote(request.json['data'])
+        data = urlparse.unquote(request.json['data'])
         loc = request.json['location']
         title = request.json['title']
         i_data = get_words(data)
