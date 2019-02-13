@@ -1,15 +1,13 @@
 <footer class="page-footer">
     <script type="text/javascript" src="{{ url_for('static', filename='my_js.js') }}"></script>
-    <script>
 
-    </script>
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
                 <h5 class="white-text">LRENZ</h5>
                 <p class="grey-text text-lighten-4">All Rights With The World</p>
                 <p class="grey-text text-lighten-4">Anything Contact With ME Please</p>
-                <a href="/posts/Readme" class="waves-effect waves-light btn red">Readme Adout Site</a>
+                <a class="waves-effect waves-light btn red" id="readme" href="/posts/Readme">Readme Adout Site</a>
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text ">Links</h5>
@@ -28,5 +26,35 @@
             </div>
         </div>
     </div>
+    <script>
+(function(){
+document.getElementById("readme").addEventListener("click", function( event ) {
+event.target.textContent = "click count: " + event.detail;
 
+window.dataLayer.push({
+'event': 'productClick',
+'ecommerce': {
+ 'click': {
+   'actionField': {'list': 'Search Results'},      // Optional list property.
+   'products': [{
+     'name': 'productObj.name',                      // Name or ID is required.
+     'id': 'productObj.id',
+     'price': 'productObj.price',
+     'brand': 'productObj.brand',
+     'category': 'productObj.cat',
+     'variant': 'productObj.variant',
+     'position': 'productObj.position'
+    }]
+  }
+},
+/*
+'eventCallback': function() {
+  //alert(event.target.textContent + 'test');
+  document.location = '/posts/Readme'
+}
+*/
+});
+
+}, false)})()
+    </script>
 </footer>

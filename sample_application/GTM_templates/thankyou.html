@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <script>
+  dataLayer = [];
+</script>
+
+	    <script>
+  {{ get_dataLayer(request.path) | safe }}
+    </script>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<title>Confirmation | Luxury Travel Site</title>
+	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" type="text/css" />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+
+	<script>
+  {{ get_gtm_js() | safe }}
+    </script>
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="./index.html">Luxury Travel Site</a>
+				<ul class="nav">
+					<li><a href="./index.html">Home</a></li>
+					<li><a href="./destinations.html">Destinations</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="main">
+		<div class="title">
+			<h1>Luxury Travel Site</h1>
+		</div>
+		<p class="lead">The most luxurious way to travel the world.</p>
+		
+		<div class="container" id="content">
+			<div class="page-header"><h1>Reservation Complete! <small>You are almost at your destination.</small></h1></div>
+			
+			<div class="row">
+				<div class="span3">&nbsp;</div>
+				<div class="span6 text-center">
+					<div class="alert alert-info">
+					<h2>Thank you for reserving your trip through Luxury Travel Site for $<span id="price"></span>.  Enjoy!</h2>
+					<script>document.getElementById('price').innerHTML = document.URL.match(/price=([^&]+)/)[1];</script>
+					<br />
+					<div class="text-center"><a href="./index.html" class="btn btn-inverse"><h4>Back to Home</h4></a></div>
+					</div>
+				</div>
+				<div class="span3">&nbsp;</div>
+			</div>
+			
+		</div>
+        <footer class="footer">
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>This is a demo site designed to showcase GTM.</p>
+		</footer>
+	</div>
+	
+	
+	<script src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

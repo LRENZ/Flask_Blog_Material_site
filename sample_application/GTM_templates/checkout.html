@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	    <script>
+  dataLayer = [];
+</script>
+
+	    <script>
+  {{ get_dataLayer(request.path) | safe }}
+    </script>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<title>Check Out | Luxury Travel Site</title>
+	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" type="text/css" />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+
+		    <script>
+  {{ get_gtm_js() | safe }}
+    </script>
+
+
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="./index.html">Luxury Travel Site</a>
+				<ul class="nav">
+					<li><a href="./index.html">Home</a></li>
+					<li><a href="./destinations.html">Destinations</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="main">
+		<div class="title">
+			<h1>Luxury Travel Site</h1>
+		</div>
+		<p class="lead">The most luxurious way to travel the world.</p>
+		
+		<div class="container" id="content">
+			<div class="page-header"><h1>Checkout <small>Can you feel the sun yet?</small></h1></div>
+			<table class="table table-striped">
+				<thead><tr>
+					<th>Description</th>
+					<th>Length</th>
+					<th>Price Per Person</th>
+					<th>Travellers</th>
+				</tr></thead>
+				<tbody>
+					<tr>
+						<td>A week-long stay in one of the most luxurious places ever.</td>
+						<td>6 nights</td>
+						<td>$799</td>
+						<td>
+							<select style="width:60px;" id="travellers">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+				<strong>Terms and Conditions</strong>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus nulla, convallis non aliquet at, scelerisque ut sem. Quisque felis mauris, auctor sit amet elementum at, gravida ut orci. Phasellus condimentum condimentum enim eu consequat. Suspendisse accumsan purus dolor.
+			</div>
+				
+			<div style="text-align:right;">
+				<h2>$<span id="price">799</span></h2>
+				<h4>Total</h4>
+			</div>
+			<div class="text-center"><a href="./thankyou.html?price=799" class="btn btn-primary" id="submitButton"><h3>Submit Reservation</h3></a></div>
+		</div>
+        <footer class="footer">
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>This is a demo site designed to showcase GTM.</p>
+		</footer>
+	</div>
+	
+	
+	<script src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$('#travellers').on('change', function() {
+			var totalCost = 799 * $(this).val();
+			$('#price').html(totalCost);
+			$('#submitButton').attr('href','./thankyou.html?price=' + totalCost);
+			if (totalCost > 1000)
+				fireTags();
+		});
+		function fireTags() {
+			var exampleImageURL = "www.google.com/tagmanager/s/arrow_fff.png";
+			var cachebuster = Math.random()*10000000000;
+			$('body').append('<img height="1" width="1" style="border-style:none;" alt="" src="https://' + exampleImageURL + '?cache=' + cachebuster + '"/>');
+		}
+	</script>
+</body>
+</html>

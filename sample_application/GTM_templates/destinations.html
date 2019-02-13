@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	    <script>
+  dataLayer = [];
+</script>
+
+	    <script>
+  {{ get_dataLayer(request.path) | safe }}
+    </script>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<title>Destinations | Luxury Travel Site</title>
+	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" type="text/css" />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+	    <script>
+  {{ get_gtm_js() | safe }}
+    </script>
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="./index.html">Luxury Travel Site</a>
+				<ul class="nav">
+					<li><a href="./index.html">Home</a></li>
+					<li class="active"><a href="./destinations.html">Destinations</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="main">
+		<div class="title">
+			<h1>Luxury Travel Site</h1>
+		</div>
+		<p class="lead">The most luxurious way to travel the world.</p>
+		
+		<div class="container" id="content">
+			<div id="content-chooser">
+				<div class="page-header">
+					<h1>Switzerland <small>The most beautiful places on Earth.</small></h1>
+				</div>
+				
+				<div class="row">
+					<ul class="thumbnails">
+						<li class="span3"><div class="thumbnail"><img src="./img/switzerland_1.jpg" alt=""></div></li>
+						<li class="span3"><div class="thumbnail"><img src="./img/switzerland_2.jpg" alt=""></div></li>
+						<li class="span3"><div class="thumbnail"><img src="./img/switzerland_3.jpg" alt=""></div></li>
+						<li class="span3">
+							<h3>Switzerland</h3>
+							Vivamus dictum dictum felis ut dignissim. Ut nibh lectus, mollis ac laoreet ut, scelerisque congue ligula. Morbi gravida felis velit.
+							<br/><br/>
+							<a class="btn btn-primary" href="#switzerland">Details</a>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="page-header">
+					<h1>Puerto Rico <small>The most beautiful places on Earth.</small></h1>
+				</div>
+				<div class="row">
+					<ul class="thumbnails">
+						<li class="span3"><div class="thumbnail"><img src="./img/pr_1.jpg" alt=""></div></li>
+						<li class="span3"><div class="thumbnail"><img src="./img/pr_2.jpg" alt=""></div></li>
+						<li class="span3">
+							<h3>Puerto Rico</h3>
+							Vivamus dictum dictum felis ut dignissim. Ut nibh lectus, mollis ac laoreet ut, scelerisque congue ligula. Morbi gravida felis velit.
+							<br/><br/>
+							<a class="btn btn-primary" href="#puertorico">Details</a>
+						</li>
+						<li class="span3"><div class="thumbnail"><img src="./img/pr_3.jpg" alt=""></div></li>
+					</ul>
+				</div>
+				
+				<div class="page-header">
+					<h1>Providence <small>The most beautiful places on Earth.</small></h1>
+				</div>
+				<div class="row">
+					<ul class="thumbnails">
+						<li class="span3"><div class="thumbnail"><img src="./img/prov_1.jpg" alt=""></div></li>
+						<li class="span3">
+							<h3>Providence</h3>
+							Vivamus dictum dictum felis ut dignissim. Ut nibh lectus, mollis ac laoreet ut, scelerisque congue ligula. Morbi gravida felis velit.
+							<br/><br/>
+							<a class="btn btn-primary" href="#providence">Details</a>
+						</li>
+						<li class="span3"><div class="thumbnail"><img src="./img/prov_2.jpg" alt=""></div></li>
+						<li class="span3"><div class="thumbnail"><img src="./img/prov_3.jpg" alt=""></div></li>
+					</ul>
+				</div>
+				
+				<div class="page-header">
+					<h1>San Francisco <small>The most beautiful places on Earth.</small></h1>
+				</div>
+				<div class="row">
+					<ul class="thumbnails">
+						<li class="span3">
+							<h3>San Francisco</h3>
+							Vivamus dictum dictum felis ut dignissim. Ut nibh lectus, mollis ac laoreet ut, scelerisque congue ligula. Morbi gravida felis velit.
+							<br/><br/>
+							<a class="btn btn-primary" href="#sanfrancisco">Details</a>
+						</li>
+						<li class="span3"><div class="thumbnail"><img src="./img/sf_1.jpg" alt=""></div></li>
+						<li class="span3"><div class="thumbnail"><img src="./img/sf_2.jpg" alt=""></div></li>
+						<li class="span3"><div class="thumbnail"><img src="./img/sf_3.jpg" alt=""></div></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content-loader" class="hidden text-center">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif" style="padding:75px;" />
+			</div>
+			<div id="content-switzerland" class="hidden">
+				<div class="page-header">
+					<a class="btn pull-right" href="#" onclick="window.location.hash='';return false;"><strong>&lsaquo; All Destinations</strong></a>
+					<h1>Switzerland <small>The most beautiful places on Earth.</small></h1>
+				</div>
+				<div class="row">
+					<div class="span6">
+						<h3>Go to Switzerland</h3>
+						<div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus nulla, convallis non aliquet at, scelerisque ut sem. Quisque felis mauris, auctor sit amet elementum at, gravida ut orci. Phasellus condimentum condimentum enim eu consequat. Suspendisse accumsan purus dolor. Nullam eget quam dignissim arcu dapibus volutpat et eu sapien. Nunc mollis eleifend justo. Vivamus nec ante nisi, eu venenatis urna. Suspendisse potenti. Vivamus sit amet blandit orci. Vestibulum quis ligula quis dui volutpat tincidunt. In in adipiscing velit.</p>
+							<p>Ut porta dolor sit amet erat cursus et auctor metus fringilla. Vivamus dictum dictum felis ut dignissim. Ut nibh lectus, mollis ac laoreet ut, scelerisque congue ligula. Morbi gravida felis velit. In hac habitasse platea dictumst. Pellentesque feugiat metus vel nisl pulvinar pharetra hendrerit ante sodales. Pellentesque mattis neque sem. Nullam a scelerisque dui. Pellentesque sodales velit in enim semper laoreet. Nunc ornare turpis eu nisi hendrerit a tempor felis ullamcorper. Integer turpis felis, consectetur quis congue tempus, porta vitae purus. Mauris condimentum orci et nunc tempor mollis.</p>
+						</div>
+						<div style="text-align:right;">
+							<h4 style="padding-bottom:5px;">$799 / 6 Nights</h4>
+							<a href="./checkout.html" class="btn btn-primary">Book Now!</a>
+						</div>
+					</div>
+					<div class="span6">
+						<ul class="thumbnails">
+							<li class="span6"><div class="thumbnail"><img src="./img/switzerland_big.jpg" alt=""></div></li>
+							<li class="span3"><div class="thumbnail"><img src="./img/switzerland_2.jpg" alt=""></div></li>
+							<li class="span3"><div class="thumbnail"><img src="./img/switzerland_3.jpg" alt=""></div></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="content-puertorico" class="hidden">
+				<div class="page-header">
+					<a class="btn pull-right" href="#" onclick="window.location.hash='';return false;"><strong>&lsaquo; All Destinations</strong></a>
+					<h1>Puerto Rico <small>The most beautiful places on Earth.</small></h1>
+				</div>
+				<div class="row">
+					<div class="span6">
+						<h3>Go to the Puerto Rico</h3>
+						<div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus nulla, convallis non aliquet at, scelerisque ut sem. Quisque felis mauris, auctor sit amet elementum at, gravida ut orci. Phasellus condimentum condimentum enim eu consequat. Suspendisse accumsan purus dolor. Nullam eget quam dignissim arcu dapibus volutpat et eu sapien. Nunc mollis eleifend justo. Vivamus nec ante nisi, eu venenatis urna. Suspendisse potenti. Vivamus sit amet blandit orci. Vestibulum quis ligula quis dui volutpat tincidunt. In in adipiscing velit.</p>
+							<p>Ut porta dolor sit amet erat cursus et auctor metus fringilla. Vivamus dictum dictum felis ut dignissim. Ut nibh lectus, mollis ac laoreet ut, scelerisque congue ligula. Morbi gravida felis velit. In hac habitasse platea dictumst. Pellentesque feugiat metus vel nisl pulvinar pharetra hendrerit ante sodales. Pellentesque mattis neque sem. Nullam a scelerisque dui. Pellentesque sodales velit in enim semper laoreet. Nunc ornare turpis eu nisi hendrerit a tempor felis ullamcorper. Integer turpis felis, consectetur quis congue tempus, porta vitae purus. Mauris condimentum orci et nunc tempor mollis.</p>
+						</div>
+						<div style="text-align:right;">
+							<h4 style="padding-bottom:5px;">$799 / 6 Nights</h4>
+							<a href="./checkout.html" class="btn btn-primary">Book Now!</a>
+						</div>
+					</div>
+					<div class="span6">
+						<ul class="thumbnails">
+							<li class="span6"><div class="thumbnail"><img src="./img/pr_big.jpg" alt=""></div></li>
+							<li class="span3"><div class="thumbnail"><img src="./img/pr_2.jpg" alt=""></div></li>
+							<li class="span3"><div class="thumbnail"><img src="./img/pr_3.jpg" alt=""></div></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="content-providence" class="hidden">
+				<div class="page-header">
+					<a class="btn pull-right" href="#" onclick="window.location.hash='';return false;"><strong>&lsaquo; All Destinations</strong></a>
+					<h1>Providence <small>The most beautiful places on Earth.</small></h1>
+				</div>
+				<div class="row">
+					<div class="span6">
+						<h3>Go to Providence</h3>
+						<div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus nulla, convallis non aliquet at, scelerisque ut sem. Quisque felis mauris, auctor sit amet elementum at, gravida ut orci. Phasellus condimentum condimentum enim eu consequat. Suspendisse accumsan purus dolor. Nullam eget quam dignissim arcu dapibus volutpat et eu sapien. Nunc mollis eleifend justo. Vivamus nec ante nisi, eu venenatis urna. Suspendisse potenti. Vivamus sit amet blandit orci. Vestibulum quis ligula quis dui volutpat tincidunt. In in adipiscing velit.</p>
+							<p>Ut porta dolor sit amet erat cursus et auctor metus fringilla. Vivamus dictum dictum felis ut dignissim. Ut nibh lectus, mollis ac laoreet ut, scelerisque congue ligula. Morbi gravida felis velit. In hac habitasse platea dictumst. Pellentesque feugiat metus vel nisl pulvinar pharetra hendrerit ante sodales. Pellentesque mattis neque sem. Nullam a scelerisque dui. Pellentesque sodales velit in enim semper laoreet. Nunc ornare turpis eu nisi hendrerit a tempor felis ullamcorper. Integer turpis felis, consectetur quis congue tempus, porta vitae purus. Mauris condimentum orci et nunc tempor mollis.</p>
+						</div>
+						<div style="text-align:right;">
+							<h4 style="padding-bottom:5px;">$799 / 6 Nights</h4>
+							<a href="./checkout.html" class="btn btn-primary">Book Now!</a>
+						</div>
+					</div>
+					<div class="span6">
+						<ul class="thumbnails">
+							<li class="span6"><div class="thumbnail"><img src="./img/prov_big.jpg" alt=""></div></li>
+							<li class="span3"><div class="thumbnail"><img src="./img/prov_2.jpg" alt=""></div></li>
+							<li class="span3"><div class="thumbnail"><img src="./img/prov_3.jpg" alt=""></div></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="content-sanfrancisco" class="hidden">
+				<div class="page-header">
+					<a class="btn pull-right" href="#" onclick="window.location.hash='';return false;"><strong>&lsaquo; All Destinations</strong></a>
+					<h1>San Francisco <small>The most beautiful places on Earth.</small></h1>
+				</div>
+				<div class="row">
+					<div class="span6">
+						<h3>Go to San Francisco</h3>
+						<div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus nulla, convallis non aliquet at, scelerisque ut sem. Quisque felis mauris, auctor sit amet elementum at, gravida ut orci. Phasellus condimentum condimentum enim eu consequat. Suspendisse accumsan purus dolor. Nullam eget quam dignissim arcu dapibus volutpat et eu sapien. Nunc mollis eleifend justo. Vivamus nec ante nisi, eu venenatis urna. Suspendisse potenti. Vivamus sit amet blandit orci. Vestibulum quis ligula quis dui volutpat tincidunt. In in adipiscing velit.</p>
+							<p>Ut porta dolor sit amet erat cursus et auctor metus fringilla. Vivamus dictum dictum felis ut dignissim. Ut nibh lectus, mollis ac laoreet ut, scelerisque congue ligula. Morbi gravida felis velit. In hac habitasse platea dictumst. Pellentesque feugiat metus vel nisl pulvinar pharetra hendrerit ante sodales. Pellentesque mattis neque sem. Nullam a scelerisque dui. Pellentesque sodales velit in enim semper laoreet. Nunc ornare turpis eu nisi hendrerit a tempor felis ullamcorper. Integer turpis felis, consectetur quis congue tempus, porta vitae purus. Mauris condimentum orci et nunc tempor mollis.</p>
+						</div>
+						<div style="text-align:right;">
+							<h4 style="padding-bottom:5px;">$799 / 6 Nights</h4>
+							<a href="./checkout.html" class="btn btn-primary">Book Now!</a>
+						</div>
+					</div>
+					<div class="span6">
+						<ul class="thumbnails">
+							<li class="span6"><div class="thumbnail"><img src="./img/sf_big.jpg" alt=""></div></li>
+							<li class="span3"><div class="thumbnail"><img src="./img/sf_2.jpg" alt=""></div></li>
+							<li class="span3"><div class="thumbnail"><img src="./img/sf_3.jpg" alt=""></div></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+        <footer class="footer">
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>This is a demo site designed to showcase GTM.</p>
+		</footer>
+	</div>
+	
+	
+	<script src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var firstLoad = true;
+		function fireTags() {
+		}
+		function load(dest) {
+			$('#content > *').hide();
+			if (dest != "") {
+				$('#content-loader').show();
+				setTimeout(function(){
+					$('#content-loader').fadeOut('fast', function() {
+							$('#content-' + dest).fadeIn();
+					});
+				}, 250);
+			}
+			else
+				$('#content-chooser').fadeIn();
+			
+			if (!firstLoad)
+				fireTags();
+			else
+				firstLoad = false;
+		}
+		function processHashtag() {
+			if (window.location.hash != "")
+				load(window.location.hash.substr(1));
+			else
+				load("");
+		}
+		window.onpopstate = function(e){
+			processHashtag();
+		};
+	</script>
+</body>
+</html>

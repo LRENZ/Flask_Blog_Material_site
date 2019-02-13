@@ -93,11 +93,15 @@ def register_blueprints(app):
     from .views import bp
     from .celery_work import ap
     from .uploads import up
+    from .lx import lx
+    from .form_test import fm
     app.register_blueprint(bp)
     app.register_blueprint(rv)
     app.register_blueprint(news)
     app.register_blueprint(ap)
     app.register_blueprint(up)
+    app.register_blueprint(lx)
+    app.register_blueprint(fm)
 
 
 # Initialize flask-login
@@ -133,11 +137,16 @@ def register_jinjia_filters(app):
     # app.jinja_env.filters['resize'] = resize
     app.add_template_global(get_js, 'get_js')
     app.add_template_global(get_dataLayer, 'get_dataLayer')
+    app.add_template_global(get_gtm_js, 'get_gtm_js')
 
 
 def get_js():
     search_code = Code.objects(Q(published=True) & Q(category='google_customs_search_js')).first()
     return search_code.code or "something wrong"
+
+def get_gtm_js():
+    gtm_code = Code.objects(Q(published=True) & Q(category='gtm')).first()
+    return gtm_code.code or "something wrong"
 
 def get_dataLayer(url):
     dl = dataLayer.objects(Q(published=True) & Q(url__contains=str(url))).first()

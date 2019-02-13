@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css\prettify_css.css">
+    <link rel="stylesheet" type="text/css" href="css\bootstrap_css-bundle.css">
+    <link rel="stylesheet" type="text/css" href="css\page_css.css">
+    <script type="text/javascript">CLOSURE_NO_DEPS = true;</script>
+    <script type="text/javascript" src="js\jquery-bundle.js"></script>
+    <script type="text/javascript" src="js\base_script-bundle.js"></script>
+    <script type="text/javascript" src="js\bootstrap_js-bundle.js"></script>
+    <script type="text/javascript" src="js\prettify_js-bundle.js"></script>
+    <script>
+      var type = "CHECKOUT";
+      var constants = {
+        'itemsList' : [{"color": "yellowT", "price": "$44.00", "desc": "Sint occaecat deserunt ex incididunt qui sint. Id minim magna labore pariatur nulla quis.", "id": "9bdd2", "name": "Compton T-Shirt"}, {"color": "greyT", "price": "$33.00", "desc": "Ea labore sunt magna labore Lorem aliquip irure eu qui commodo minim sunt magna nisi. Deserunt fugiat ullamco excepteur pariatur fugiat occaecat ut quis ad.", "id": "f6be8", "name": "Comverges T-Shirt"}, {"color": "blackT", "price": "$16.00", "desc": "Quis dolor elit id qui nulla ea esse nulla velit. Occaecat Lorem laboris tempor proident ex.", "id": "b55da", "name": "Flexigen T-Shirt"}, {"color": "pinkT", "price": "$92.00", "desc": "Magna non commodo ipsum nulla aliquip duis enim nostrud pariatur eiusmod. Incididunt ut adipisicing cillum eu Lorem nulla et est.", "id": "bc823", "name": "Fuelworks T-Shirt"}, {"color": "brownT", "price": "$55.00", "desc": "Minim Lorem in officia irure exercitation ea amet. Ipsum aliquip pariatur magna commodo nisi sint esse.", "id": "035f0", "name": "Futuris T-Shirt"}, {"color": "azureT", "price": "$57.00", "desc": "Ad et aliquip esse ut sint velit. Voluptate id ad esse aliquip culpa consectetur esse reprehenderit veniam minim elit eu.", "id": "8835a", "name": "Isoternia T-Shirt"}, {"color": "greenT", "price": "$55.00", "desc": "Et nisi et quis cillum eiusmod eu cupidatat duis. Nostrud veniam minim ullamco et cillum aliquip.", "id": "57b9d", "name": "Kiosk T-Shirt"}, {"color": "orangeT", "price": "$90.00", "desc": "Minim elit minim est ullamco Lorem. Exercitation ex sint nisi dolore cillum nisi cillum anim ullamco.", "id": "dc646", "name": "Lunchpod T-Shirt"}, {"color": "brickT", "price": "$31.00", "desc": "Magna non commodo ipsum nulla aliquip duis enim nostrud pariatur eiusmod. Incididunt ut adipisicing cillum eu Lorem nulla et est.", "id": "7w9e0", "name": "Masons T-Shirt"}, {"color": "violetT", "price": "$82.00", "desc": "Tempor sit irure commodo exercitation do cupidatat eiusmod laborum pariatur enim labore. Laboris amet adipisicing duis mollit.", "id": "239b5", "name": "Pigzart T-Shirt"}, {"color": "arrowT", "price": "$62.00", "desc": "Adipisicing culpa sint cillum eiusmod. Dolor reprehenderit magna velit non culpa ea dolor laborum est nulla deserunt minim.", "id": "6d9b0", "name": "Poyo T-Shirt"}, {"color": "whiteT", "price": "$99.00", "desc": "Adipisicing culpa sint cillum eiusmod. Dolor reprehenderit magna velit non culpa ea dolor laborum est nulla deserunt minim.", "id": "6c3b0", "name": "Zappix T-Shirt"}],
+        'promoList' : [{"color": "blackT", "price": "$16.00", "desc": "Quis dolor elit id qui nulla ea esse nulla velit. Occaecat Lorem laboris tempor proident ex.", "id": "b55da", "name": "Flexigen T-Shirt"}, {"color": "arrowT", "price": "$62.00", "desc": "Adipisicing culpa sint cillum eiusmod. Dolor reprehenderit magna velit non culpa ea dolor laborum est nulla deserunt minim.", "id": "6d9b0", "name": "Poyo T-Shirt"}, {"color": "pinkT", "price": "$92.00", "desc": "Magna non commodo ipsum nulla aliquip duis enim nostrud pariatur eiusmod. Incididunt ut adipisicing cillum eu Lorem nulla et est.", "id": "bc823", "name": "Fuelworks T-Shirt"}, {"color": "violetT", "price": "$82.00", "desc": "Tempor sit irure commodo exercitation do cupidatat eiusmod laborum pariatur enim labore. Laboris amet adipisicing duis mollit.", "id": "239b5", "name": "Pigzart T-Shirt"}],
+       
+       
+         'transactionId' :"cd2ad00b-acc9-45ab-b1e0-f4720375d2f0",
+       
+     }
+      window.page = new ec.Page(type, constants);
+    </script>
+		    <script>
+  {{ get_gtm_js() | safe }}
+    </script>
+    <title>Checkout</title>
+  </head>
+  <body class="container">
+    <div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <ul class="nav nav-tabs" id="codeTabs">
+              <li class="active"><a href="#gtm" data-toggle="tab">Google Tag Manager Code</a></li>
+               <li><a href="#ecjs" data-toggle="tab">EC.js Code</a></li>
+             </ul>
+          </div>
+          <div class="modal-body">
+            <div class="tab-content">
+              <div id="gtm" class="tab-pane active">
+                <pre id="code" class="prettyprint"></pre>
+              </div>
+              <div id="ecjs" class="tab-pane">
+                <pre id="codeEcJs" class="prettyprint"></pre>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="copyButton" type="button" class="btn btn-info">Copy</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <div id="banner" class="homepage jumbotron">
+      <a href="http://ga-dev-tools.appspot.com/">
+        <img id="gaDevTools" src="images\ga-dev-tools-logo.svg" alt="Google Analytics Demos and Tools site logo">
+      </a>
+      <a href="./eec_index.html"><h2 class="text-center">Ibby's T-Shirt Shop</h2>
+      <h4 class="text-center">A shirt for EVERY occassion!</h4></a>
+      <button class="GA-tracking btn btn-default btn-xs pull-right" id="GA-banner" type="button">
+        <span class="glyphicon glyphicon-info-sign"></span>
+      </button>
+    </div>
+    <div class="page-header">
+      
+    <ul class="nav nav-tabs" id="checkoutTabs">
+      <li class="active"><a href="#start" data-toggle="tab">Start Checkout</a></li>
+      <li><a href="#customerInfo" data-toggle="tab">Customer Information</a></li>
+      <li><a href="#billingInfo" data-toggle="tab">Billing Information</a></li>
+      <li><a href="#reviewCart" data-toggle="tab">Review Cart</a></li>
+      <li class="disabled"><a href="#confirmation" data-toggle="tab">Confirmation</a></li>
+      <li>
+        <button class="GA-tracking btn btn-default" id="GA-checkoutStep" type="button">
+          <span class="glyphicon glyphicon-info-sign"></span>
+        </button>
+      </li>
+    </ul>
+  
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-9">
+      
+    <div class="tab-content">
+    <div id="start" class="tab-pane active">
+      <button id="start-customerInfo" class="navSwitch btn btn-primary">Checkout</button>
+      <div class="btn-group" data-toggle="buttons">
+        <button id="clearCart" class="navSwitch btn btn-danger">Clear Cart</button>
+        <button class="GA-tracking btn btn-default" id="GA-clearCart" type="button">
+          <span class="glyphicon glyphicon-info-sign"></span>
+        </button>
+      </div>
+    </div>
+    <div id="customerInfo" class="tab-pane">
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <div><input type="text" class="form-control" name="first_name" id="first_name" value="Ben"></div>
+      </div>
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <div><input type="text" class="form-control" name="last_name" id="last_name" value="Bitdiddle"></div>
+      </div>
+      <div class="form-group">
+        <label for="address_1">Address 1</label>
+        <div><input type="text" class="form-control" name="address_1" id="address_1" value="2 Bit Lane"></div>
+      </div>
+      <div class="form-group">
+        <label for="address_2">Address 2</label>
+        <div><input type="text" class="form-control" name="address_2" id="address_2" value="Apt 10"></div>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <div><input type="text" class="form-control" name="city" id="city" disabled="disabled" value="Los Angeles"></div>
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <div><input type="text" class="form-control" name="state" id="state" disabled="disabled" value="CA"></div>
+      </div>
+      <div class="form-group">
+        <label for="zipcode">Zip Code</label>
+        <div><input type="text" class="form-control" name="zipcode" id="zipcode" disabled="disabled" value="90064"></div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <div><input type="text" class="form-control" name="phone" id="phone" value="10010110"></div>
+      </div>
+      <button id="customerInfo-start" type="button" class="navSwitch btn btn-default">Go back to Start</button>
+      <button id="customerInfo-billingInfo" type="button" class="navSwitch btn btn-primary">Next</button>
+    </div>
+    <div id="billingInfo" class="tab-pane">
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <div><input type="text" class="form-control" name="first_name" id="first_name" value="Ben"></div>
+      </div>
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <div><input type="text" class="form-control" name="last_name" id="last_name" value="Bitdiddle"></div>
+      </div>
+      <div class="form-group">
+        <label for="address_1">Address 1</label>
+        <div><input type="text" class="form-control" name="address_1" id="address_1" value="2 Bit Lane"></div>
+      </div>
+      <div class="form-group">
+        <label for="address_2">Address 2</label>
+        <div><input type="text" class="form-control" name="address_2" id="address_2" value="Apt 10"></div>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <div><input type="text" class="form-control" name="city" id="city" disabled="disabled" value="Los Angeles"></div>
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <div><input type="text" class="form-control" name="state" id="state" disabled="disabled" value="CA"></div>
+      </div>
+      <div class="form-group">
+        <label for="zipcode">Zip Code</label>
+        <div><input type="text" class="form-control" name="zipcode" id="zipcode" disabled="disabled" value="90064"></div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <div><input type="text" class="form-control" name="phone" id="phone" value="10010110"></div>
+      </div>
+      <label for="credit">Credit Card</label>
+      <div class="radio"><label><input type="radio" name="credit" value="Visa">Visa</label></div>
+      <div class="radio"><label><input type="radio" name="credit" value="Mastercard">Mastercard</label></div>
+      <div class="radio"><label><input type="radio" name="credit" value="AmEx">AmEx</label></div>
+      <button id="billingInfo-customerInfo" type="button" class="navSwitch btn btn-default">Go back to
+  Customer Info</button>
+      <div class="btn-group" data-toggle="buttons">
+        <button id="billingInfo-reviewCart" type="button" class="navSwitch btn btn-primary">Next</button>
+        <button class="GA-tracking btn btn-default" id="GA-checkoutOption-billingInfo" type="button">
+          <span class="glyphicon glyphicon-info-sign"></span>
+        </button>
+      </div>
+  </div>
+    <div id="reviewCart" class="tab-pane">
+      <table class="table table-bordered table-striped">
+        <tr id="reviewCartHeader"><th>Item</th><th>Quantity</th><th>Trim Color</th><th>Size</th><th>Price</th></tr>
+        <tr><td colspan="4" class="cartTotal info">Total</td><td class="total info">$0</td></tr>
+      </table>
+      <button id="reviewCart-billingInfo" type="button" class="navSwitch btn btn-default">Go back to
+  Billing Info</button>
+      <div class="btn-group" data-toggle="buttons">
+        <button id="reviewCart-confirmation" type="button" class="navSwitch btn btn-success">Purchase</button>
+        <button class="GA-tracking btn btn-default" id="GA-transaction" type="button">
+          <span class="glyphicon glyphicon-info-sign"></span>
+        </button>
+      </div>
+    </div>
+    <div id="confirmation" class="tab-pane">
+      <h1>Order Confirmed!</h1>
+      <h3>The cart has been reset</h3>
+      <button class="homepage btn btn-primary">Home</button>
+      <button id="refund" class="btn btn-danger">Get a Refund!</button>
+    </div>
+    </div>
+        <div class="modal fade" id="refundModal" tabindex="-1" role="dialog" aria-labelledby="refundLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="refundLabel">Select the Items
+      for a Refund</h4>
+          </div>
+          <div class="modal-body">
+            <div id="refundForm">
+               <table class="table table-bordered table-striped">
+                 <tr id="refundCartHeader"><th>Item</th><th>Quantity</th><th>Trim Color</th><th>Size</th><th>Price</th><th>Refund?</th></tr>
+                 <tr><td colspan="4" class="cartTotal info">Total</td><td class="total info">$0</td></tr>
+               </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="btn-group" data-toggle="buttons">
+              <button id="refundFull" type="button" class="btn btn-danger" data-dismiss="modal">Refund Full Cart</button>
+              <button class="GA-tracking btn btn-default" id="GA-refundFull" type="button">
+                <span class="glyphicon glyphicon-info-sign"></span>
+              </button>
+            </div>
+            <div class="btn-group" data-toggle="buttons">
+              <button id="refundPartial" type="button" class="btn btn-warning" data-dismiss="modal">Refund Selected Item(s)</button>
+              <button class="GA-tracking btn btn-default" id="GA-refundPartial" type="button">
+                <span class="glyphicon glyphicon-info-sign"></span>
+              </button>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="transactionAlert pageAlert alert alert-success fade in">
+          <button type="button" class="close" data-hide="alert" aria-hidden="true">×</button>
+          <strong>Success!</strong> Your items have been purchased!
+          <button type="button" class="btn btn-info homepage">Go back to the Homepage</button>
+        </div>
+        <div class="refundAlert pageAlert alert alert-warning fade in">
+          <button type="button" class="close" data-hide="alert" aria-hidden="true">×</button>
+          <strong>Success!</strong> Your items have been refunded!
+          <button type="button" class="btn btn-info homepage">Go back to the Homepage</button>
+        </div>
+        <div class="refundFailAlert pageAlert alert alert-danger fade in">
+          <button type="button" class="close" data-hide="alert" aria-hidden="true">×</button>
+          <strong>Fail!</strong> There are no items to refund!
+        </div>
+        <div class="clearCartAlert pageAlert alert alert-success fade in">
+          <button type="button" class="close" data-hide="alert" aria-hidden="true">×</button>
+          <strong>Completed!</strong> Your cart has been cleared.
+          <button type="button" class="btn btn-info homepage">Go back to the Homepage</button>
+        </div>
+      </div>
+    </div>
+  
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <div id="cart" class="panel panel-success">
+          <div class="panel-heading text-center"><span class="h5">Your Cart</span></div>
+          <table class="table table-bordered table-condensed">
+            <tr id="cartHeader"><th>Item</th><th>Quantity</th><th>Price</th></tr>
+            <tr class="success"><td colspan="2">Total</td><td class="total">$0</td></tr>
+          </table>
+          <div class="panel-footer">
+            <button id="checkout" class="btn btn-success">
+              <span class="glyphicon glyphicon-shopping-cart"></span> Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="well promoWell">
+          <a class="itemLink" href="item\b55da.html">
+            <image id="promo-b55da" src="images\bts.png" alt"back="" to="" school="" picture"="" class="img-thumbnail">
+          </image></a>
+          <button class="GA-tracking btn btn-default btn-xs gaButtonPromo" id="GA-promo-b55da" type="button">
+            <span class="glyphicon glyphicon-info-sign"></span>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="row">
+    
+    <div class="col-md-9">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Shirts You May Like</h3>
+        </div>
+        <div class="panel-body">
+          
+            <div class="col-sm-3">
+    <div class="thumbnail">
+      <a class="itemLink" href="item\b55da.html">
+        <image id="shirts you may like-b55da-1" src="images\blackT.png" alt="Item Picture" class="img-thumbnail">
+      </image></a>
+      <button class="GA-tracking btn btn-default btn-xs gaButtonItem" id="GA-shirts you may like-b55da-1" type="button">
+        <span class="glyphicon glyphicon-info-sign"></span>
+      </button>
+      <div class="caption">
+        <div><a id="shirts you may like-b55da-1" class="center-block itemLink btn btn-primary btn-sm" href="item\b55da.html">Flexigen T-Shirt</a></div>
+        <div class="well well-sm">
+          <p class="text-center"><strong class="h4">$16.00</strong></p>
+          <p class="text-center"><small>ID: b55da</small></p>
+        </div>
+      </div>
+    </div>
+    </div>
+          
+            <div class="col-sm-3">
+    <div class="thumbnail">
+      <a class="itemLink" href="item\6d9b0.html">
+        <image id="shirts you may like-6d9b0-2" src="images\arrowT.png" alt="Item Picture" class="img-thumbnail">
+      </image></a>
+      <button class="GA-tracking btn btn-default btn-xs gaButtonItem" id="GA-shirts you may like-6d9b0-2" type="button">
+        <span class="glyphicon glyphicon-info-sign"></span>
+      </button>
+      <div class="caption">
+        <div><a id="shirts you may like-6d9b0-2" class="center-block itemLink btn btn-primary btn-sm" href="item\6d9b0.html">Poyo T-Shirt</a></div>
+        <div class="well well-sm">
+          <p class="text-center"><strong class="h4">$62.00</strong></p>
+          <p class="text-center"><small>ID: 6d9b0</small></p>
+        </div>
+      </div>
+    </div>
+    </div>
+          
+            <div class="col-sm-3">
+    <div class="thumbnail">
+      <a class="itemLink" href="item\bc823.html">
+        <image id="shirts you may like-bc823-3" src="images\pinkT.png" alt="Item Picture" class="img-thumbnail">
+      </image></a>
+      <button class="GA-tracking btn btn-default btn-xs gaButtonItem" id="GA-shirts you may like-bc823-3" type="button">
+        <span class="glyphicon glyphicon-info-sign"></span>
+      </button>
+      <div class="caption">
+        <div><a id="shirts you may like-bc823-3" class="center-block itemLink btn btn-primary btn-sm" href="item\bc823.html">Fuelworks T-Shirt</a></div>
+        <div class="well well-sm">
+          <p class="text-center"><strong class="h4">$92.00</strong></p>
+          <p class="text-center"><small>ID: bc823</small></p>
+        </div>
+      </div>
+    </div>
+    </div>
+          
+            <div class="col-sm-3">
+    <div class="thumbnail">
+      <a class="itemLink" href="item\239b5.html">
+        <image id="shirts you may like-239b5-4" src="images\violetT.png" alt="Item Picture" class="img-thumbnail">
+      </image></a>
+      <button class="GA-tracking btn btn-default btn-xs gaButtonItem" id="GA-shirts you may like-239b5-4" type="button">
+        <span class="glyphicon glyphicon-info-sign"></span>
+      </button>
+      <div class="caption">
+        <div><a id="shirts you may like-239b5-4" class="center-block itemLink btn btn-primary btn-sm" href="item\239b5.html">Pigzart T-Shirt</a></div>
+        <div class="well well-sm">
+          <p class="text-center"><strong class="h4">$82.00</strong></p>
+          <p class="text-center"><small>ID: 239b5</small></p>
+        </div>
+      </div>
+    </div>
+    </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  </body>
+</html>
+
+

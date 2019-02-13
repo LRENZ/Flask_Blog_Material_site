@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	    <script>
+  dataLayer = [];
+</script>
+
+	    <script>
+  {{ get_dataLayer(request.path) | safe }}
+    </script>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<title>Home | Luxury Travel Site</title>
+	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" type="text/css" />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+		    <script>
+  {{ get_gtm_js() | safe }}
+    </script>
+</head>
+<body>
+	<script type="text/javascript">if (window.location.pathname.substr(-10) != "index.html") window.location.pathname += "index.html";</script>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="./index.html">Luxury Travel Site</a>
+				<ul class="nav">
+					<li class="active"><a href="./index.html">Home</a></li>
+					<li><a href="./destinations.html">Destinations</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="main">
+		<div class="title">
+			<h1>Luxury Travel Site</h1>
+		</div>
+		<p class="lead">The most luxurious way to travel the world.</p>
+		<div class="row">
+			<div id="myCarousel" class="carousel slide">
+				<div class="carousel-inner">
+					<div class="active item"><a href="./destinations.html#switzerland"><img src="./img/switzerland_huge.jpg" alt=""><div class="carousel-caption"><h4>Switzerland</h4><p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p></div></a></div>
+					<div class="item"><a href="./destinations.html#puertorico"><img src="./img/pr_huge.jpg" alt=""><div class="carousel-caption"><h4>Puerto Rico</h4><p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p></div></a></div>
+					<div class="item"><a href="./destinations.html#providence"><img src="./img/prov_huge.jpg" alt=""><div class="carousel-caption"><h4>Providence</h4><p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p></div></a></div>
+					<div class="item"><a href="./destinations.html#sanfrancisco"><img src="./img/sf_huge.jpg" alt=""><div class="carousel-caption"><h4>San Francisco</h4><p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p></div></a></div>
+				</div>
+				
+				<a class="carousel-control left" href="#myCarousel" data-slide="prev" style="top:45% !important">&lsaquo;</a>
+				<a class="carousel-control right" href="#myCarousel" data-slide="next" style="top:45% !important">&rsaquo;</a>
+			</div>
+		</div>
+		<div class="text-center"><a href="./destinations.html" class="btn btn-primary btn-large"><h1>View Destinations</h1></a></div>
+		<br />
+		<div class="row">
+			<div class="span4 text-center">
+				<h3><i class="icon-home" style="vertical-align:middle"></i> Luxurious Accommodations</h3>
+				Nunc ornare turpis eu nisi hendrerit a tempor felis ullamcorper. Integer turpis felis, consectetur quis congue tempus, porta vitae purus. Mauris condimentum orci et nunc tempor mollis.
+			</div>
+			<div class="span4 text-center">
+				<h3><i class="icon-globe" style="vertical-align:middle"></i> Incredible Locations</h3>
+				Nunc ornare turpis eu nisi hendrerit a tempor felis ullamcorper. Integer turpis felis, consectetur quis congue tempus, porta vitae purus. Mauris condimentum orci et nunc tempor mollis.
+			</div>
+			<div class="span4 text-center">
+				<h3><i class="icon-tag" style="vertical-align:middle"></i> Unbeatable Pricing</h3>
+				Nunc ornare turpis eu nisi hendrerit a tempor felis ullamcorper. Integer turpis felis, consectetur quis congue tempus, porta vitae purus. Mauris condimentum orci et nunc tempor mollis.
+			</div>
+		</div>
+		
+        <footer class="footer">
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>This is a demo site designed to showcase GTM.</p>
+		</footer>
+	</div>
+	<script src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
