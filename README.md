@@ -4,10 +4,5 @@ Flask application build with Material
 
 Undone Now
 
-TO Do:
-   * Complete Tookit module
-   * prettify the page
-   * rebuilt the admin page
-   * finish the Background task module
-   * find a way to backup database's data
+Sorry guys, it totally mess up. it can run and will rebuilt in the future
 
