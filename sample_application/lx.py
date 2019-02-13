@@ -6,9 +6,9 @@ lx = Blueprint('lx', __name__,
                template_folder='GTM_templates',
                static_folder='GTM_static',
                static_url_path='',
-               )
+               url_prefix='/gtm')
 
-@lx.route('/gtm/index.html')
+@lx.route('/index.html')
 def gtm_index():
     return render_template('gtm_index.html')
 
@@ -16,7 +16,6 @@ def gtm_index():
 @lx.route('/eec_index.html')
 def gtm_eec_index():
     return render_template('eec_index.html')
-
 
 @lx.route('/item/item/<string:item>')
 def gtm_item_eec_index(item):
@@ -28,15 +27,15 @@ def gtm_item_eec_index(item):
 def gtm_eec_checkout():
     return render_template('eec_checkout.html')
 
-@lx.route('/gtm/destinations.html')
+@lx.route('/destinations.html')
 def destination():
     return render_template('destinations.html')
 
-@lx.route('/gtm/checkout.html')
+@lx.route('/checkout.html')
 def checkout():
     return render_template('checkout.html')
 
-@lx.route('/gtm/thankyou.html')
+@lx.route('/thankyou.html')
 def thankyou():
     return render_template('thankyou.html')
 

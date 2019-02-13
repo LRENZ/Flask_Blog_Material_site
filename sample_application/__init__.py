@@ -95,6 +95,7 @@ def register_blueprints(app):
     from .uploads import up
     from .lx import lx
     from .form_test import fm
+    from .eec import eec
     app.register_blueprint(bp)
     app.register_blueprint(rv)
     app.register_blueprint(news)
@@ -102,6 +103,7 @@ def register_blueprints(app):
     app.register_blueprint(up)
     app.register_blueprint(lx)
     app.register_blueprint(fm)
+    app.register_blueprint(eec)
 
 
 # Initialize flask-login
