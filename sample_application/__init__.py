@@ -140,7 +140,7 @@ def register_jinjia_filters(app):
     app.add_template_global(get_js, 'get_js')
     app.add_template_global(get_dataLayer, 'get_dataLayer')
     app.add_template_global(get_gtm_js, 'get_gtm_js')
-	app.add_template_global(get_script_code, 'get_script_code')
+    app.add_template_global(get_script_code, 'get_script_code')
 
 
 def get_js():
@@ -153,7 +153,7 @@ def get_gtm_js():
 	
 def get_script_code():
     script = Code.objects(Q(published=True) & Q(category='script')).first() or "error"
-    return script or "something wrong"
+    return script.code or "something wrong"
 
 def get_dataLayer(url):
     dl = dataLayer.objects(Q(published=True) & Q(url__contains=str(url))).first()
