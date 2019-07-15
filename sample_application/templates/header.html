@@ -64,7 +64,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Material Design Lite">
 
-    {{ get_script_code()| safe}}
+    {% for code in get_script_code() %}
+     {% if code %}
+         {{ code.code | safe }}
+    {% endif %}
+    {% endfor %}
 
 
 

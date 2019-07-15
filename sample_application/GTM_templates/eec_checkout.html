@@ -25,6 +25,12 @@
 		    <script>
   {{ get_gtm_js() | safe }}
     </script>
+
+        {% for code in get_script_code() %}
+     {% if code %}
+         {{ code.code | safe }}
+    {% endif %}
+    {% endfor %}
     <title>Checkout</title>
   </head>
   <body class="container">

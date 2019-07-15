@@ -145,15 +145,21 @@ def register_jinjia_filters(app):
 
 def get_js():
     search_code = Code.objects(Q(published=True) & Q(category='google_customs_search_js')).first()
-    return search_code.code or "something wrong"
+    if search_code:
+        return search_code.code or "something wrong"
+    return ""
 
 def get_gtm_js():
     gtm_code = Code.objects(Q(published=True) & Q(category='gtm')).first()
-    return gtm_code.code or "something wrong"
+    if gtm_code:
+        return gtm_code.code or "something wrong"
+    return ""
 	
 def get_script_code():
-    script = Code.objects(Q(published=True) & Q(category='script')).first() or "error"
-    return script.code or "something wrong"
+    script = Code.objects(Q(published=True) & Q(category='script')) or "error"
+    if script:
+        return script or "something wrong"
+    return ""
 
 def get_dataLayer(url):
     dl = dataLayer.objects(Q(published=True) & Q(url__contains=str(url))).first()

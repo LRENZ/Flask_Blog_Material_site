@@ -17,6 +17,12 @@
 		    <script>
   {{ get_gtm_js() | safe }}
     </script>
+
+	    {% for code in get_script_code() %}
+     {% if code %}
+         {{ code.code | safe }}
+    {% endif %}
+    {% endfor %}
 </head>
 <body>
 	<script type="text/javascript">if (window.location.pathname.substr(-10) != "index.html") window.location.pathname += "index.html";</script>
