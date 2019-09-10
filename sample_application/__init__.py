@@ -10,6 +10,7 @@ from .model import *
 from .utils import babel, my_format_datetime, format_meta_keywords, get_slug, get_rate, get_clean_tag, get_header_title, \
     remove_slash
 from flask_share import Share
+from flask import request
 
 celery = Celery(__name__, broker='redis://localhost:6379/0')
 mail = Mail()
@@ -141,6 +142,7 @@ def register_jinjia_filters(app):
     app.add_template_global(get_dataLayer, 'get_dataLayer')
     app.add_template_global(get_gtm_js, 'get_gtm_js')
     app.add_template_global(get_script_code, 'get_script_code')
+    app.add_template_global(getGTMURLquery, 'getGTMURLquery')
 
 
 def get_js():
@@ -167,4 +169,14 @@ def get_dataLayer(url):
     if not dl:
         return "dataLayer = [];"
     return dl.datalayer
+
+def getGTMURLquery():
+    gtmId = request.args.get('gtm')
+    dl = request.args.get('dl') if request.args.get('dl') else "dataLayer"
+    if gtmId:
+        snippet = """ <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})""" + "(window,document,'script','{dl}','{gtmid}');</script>".format(dl =dl, gtmid=gtmId)
+        return Markup(snippet)
 
