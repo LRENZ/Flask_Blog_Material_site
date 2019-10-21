@@ -8,7 +8,7 @@ name = "pypi"
 [packages]
 flask-script = "==2.0.6"
 flask-material = "==0.1.1"
-werkzeug = "==0.14.1"
+werkzeug = "==0.15.3"
 flask-wtf = "==0.14.2"
 flask-mongoengine = "==0.9.3"
 flask-admin = "==1.5.1"
