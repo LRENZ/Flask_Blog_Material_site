@@ -36,7 +36,7 @@ pytz==2018.5
 redis==2.10.3
 requests==2.19.1
 six==1.11.0
-urllib3==1.23
+urllib3==1.26.5
 vine==1.1.4
 Werkzeug==0.14.1
 WTForms==2.1
